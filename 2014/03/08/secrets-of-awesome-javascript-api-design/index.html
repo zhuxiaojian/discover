@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
 <meta name="og:title" content="如何设计出色的 JavaScript API">
-<meta name="og:url" content="http://ppanda.com/2014/03/08/secrets-of-awesome-javascript-api-design/">
+<meta name="og:url" content="http://ppanda.com/discover/2014/03/08/secrets-of-awesome-javascript-api-design/">
 <meta name="og:image" content="http://webstandardssherpa.com/r/21-1.png">
 <meta name="og:site_name" content="发现前端">
 <meta name="og:description" content="目录
@@ -26,10 +26,10 @@
 <link rel="alternative" href="/atom.xml" title="发现前端" type="application/atom+xml">
   
   
-<link rel="icon" href="/favicon.png">
+<link rel="icon" href="/discover/favicon.png">
   
   <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/discover/css/style.css" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 </head>
@@ -38,18 +38,18 @@
   <div class="header-outer outer">
     <div class="header-title inner">
       <h1 class="logo-wrap">
-        <a href="/" class="logo">发现前端</a>
+        <a href="/discover/" class="logo">发现前端</a>
       </h1>
       
     </div>
     <div class="header-inner inner">
       <nav class="main-nav">
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="/discover/">Home</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="/discover/archives">Archives</a>
         
-          <a class="main-nav-link" href="/about">about</a>
+          <a class="main-nav-link" href="/discover/about">about</a>
         
         <a class="main-nav-link" href="http://10.19.113.51:8888/">#我发现</a>
       </nav>
@@ -115,13 +115,13 @@
       </header>
     
     <div class="article-meta">
-      <a href="/2014/03/08/secrets-of-awesome-javascript-api-design/" class="article-date">
+      <a href="/discover/2014/03/08/secrets-of-awesome-javascript-api-design/" class="article-date">
   <time datetime="2014-03-08T03:23:19.000Z" itemprop="datePublished">2014年3月8日</time>
 </a>
       
   <div class="article-category">
     
-	    <a class="pure-button" style='display:inline;' href="/categories/JavaScript/">JavaScript</a>
+	    <a class="pure-button" style='display:inline;' href="/discover/categories/JavaScript/">JavaScript</a>
 	  
   </div>
 
@@ -192,7 +192,7 @@ article.blogPost {
 <li>相衬</li>
 <li>重点突出</li>
 </ul>
-<p><a href="http://baike.baidu.com/view/1603468.htm" target="_blank">&gt; 相衬：犹相称。配合得当；相配合适。</a></p>
+<p><a href="http://baike.baidu.com/view/1603468.htm" target="_blank">&gt; 相衬：犹相称���配合得当；相配合适。</a></p>
 <p>对于每个设计原则，我将列出一个或多个示例来说明，示例均来自于流行的 JavaScript 库的 API。</p>
 <h2 id="4-1-18-">4. 原则1：一致 &amp; 协调 <a href="#">⬆</a></h2>
 <p>在艺术上，一致性是一件作品背后不可或缺的概念，使得设计者可以把各种事物汇集成一个连贯的整体。另一方面，协调性则是指作品中相似元素的布局，使得作品从整体上产生一种简洁的感觉。</p>
@@ -269,7 +269,7 @@ moment().format(&#39;dddd&#39;);
 moment().startOf(&#39;hour&#39;).fromNow();
 </code></pre><p><img src="http://webstandardssherpa.com/r/21-5.png" alt="Moment.js"></p>
 <p>对于像 Moment.js 这样有针对性的库，保持 API 专注和小巧很重要。对于更大、更磅礴的库，API 的大小则应该反映库自身的功能。</p>
-<p>就拿 <a href="http://underscorejs.org/" target="_blank">Underscore</a> 来说，作为一个通用工具库，Underscore 提供了大量的便捷函数，用以帮助开发人员处理 JavaScript 集合、数据、函数和对象。它的 API 比 Moment.js 这样的库更多，但 Underscore 仍然是相衬的，因为每个函数都在协助库实现目标。考虑一下下面的例子，前两个演示了如何用 Underscore 处理数组，最后一个演示了如何处理字符串：</p>
+<p>就拿 <a href="http://underscorejs.org/" target="_blank">Underscore</a> 来说，作为一个通用工具库，Underscore 提供了大量的便捷函数，用以帮助开发人员处理 JavaScript 集合、数据、函数和对象。它的 API 比 Moment.js 这样的库更多，但 Underscore 仍然是相衬的，因为每个函数都在协助库实现目标。考虑一下下面的例子，前两个演示了如何用 Underscore 处���数组，最后一个演示了如何处理字符串：</p>
 <pre><code>_.each([&quot;Todd&quot;, &quot;Burke&quot;, &quot;Derick&quot;], function(name){ 
   alert(name); 
 });
@@ -390,8 +390,8 @@ var DocumentRow = Backbone.View.extend({
 </code></pre><p><img src="http://webstandardssherpa.com/r/21-7.png" alt="Backbone.js"></p>
 <p>增强可扩展性可以突出重点，因为它使人们意识到这样一个事实：既有的库并不意味已经万事俱备，同时它也鼓励人们向库中添加符合自身需求的功能。一旦库开始鼓励扩展，不仅会开启新的功能，原有的功能也将受益。最好的例子之一是 <a href="http://marionettejs.com/" target="_blank">Backbone.Marionette</a> 框架，一个扩展自 Backbone 的库，旨在“简化大型 JavaScript 应用程序”。若不是 Backbone 的可扩展性，Marionette 将很难实现。因此，如果有可能的话，请尽量增强可扩展性。</p>
 <h2 id="8-api-18-">8. API 设计：不仅仅适用于库作者 <a href="#">⬆</a></h2>
-<p>如果你不是某个 JavaScript 库的作者，而是 JavaScript 应用开发人员，是库的实施者，你可能会觉得本文中的原则并不适用于你。毕竟我们在听到“API”时，常常想到的是第三方库，就像我在本文中提到的那些例子。</p>
-<p>然而事实上，API，顾名思义，���过是封装一些功能以供他人使用的一个接口。在这里，我要用一句概括性的话强调一个重要观点：编写模块化的 JavaScript 代码是为了实用，与使用者的数量无关。</p>
+<p>如果你不是某个 JavaScript 库的作者，而是 JavaScript 应用开发人员，是库的实施者，你可能会觉得本文中的原则并不适用于你。毕竟我们在听到“API”时，常常想到的是第三方库，就像我在���文中提到的那些例子。</p>
+<p>然而事实上，API，顾名思义，不过是封装一些功能以供他人使用的一个接口。在这里，我要用一句概括性的话强调一个重要观点：编写模块化的 JavaScript 代码是为了实用，与使用者的数量无关。</p>
 <p>你自己的 JavaScript 代码暴露接口给其他人，这种行为与本文中提到的库没有什么不同。你无须成为一名公开库的作者，就可以考虑 API 设计并应用本文中的原则，即使你的代码的用户数很小，而且仅限于团队内部，或者即使你构建的是一个私有库。这种刻意的 API 设计只要能使一个用户受益，就能使无数人受益。</p>
 <p>因为 API 设计代表着开发人员的用户体验，所以它和面向终端用户的 UI 设计同样重要。我们通过学习原则，以及好的和坏的界面示例，逐渐学会了 UI 设计，我们也可以通过同样的方式，深入学习如何设计好的 API。通过应用本文的四个原则和你发现的其他原则，可以设计出出色 API 来取悦你的用户，并且可以帮助你的用户实现出现的终端用户体验。</p>
 <h2 id="9-18-">9. 比别人多做一点点 <a href="#">⬆</a></h2>
@@ -471,7 +471,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
   
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/API/">API</a></li></ul>
 
     </footer>
   </div>
@@ -480,7 +480,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
 <nav id="article-nav">
   
   
-    <a href="/2014/03/06/know-javascript-prototype/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/discover/2014/03/06/know-javascript-prototype/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">深入理解javacript之prototype</div>
     </a>
@@ -500,11 +500,11 @@ var duoshuoQuery = {short_name:"suningwiki"};
     <div class="widget">
       <ul class="category-list">
 	  
-	    <li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li>
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li>
 	  
-	    <li class="category-list-item"><a class="category-list-link" href="/categories/前端心得/">前端心得</a><span class="category-list-count">3</span></li>
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/前端心得/">前端心得</a><span class="category-list-count">3</span></li>
 	  
-	    <li class="category-list-item"><a class="category-list-link" href="/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li>
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li>
 	  
 	  </ul>
     </div>
@@ -515,7 +515,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/API/" style="font-size: NaNpx;">API</a><a href="/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/tags/webApp/" style="font-size: NaNpx;">webApp</a>
+      <a href="/discover/tags/API/" style="font-size: NaNpx;">API</a><a href="/discover/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/discover/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/discover/tags/webApp/" style="font-size: NaNpx;">webApp</a>
     </div>
   </div>
 
@@ -524,7 +524,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">三月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -540,6 +540,6 @@ var duoshuoQuery = {short_name:"suningwiki"};
     </div>
 </footer>
   
-<script type="text/javascript" src="/js/script.js"></script>
+<script type="text/javascript" src="/discover/js/script.js"></script>
 </body>
 </html>

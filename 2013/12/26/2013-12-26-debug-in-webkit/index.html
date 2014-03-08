@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
 <meta name="og:title" content="手机端开发注意事项">
-<meta name="og:url" content="http://ppanda.com/2013/12/26/2013-12-26-debug-in-webkit/">
+<meta name="og:url" content="http://ppanda.com/discover/2013/12/26/2013-12-26-debug-in-webkit/">
 <meta name="og:image" content="http://cdn.bielousov.com/wp-content/uploads/2012/08/android-input-label-text-issue.png">
 <meta name="og:site_name" content="发现前端">
 <meta name="og:description" content="手机端相关问题
@@ -26,10 +26,10 @@ A useful tools or tips list for mobile web application developing
 <link rel="alternative" href="/atom.xml" title="发现前端" type="application/atom+xml">
   
   
-<link rel="icon" href="/favicon.png">
+<link rel="icon" href="/discover/favicon.png">
   
   <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/discover/css/style.css" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 </head>
@@ -38,18 +38,18 @@ A useful tools or tips list for mobile web application developing
   <div class="header-outer outer">
     <div class="header-title inner">
       <h1 class="logo-wrap">
-        <a href="/" class="logo">发现前端</a>
+        <a href="/discover/" class="logo">发现前端</a>
       </h1>
       
     </div>
     <div class="header-inner inner">
       <nav class="main-nav">
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="/discover/">Home</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="/discover/archives">Archives</a>
         
-          <a class="main-nav-link" href="/about">about</a>
+          <a class="main-nav-link" href="/discover/about">about</a>
         
         <a class="main-nav-link" href="http://10.19.113.51:8888/">#我发现</a>
       </nav>
@@ -108,20 +108,20 @@ A useful tools or tips list for mobile web application developing
         
   
     <h1 class="article-title" itemprop="name">
-      手机端开发注意事项
+      手机端开发注意事���
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/2013/12/26/2013-12-26-debug-in-webkit/" class="article-date">
+      <a href="/discover/2013/12/26/2013-12-26-debug-in-webkit/" class="article-date">
   <time datetime="2013-12-26T09:12:00.000Z" itemprop="datePublished">2013年12月26日</time>
 </a>
       
   <div class="article-category">
     
-	    <a class="pure-button" style='display:inline;' href="/categories/移动前端/">移动前端</a>
+	    <a class="pure-button" style='display:inline;' href="/discover/categories/移动前端/">移动前端</a>
 	  
   </div>
 
@@ -182,7 +182,7 @@ A useful tools or tips list for mobile web application developing
 <p>第一个meta标签表示：强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览；
 <del>尤其要注意的是content里多个属性的设置一定要用分号+空格来隔开，如果不规范将不会起作用。</del></p>
 <p>注意根据<a href="http://www.weibo.com/avajayam" title="ava" target="_blank">public_00</a>提供的资料补充，content使用分号作为分隔，在老的浏览器是支持的，但不是规范写法。
-规范的写法应该是使用逗号分隔，参考 
+规范的���法应该是使用逗号分隔，参考 
 <a href="http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html" target="_blank">http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html</a>
 <a href="http://developer.android.com/guide/webapps/targeting.html" target="_blank">http://developer.android.com/guide/webapps/targeting.html</a></p>
 <p>其中：</p>
@@ -278,7 +278,7 @@ A useful tools or tips list for mobile web application developing
 <ul>
 <li>orientationchange      </li>
 </ul>
-<h2 id="touch-">touch事件支持的相关属性</h2>
+<h2 id="touch-">touch���件支持的相关属性</h2>
 <ul>
 <li>touches</li>
 <li>targetTouches</li>
@@ -612,8 +612,8 @@ setTimeout(function(){
 <p>见图
 <img src="http://cdn.bielousov.com/wp-content/uploads/2012/08/android-input-label-text-issue.png" alt="怪异图"></p>
 <p>Android web视图,至少在HTC EVO和三星的Galaxy Nexus中，文本输入框在输入时表现的就像占位符。情况为一个类似水印的东西在用户输入区域，一旦用户开始输入便会消失(见图片)。
-在android的默认样式下当输入框获得焦点后,若存在一个绝对定位或者fixed的元素，布局会被破坏,其他元素与系统输入字段会发生重叠(如搜索图标将消失为搜索字段),可以观察到布局与原始输入字段有偏差(见截图)。
-这是一个相当复杂的问题，以下简���布局可以重现这个问题:</p>
+在android的默认样式下当输入框获得焦点后,若存在一个绝对定位或者fixed的元素，布局会被破坏,其他元素与系统输入字段会发生重叠(如搜索图标将消失为搜索字段),可以观察到布局与原始���入字段有偏差(见截图)。
+这是一个相当复杂的问题，以下简单布局可以重现这个问题:</p>
 <pre><code>&lt;label for=&quot;phone&quot;&gt;Phone: *&lt;/label&gt;
 &lt;input type=&quot;tel&quot; name=&quot;phone&quot; id=&quot;phone&quot; minlength=&quot;10&quot; maxlength=&quot;10&quot; inputmode=&quot;latin digits&quot; required=&quot;required&quot; /&gt;
 </code></pre><p>解决方法</p>
@@ -834,7 +834,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
   
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobile/">mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webApp/">webApp</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/mobile/">mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/webApp/">webApp</a></li></ul>
 
     </footer>
   </div>
@@ -842,7 +842,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
     
 <nav id="article-nav">
   
-    <a href="/2014/02/28/front-end-grow-up/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/discover/2014/02/28/front-end-grow-up/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -867,11 +867,11 @@ var duoshuoQuery = {short_name:"suningwiki"};
     <div class="widget">
       <ul class="category-list">
 	  
-	    <li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li>
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li>
 	  
-	    <li class="category-list-item"><a class="category-list-link" href="/categories/前端心得/">前端心得</a><span class="category-list-count">3</span></li>
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/前端心得/">前端心得</a><span class="category-list-count">3</span></li>
 	  
-	    <li class="category-list-item"><a class="category-list-link" href="/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li>
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li>
 	  
 	  </ul>
     </div>
@@ -882,7 +882,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/API/" style="font-size: NaNpx;">API</a><a href="/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/tags/webApp/" style="font-size: NaNpx;">webApp</a>
+      <a href="/discover/tags/API/" style="font-size: NaNpx;">API</a><a href="/discover/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/discover/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/discover/tags/webApp/" style="font-size: NaNpx;">webApp</a>
     </div>
   </div>
 
@@ -891,7 +891,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">三月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -907,6 +907,6 @@ var duoshuoQuery = {short_name:"suningwiki"};
     </div>
 </footer>
   
-<script type="text/javascript" src="/js/script.js"></script>
+<script type="text/javascript" src="/discover/js/script.js"></script>
 </body>
 </html>
