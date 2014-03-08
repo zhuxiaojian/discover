@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<title>如何设计出色的 JavaScript API | 发现前端</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="如何设计出色的 JavaScript API">
+<meta name="og:url" content="http://ppanda.com/2014/03/08/secrets-of-awesome-javascript-api-design/">
+<meta name="og:image" content="http://webstandardssherpa.com/r/21-1.png">
+<meta name="og:site_name" content="发现前端">
+<meta name="og:description" content="目录
+
+[1. API 设计：善恶之争][0]
+[2. 在 JavaScript 中，API 设计尤为重要][1]
+[3. 出色 JavaScript API 的秘诀][2]
+[4. 原则1：一致 &amp; 协调][3]
+[5. 原则2：平衡][4]
+[6. 原则3：相衬][5]
+[7. 原则4：突出重点][6]
+[8. API 设计：不仅仅适用于库作者][7]
+[9. 比别人多做一点点][8]">
+<meta name="twitter:card" content="summary">
+  
+<link rel="alternative" href="/atom.xml" title="发现前端" type="application/atom+xml">
+  
+  
+<link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+    <header id="header">
+  <div class="header-outer outer">
+    <div class="header-title inner">
+      <h1 class="logo-wrap">
+        <a href="/" class="logo">发现前端</a>
+      </h1>
+      
+    </div>
+    <div class="header-inner inner">
+      <nav class="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">about</a>
+        
+        <a class="main-nav-link" href="http://10.19.113.51:8888/">#我发现</a>
+      </nav>
+    </div>
+  </div>
+</header>
+    <div class="pure-g-r">
+      <aside class="pure-u-1-6">
+        <div class="widget-wrap">
+    <h3 class="widget-title">技术站点</h3>
+    <div class="widget">
+      <ul class="category-list category-list-side">
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://tid.tenpay.com/'>财付通设计中心 UID</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cdc.tencent.com/'>腾讯用户研究与体验设计中心 CDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.alloyteam.com/'>腾讯Web前端 Alloy 团队 Blog</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://gdc.qq.com/'>QQ游戏设计中心GDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mxd.tencent.com/'>腾讯移动互联网设计团队MXD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ecd.tencent.com/'>腾讯电商用户设计体验部ECD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://isux.tencent.com/'>腾讯社交用户体验设计部ISUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://djt.qq.com/'>腾讯大讲堂</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.cn/'>阿里巴巴用户体验设计部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.taobao.com/blog/'>淘宝网UED官方博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.com/'>阿里巴巴国际站UED团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ux.etao.com/'>淘宝一淘用户体验中心UX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.searchtb.com/'>淘宝搜索技术博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://alipaymiddleware.com/'>支付宝中间件团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.tmall.com/'>天猫UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.baiduux.com/'>百度泛用户体验部UUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mux.baidu.com/'>百度无线用户体验部MUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.baidu.com/'>百度商业用户体验部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mued.sohu.com/'>搜狐移动用户体验团队MUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.focus.cn/'>搜狐焦点用户体验设计UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://udc.weibo.com/'>新浪微博用户体验设计中心UDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sina.com/'>新浪UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.75team.com/'>奇虎360公司Web前端</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uxc.360.cn/'>360UXC用户体验设计中心</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/'>携程旅行前端开发团队UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://fed.renren.com/'>人人网FED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sogou.com/'>搜狗设计团队UED博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uedc.163.com/'>网易用户体验设计中心UEDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cued.xunlei.com/'>迅雷用户体验设计中心CUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://blog.19ued.com/'>19楼UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.5173.com/'>5173用户体验设计团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.iciba.com/'>爱词霸UED团队 </a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/wp-content/webkitcss/index.html'>Webkit css</a></li>
+  </ul>
+
+    </div>
+  </div>
+      </aside>
+      <section class="pure-u-2-3"><article id="post-secrets-of-awesome-javascript-api-design" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      如何设计出色的 JavaScript API
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2014/03/08/secrets-of-awesome-javascript-api-design/" class="article-date">
+  <time datetime="2014-03-08T03:23:19.000Z" itemprop="datePublished">2014年3月8日</time>
+</a>
+      
+  <div class="article-category">
+    
+	    <a class="pure-button" style='display:inline;' href="/categories/JavaScript/">JavaScript</a>
+	  
+  </div>
+
+      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="-">目录</h2>
+<ul>
+<li>[1. API 设计：善恶之争][0]</li>
+<li>[2. 在 JavaScript 中，API 设计尤为重要][1]</li>
+<li>[3. 出色 JavaScript API 的秘诀][2]</li>
+<li>[4. 原则1：一致 &amp; 协调][3]</li>
+<li>[5. 原则2：平衡][4]</li>
+<li>[6. 原则3：相衬][5]</li>
+<li>[7. 原则4：突出重点][6]</li>
+<li>[8. API 设计：不仅仅适用于库作者][7]</li>
+<li>[9. 比别人多做一点点][8]<ul>
+<li>[9.1 三省吾身 谓予无愆][9]</li>
+<li>[9.2 上士闻道 勤而勉之][10]</li>
+</ul>
+</li>
+<li>[10. 扩展阅读][11]</li>
+</ul>
+<hr>
+<p> 24 September 2013</p>
+<blockquote>
+<p>原文：<a href="http://webstandardssherpa.com/reviews/secrets-of-awesome-javascript-api-design" target="_blank">&gt; Secrets of Awesome JavaScript API Design</a>&gt; , <a href="http://www.youtube.com/watch?v=QlQm786MClE" target="_blank">&gt; YouTube</a>&gt; , <a href="http://riagora.com/appliness/Appliness-April-2013.pdf" target="_blank">&gt; PDF</a>&gt; ，<a href="http://www.oschina.net/translate/secrets-of-awesome-javascript-api-design" target="_blank">&gt; 其他翻译版本</a></p>
+</blockquote>
+<p><img src="http://webstandardssherpa.com/r/21-1.png" alt=""></p>
+<p>设计是一个具有普遍性的概念。正如<a href="http://oxforddictionaries.com/definition/american_english/design" target="_blank">牛津英语字典</a>中所定义的“拟定执行计划或执行方案”，设计是将艺术、体系结构、硬件等结合到一起的一条主线。软件设计，特别是 API 设计，也是如此。然而在软件开发中，往往很少有人会注意到 API 设计，这是因为相比于设计应用程序的 UI 或设计终端用户体验，为其他开发人员编写代码似乎没那么重要。</p>
+<p>但是 API 设计——库所提供的公共接口，向开发人员暴漏功能和特性——与 UI 设计一样重要。事实上，两者都是改善应用程序的用户体验的主要方式。应用程序的 UI 关注的是终端用户的体验，应用程序的 API 关注的则是开发人员的体验。因此，应该对 API 设计和 UI 设计给予同等程度的照顾和关注。就像我们重视 UI 的实用、简洁和优雅，我们也应该追求 API 的实用、简洁和优雅。</p>
+<p>API 设计，以及本文所述的 JavaScript API 设计，向所有开发人员提出了一个独特的挑战，无论是构建公开库还是内部库。JavaScript 的动态特性，库使用者的匿名制，以及不明确的需求，对于 API 设计者来说都是艰巨的挑战。虽然好用的 API 设计没有捷径可走，但是我们可以从当下流行的 JavaScript 库中提取一些设计原则。</p>
+<a id="more"></a>
+
+<h2 id="1-api-18-">1. API 设计：善恶之争 <a href="#">⬆</a></h2>
+<p>对于使用 API 的开发人员和你自己，差劲的 JavaScript API 设计的代价是昂贵的。差劲的设计会导致浪费：浪费开发人员的时间，因为他们很难弄懂一个接口；浪费 API 作者的时间，因为她需要处理开发混乱带来的额外支持和返工。几乎所有的 API 在设计之初都是为了抽象通用功能以简化使用，从而节省时间，而一个差劲的 API 则会使你自己和你的用户怀疑这个库究竟是否是一个好主意。</p>
+<p>另一方面，良好的 API 设计可以实现<a href="http://en.wikipedia.org/wiki/Abstraction_(computer_science" target="_blank">抽象</a>这一目标，同时也应该是<a href="http://en.wikipedia.org/wiki/Self-documenting" target="_blank">自描述</a>的。如果一个 API 被良好地设计，用户可以快速直观地利用你的工作成果，而且不需要经常参考手册和文档，不需要频繁访问技术支持和问答网站。对于需要开发人员花费大量时间来开发的特性，你也可以把它们封装起来以节省开发人员的时间。良好的设计不仅可以节省开发人员的时间，也让他们看起来更加聪明和可靠。通过让你的用户看起来聪明能干、感觉良好，也让你看起来更加牛逼。</p>
+<h2 id="2-javascript-api-18-">2. 在 JavaScript 中，API 设计尤为重要 <a href="#">⬆</a></h2>
+<p>不管是什么编程语言或框架，API 设计都非常重要，而且对于 JavaScript，API 设计的风险要比许多其他语言更高。首先，JavaScript 作为一门动态的、延迟绑定的编程语言，没有编译器来充当安全网的角色，也没有基本的单元测试来发现代码中的错误。这时，<a href="http://en.wikipedia.org/wiki/Lint_%28software%29" target="_blank">Linting</a> 或验证框架（例如 <a href="http://jslint.com/" target="_blank">JSLint</a> 和 <a href="http://jshint.com/" target="_blank">JSHint</a>）可以帮助我们。这些工具可以帮助发现 JavaScript 代码中的常见错误，但是当开发人员使用 API 时，这些工具无法捕获可能出现的错误。</p>
+<p>如何构建一个有设计感的 API，帮助库用户掉进俗话所说的“pit of success”，这一切都取决于你。这意味着你的库对于开发人员是舒适和友好的，当开发人员与你的代码交互时，还需要提供积极的支持并建立信任。</p>
+<p>“falling into the pit of success” 最好的例子之一是 jQuery 用 CSS 选择器语法来获取 DOM 元素。例如，如果我想要获取所有包含了类样式 blogPost 的 article 元素，我可以在 jQuery 中这么做：</p>
+<pre><code>$(&quot;article.blogPost&quot;).fadeIn();
+
+
+$(&quot;article.blogPost&quot;).fadeIn();
+</code></pre><p>CSS 选择器 article.blogPost 使用了完全相同的语法，如下所示，这并非巧合：</p>
+<pre><code>article.blogPost {
+  border-radius: 10px;
+  background-color: salmon;
+  box-shadow: 0px 0px 10px 2px #ccc;
+}
+
+
+article.blogPost {
+  border-radius: 10px;
+  background-color: salmon;
+  box-shadow: 0px 0px 10px 2px #ccc;
+}
+</code></pre><p>jQuery 选择器引擎的设计，使像我这样的开发人员可以把对 CSS 选择器的既有理解映射到与引擎的基本交互。因此，我可以立即明显地提高生产力，反之如果 jQuery 要求我使用一种全新的、特定用途的语法，显然不会有这种效果。</p>
+<p>我们可以从像 jQuery 这样的库获得灵感，并应用到我们自己的设计中。然而，灵感不等于全盘复制，如果仅仅基于他人的某个灵感来设计 API 的话，将不分好坏全盘继承。反之，如果我们能用好的 JavaScript API 设计作为例子，来证明那些其他领域中发现的原则，我们就可以建立一套适用于任何场景的 API 设计框架。</p>
+<h2 id="3-javascript-api-18-">3. 出色 JavaScript API 的秘诀 <a href="#">⬆</a></h2>
+<p>虽然软件不能像绘画或建筑那样从视觉的角度来评估质量，但我们仍倾向于使用与物理介质一样的形容词来描述软件。例如我们经常听到有人用“优雅”或“漂亮”来称赞某个 API。既然原本用于描述视觉媒体的术语可以用于描述 API，那么视觉媒体的原则也可以应用于软件设计。</p>
+<p>在本节中，我将介绍艺术领域中常用的的 4 项设计原则，并把它们应用到 API 设计中：</p>
+<ul>
+<li>一致 &amp; 协调</li>
+<li>平衡</li>
+<li>相衬</li>
+<li>重点突出</li>
+</ul>
+<p><a href="http://baike.baidu.com/view/1603468.htm" target="_blank">&gt; 相衬：犹相称。配合得当；相配合适。</a></p>
+<p>对于每个设计原则，我将列出一个或多个示例来说明，示例均来自于流行的 JavaScript 库的 API。</p>
+<h2 id="4-1-18-">4. 原则1：一致 &amp; 协调 <a href="#">⬆</a></h2>
+<p>在艺术上，一致性是一件作品背后不可或缺的概念，使得设计者可以把各种事物汇集成一个连贯的整体。另一方面，协调性则是指作品中相似元素的布局，使得作品从整体上产生一种简洁的感觉。</p>
+<p>对于 API 设计师来说，这些原则可以应用在库中相似或一致的元素上。以 <a href="http://www.kendoui.com/" target="_blank">Kendo UI</a> 为例，一个用于创建富 WEB 应用的 JavaScript 框架。Kendo UI 提供了一系列 UI 组件，它们都可以使用相似的语法来初始化。例如，如果我想从一个无序列表创建一个 <a href="http://demos.kendoui.com/web/treeview/index.html" target="_blank">TreeView</a>，只需调用以下方法：</p>
+<pre><code>$(&quot;ul.tree&quot;).kendoTreeView({ /* Configuration goes here */ });
+
+
+$(&quot;ul.tree&quot;).kendoTreeView({ /* Configuration goes here */ });
+</code></pre><p><img src="http://webstandardssherpa.com/r/21-2.png" alt=""></p>
+<p>Kendo UI TreeView Widget</p>
+<p>另外，如果我想从一个列表创建一个 <a href="http://demos.kendoui.com/web/panelbar/index.html" target="_blank">PanelBar</a>，只需调用另一个稍有不同的方法。</p>
+<pre><code>$(&quot;ul.panel&quot;).kendoPanelBar({ /* Configuration goes here */ });
+
+
+$(&quot;ul.panel&quot;).kendoPanelBar({ /* Configuration goes here */ });
+</code></pre><p><img src="http://webstandardssherpa.com/r/21-3.png" alt=""></p>
+<p>Kendo UI PanelBar</p>
+<p>Kendo UI 的组件通过使用一致的 kendoX 语法，提升了一致性和协调性。更重要的是，它依赖于封装了 DOM 元素的 jQuery 对象，并基于 jQuery 对象扩展了额外的、协调的附加层，这样一来，任何已经熟悉 jQuery 的开发人员都将从中获益。通过使用数百万开发者所熟悉的“方言”，Kendo UI 促进了跨库协调性。</p>
+<p>另一个关于协调性的案例是 <a href="http://backbonejs.org/" target="_blank">Backbone</a> 的 [object].extend 语法，该语法用于创建新对象，继承和扩展 Backbone Backbone <a href="http://backbonejs.org/#Model" target="_blank">Models</a>、<a href="http://backbonejs.org/#View" target="_blank">Views</a>、<a href="http://backbonejs.org/#Collection" target="_blank">Collections</a> 和 <a href="http://backbonejs.org/#Router" target="_blank">Routers</a> 的功能。为了创建一个新的 Backbone Model，可以像下面这样实现，创建一个 Backbone 完全支持的 Model 对象，同时还可以按照应用程序的需求自定义实现：</p>
+<pre><code>var Book = Backbone.Model.extend({
+  initialize: function() { ... },
+  author: function() { ... },
+  pubDate: function() { ... },
+});
+
+
+var Book = Backbone.Model.extend({
+  initialize: function() { ... },
+  author: function() { ... },
+  pubDate: function() { ... },
+});
+</code></pre><p>一致性和协调性的目的在于向 API 新手传达友好和舒适的感觉。虽然 API 的功能不同，但是通过相同或相似的“方言”，可以大大降低开发人员采用新工具的门槛。</p>
+<h2 id="5-2-18-">5. 原则2：平衡 <a href="#">⬆</a></h2>
+<p>第二个原则是平衡，布置元素时要不能让作品的某个部分过于出彩而是其他部分黯然失色，或者让人感觉作品不稳定。在艺术上，平衡与视觉权重（吸引力）有关。即使作品是不对称的，然而只要这种不对称遵循了某种模式，作品仍然会给人以平衡的感觉。在 API 设计中，平衡特指代码的视觉权重和可预测性。</p>
+<p>平衡的 API 让人觉得其组成部分不分彼此、浑然一体，因为它们或者行为相同，或者互补地帮助用户完成目标。以此类推，用户籍由一个小示例就可以推断出 API 的用法。例如 <a href="http://modernizr.com/" target="_blank">Modernizr</a> 的 <a href="http://modernizr.com/docs/#howitworks" target="_blank">功能测试项</a>。该库通过以下方式实现了平衡：a) 使用与 HTML5 和 CSS 一致的概念和 API；b) 每个测试项统一返回 true 或 false：</p>
+<pre><code>// All of these properties will be &#39;true&#39; or &#39;false&#39; for a given browser
+  Modernizr.geolocation
+  Modernizr.localstorage
+  Modernizr.webworkers
+  Modernizr.canvas
+  Modernizr.borderradius
+  Modernizr.boxshadow
+  Modernizr.flexbox 
+
+
+// All of these properties will be &#39;true&#39; or &#39;false&#39; for a given browser
+  Modernizr.geolocation
+  Modernizr.localstorage
+  Modernizr.webworkers
+  Modernizr.canvas
+  Modernizr.borderradius
+  Modernizr.boxshadow
+  Modernizr.flexbox 
+</code></pre><p><img src="http://webstandardssherpa.com/r/21-4.png" alt="Modernizr"></p>
+<p>通过访问一个测试项，开发人员就可以知道访问其他测试项所需的全部知识，Modernizr 的强大之处正在于它的简单。并且，每次编写或阅读与 Modernizr 交互的代码时，都有着同样的视觉权重。不管在什么场景下，当我使用 Modernizr 时，外观和感觉都是一致的。另一方面，如果 Modernizr 要增加一个 API 来检测是否支持 Canvas，也不会失去平衡性。不仅新 API 不会影响 Modernizr 的视觉权重，即使现在 Modernizr 的功能和适用范围已经扩大，也不会阻碍我和 API 交互时的可预测性。</p>
+<p>另一种开实现平衡性、可预测性的方式是，依靠发人员已经熟悉的概念。一个明显的例子是 <a href="http://api.jquery.com/category/selectors/" target="_blank">jQuery 的选择器语法</a>，它的 DOM 选择器引擎直接映射了 CSS1-3 选择器：</p>
+<pre><code>$(&quot;#grid&quot;) // Selects by ID
+$(&quot;ul.nav &gt; li&quot;) // All LIs for the UL with class &quot;nav&quot;
+$(&quot;ul li:nth-child(2)&quot;) // Second item in each list
+
+
+$(&quot;#grid&quot;) // Selects by ID
+$(&quot;ul.nav &gt; li&quot;) // All LIs for the UL with class &quot;nav&quot;
+$(&quot;ul li:nth-child(2)&quot;) // Second item in each list
+</code></pre><p>通过使用熟悉的概念并映射到自己的库中，jQuery 避免了创建一套新的选择器语法，同时也创建了一种机制，让新用户可以利用这些可预测的 API 立即提高生产力。</p>
+<h2 id="6-3-18-">6. 原则3：相衬 <a href="#">⬆</a></h2>
+<p>第三个原则是相衬，它用来衡量作品中元素的大小和数量。并不是说小 API 就是好 API，相衬性所衡量的大小与 API 的用途（功能）有关。一个具备相衬性的 API，它的外观应该与它的能力范围相匹配。</p>
+<p>例如 <a href="http://momentjs.com/" target="_blank">Moment.js</a>，一个流行的日期解析和格式化库，可以认为是相衬的，因为它的 API 很简洁，它的用途（功能）简单明确，两者相辅相成。Moment.js 用于处理日期，因此，它的 API 被设计为一系列可以处理 JavaScript Date 对象的便捷函数：</p>
+<pre><code>moment().format(&#39;dddd&#39;);
+moment().startOf(&#39;hour&#39;).fromNow();
+
+
+moment().format(&#39;dddd&#39;);
+moment().startOf(&#39;hour&#39;).fromNow();
+</code></pre><p><img src="http://webstandardssherpa.com/r/21-5.png" alt="Moment.js"></p>
+<p>对于像 Moment.js 这样有针对性的库，保持 API 专注和小巧很重要。对于更大、更磅礴的库，API 的大小则应该反映库自身的功能。</p>
+<p>就拿 <a href="http://underscorejs.org/" target="_blank">Underscore</a> 来说，作为一个通用工具库，Underscore 提供了大量的便捷函数，用以帮助开发人员处理 JavaScript 集合、数据、函数和对象。它的 API 比 Moment.js 这样的库更多，但 Underscore 仍然是相衬的，因为每个函数都在协助库实现目标。考虑一下下面的例子，前两个演示了如何用 Underscore 处理数组，最后一个演示了如何处理字符串：</p>
+<pre><code>_.each([&quot;Todd&quot;, &quot;Burke&quot;, &quot;Derick&quot;], function(name){ 
+  alert(name); 
+});
+
+_.map([1, 2, 3], function(num){ 
+  return num * 3; 
+});
+
+_.isNumber(&quot;ten&quot;); // False
+
+
+_.each([&quot;Todd&quot;, &quot;Burke&quot;, &quot;Derick&quot;], function(name){ 
+  alert(name); 
+});
+
+_.map([1, 2, 3], function(num){ 
+  return num * 3; 
+});
+
+_.isNumber(&quot;ten&quot;); // False
+</code></pre><p><img src="http://webstandardssherpa.com/r/21-6.png" alt="Underscore.js"></p>
+<p>随着库的成长，保持相衬性变得愈发重要。必须确保添加到库中的每个特性和函数都是在加强库的目标。像 Kendo UI 这样庞大的库，一个庞大的目标并不意味着需要添加每个特性。即使是通用的对象和特性也应该证明其价值，才能被包含到库中。例如，<a href="http://www.kendoui.com/" target="_blank">Kendo UI</a> 的<a href="http://docs.kendoui.com/getting-started/framework/datasource/overview" target="_blank">数据源组件（DataSource）</a>可以用于查询和处理远程数据：</p>
+<pre><code>var dataSource = new kendo.data.DataSource({
+  transport: {
+    read: {
+      url: &quot;http://search.twitter.com/search.json&quot;,
+        dataType: &quot;jsonp&quot;,
+        data: { q: &quot;API Design&quot; }
+      }
+    },
+  schema: { data: &quot;results&quot; }
+});
+
+
+var dataSource = new kendo.data.DataSource({
+  transport: {
+    read: {
+      url: &quot;http://search.twitter.com/search.json&quot;,
+        dataType: &quot;jsonp&quot;,
+        data: { q: &quot;API Design&quot; }
+      }
+    },
+  schema: { data: &quot;results&quot; }
+});
+</code></pre><p>乍看之下，上面的代码似乎是一个自定义的数据源，已经超出了库目标的范围。然而，今天的 Web 组件中普遍存在动态数据，通过引入数据源（DataSource），Kendo UI 得以用一致的、舒适的范式（方式）来处理远程数据。</p>
+<p>让 API 成为名副其实的杂货铺，对库的成长是一种危害，但这还不是唯一的危害。如果掉入不利于库成长的陷阱，或者限制库的范围，同样会危害库的成。</p>
+<p>不控制 API 成长的最佳反面示例，是 jQuery 的入口方法 <a href="http://api.jquery.com/jQuery/" target="_blank">jQuery()</a>。无数像我一样的开发人员喜欢 jQuery，但是这个入口方法实在是有些混乱，从 DOM 查找到封装 DOM 元素为 jQuery 对象，提供了不下于 11 种独立的处理分支（重载 overload）。</p>
+<blockquote>
+<p>译注：jQuery 1.7.1，构造函数 jQuery() 的 <a href="http://nuysoft.com/project/jquery-code-overview/img/jQuery1.7.1-%E6%9E%84%E9%80%A0jQuery%E5%AF%B9%E8%B1%A1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0.png" target="_blank">&gt; 7 种用法</a>&gt; 、<a href="http://nuysoft.com/project/jquery-code-overview/img/jQuery1.7.1-%E6%9E%84%E9%80%A0jQuery%E5%AF%B9%E8%B1%A1-init.png" target="_blank">&gt; 12 个有效分支</a>&gt; 。</p>
+</blockquote>
+<p>For the most part, these are loosely related features that have been stuffed into one API. Taken on the whole, jQuery is a large library and can be considered reasonably proportional. The jQuery method, on the other hand, represents what can happen when we attempt to force functionality into a single interface, without care for proportion. 塞入 jQuery() 的大多数特性（功能）是松散的，但 jQuery 作为一个大型库，应该考虑适度的相衬性。另一方面，如果我们尝试把 jQuery() 分解为独立的接口，就能清晰的描述可能发生的行为，不必再担心相衬性。</p>
+<blockquote>
+<p>译注：从设计的角度看，把多个功能塞入 jQuery() 确实相当丑陋，维护和阅读都不容易，但是对使用者非常方便和友好。</p>
+</blockquote>
+<p>如果你发现自己正在把一个不相干的特性塞入一个既有方法，或者正在考虑把一个感觉不自然的函数重载合理化，那么你可能需要松开皮带让库透透气了。这样一来，你的用户会比较容易适应一个可自描述的新函数，否则的话，他们将不得适应对既有方法的再次重载。</p>
+<h2 id="7-4-18-">7. 原则4：突出重点 <a href="#">⬆</a></h2>
+<p>在艺术上，突出重点是指通过使用对比，使作品的某个方面凸显出来成为焦点。在许多 API 中，焦点可能是锚定库的入口方法或主方法。突出重点的另一个示例可能是“链式”或<a href="http://en.wikipedia.org/wiki/Fluent_interface" target="_blank">流式 API</a>，它可以突出库所使用的中心对象。jQuery 倾向于让它的众多函数返回一个 jQuery 对象，下面的例子演示了 jQuery 是如何用这种方式突出重点的：</p>
+<blockquote>
+<p>译注：<a href="http://baike.baidu.com/view/2667180.htm" target="_blank">&gt; 锚定_百度百科</a></p>
+</blockquote>
+<pre><code>$(&#39;ul.first&#39;).find(&#39;.overdue&#39;)
+  .css(&#39;background-color&#39;,&#39;red&#39;)
+  .end()
+  .find(&#39;.due-soon&#39;)
+  .css(&#39;background-color&#39;, &#39;yellow&#39;);
+
+
+$(&#39;ul.first&#39;).find(&#39;.overdue&#39;)
+  .css(&#39;background-color&#39;,&#39;red&#39;)
+  .end()
+  .find(&#39;.due-soon&#39;)
+  .css(&#39;background-color&#39;, &#39;yellow&#39;);
+</code></pre><p>对于许多现代库来说，关于突出重点的另一个极佳例子是可扩展性：对于库所缺失的功能，库作者通过提供一个工具，让你可以自行添加功能。</p>
+<p>一个典型的例子是 <a href="http://docs.jquery.com/Plugins/Authoring" target="_blank">命名空间 jQuery.fn</a>，它是无数插件和补充库的通用扩展点：</p>
+<pre><code>(function($) {
+  $.fn.kittehfy = function() {
+    return this.each(function(idx, el) {        
+      var width = el.width,
+        height = el.height;
+      var src= &quot;http://placekitten.com/&quot;;
+      el.src= src + width + &quot;/&quot; + height;
+    });
+  };
+})(jQuery);
+
+
+(function($) {
+  $.fn.kittehfy = function() {
+    return this.each(function(idx, el) {        
+      var width = el.width,
+        height = el.height;
+      var src= &quot;http://placekitten.com/&quot;;
+      el.src= src + width + &quot;/&quot; + height;
+    });
+  };
+})(jQuery);
+</code></pre><p>可扩展性的另一个例子是 Backbone 的 “extend” 函数，我们已经在这篇文章中看过了：</p>
+<pre><code>var DocumentRow = Backbone.View.extend({
+  tagName: &quot;li&quot;,
+  className: &quot;row&quot;,
+  events: {
+    &quot;click .icon&quot;: &quot;open&quot;,
+    &quot;click .button.edit&quot;: &quot;openEditDialog&quot;
+  },
+  render: function() { ... }
+});
+
+
+var DocumentRow = Backbone.View.extend({
+  tagName: &quot;li&quot;,
+  className: &quot;row&quot;,
+  events: {
+    &quot;click .icon&quot;: &quot;open&quot;,
+    &quot;click .button.edit&quot;: &quot;openEditDialog&quot;
+  },
+  render: function() { ... }
+});
+</code></pre><p><img src="http://webstandardssherpa.com/r/21-7.png" alt="Backbone.js"></p>
+<p>增强可扩展性可以突出重点，因为它使人们意识到这样一个事实：既有的库并不意味已经万事俱备，同时它也鼓励人们向库中添加符合自身需求的功能。一旦库开始鼓励扩展，不仅会开启新的功能，原有的功能也将受益。最好的例子之一是 <a href="http://marionettejs.com/" target="_blank">Backbone.Marionette</a> 框架，一个扩展自 Backbone 的库，旨在“简化大型 JavaScript 应用程序”。若不是 Backbone 的可扩展性，Marionette 将很难实现。因此，如果有可能的话，请尽量增强可扩展性。</p>
+<h2 id="8-api-18-">8. API 设计：不仅仅适用于库作者 <a href="#">⬆</a></h2>
+<p>如果你不是某个 JavaScript 库的作者，而是 JavaScript 应用开发人员，是库的实施者，你可能会觉得本文中的原则并不适用于你。毕竟我们在听到“API”时，常常想到的是第三方库，就像我在本文中提到的那些例子。</p>
+<p>然而事实上，API，顾名思义，���过是封装一些功能以供他人使用的一个接口。在这里，我要用一句概括性的话强调一个重要观点：编写模块化的 JavaScript 代码是为了实用，与使用者的数量无关。</p>
+<p>你自己的 JavaScript 代码暴露接口给其他人，这种行为与本文中提到的库没有什么不同。你无须成为一名公开库的作者，就可以考虑 API 设计并应用本文中的原则，即使你的代码的用户数很小，而且仅限于团队内部，或者即使你构建的是一个私有库。这种刻意的 API 设计只要能使一个用户受益，就能使无数人受益。</p>
+<p>因为 API 设计代表着开发人员的用户体验，所以它和面向终端用户的 UI 设计同样重要。我们通过学习原则，以及好的和坏的界面示例，逐渐学会了 UI 设计，我们也可以通过同样的方式，深入学习如何设计好的 API。通过应用本文的四个原则和你发现的其他原则，可以设计出出色 API 来取悦你的用户，并且可以帮助你的用户实现出现的终端用户体验。</p>
+<h2 id="9-18-">9. 比别人多做一点点 <a href="#">⬆</a></h2>
+<blockquote>
+<p>译注：<a href="http://www.chinadaily.com.cn/language_tips/2007-06/25/content_901869.htm" target="_blank">&gt; 原文标题是“GOING THE EXTRA MILE”，源出《圣经·马太福音》第五章“山顶布道”，耶稣劝告门徒：“Whosoever shall compel thee to go a mile, go with him twain.”（有人强逼你走一里路，你就同他走二里。）</a></p>
+</blockquote>
+<p>对于我们学习 API 设计来说，本文所列出的原则仅仅是一个开始。在物理介质领域，尚有许多其他的原则和方法，可以启发我们如何设计 API，我鼓励你去学习这些原则，并且从流行的 JavaScript 库中寻找例证，例如本文前面提到的那些。</p>
+<h3 id="9-1-18-">9.1 三省吾身 谓予无愆 <a href="#">⬆</a></h3>
+<blockquote>
+<p>原文标题是“PITFALLS TO AVOID”，可直译为“避免失误”。</p>
+</blockquote>
+<ul>
+<li><p>设计 API 时不要只考虑你自己的需求。为其他开发人员设计 API 的最佳方式是与他们一起进行设计。尽早公开你的作品，并且经常要基于其他人的反馈重复修改（迭代）。</p>
+</li>
+<li><p>为你的库考虑新接口时，要留心观察那些导致可能库失去平衡性的接口，它们可能在行为上与其他接口不一致，或者在目标上超出了库的范围。</p>
+</li>
+<li><p>为接口设计太多的重载是引入不相衬性的最快方式。留心观察入口方法，以及在方法重载背后隐藏了功能的接口。</p>
+</li>
+</ul>
+<h3 id="9-2-18-">9.2 上士闻道 勤而勉之 <a href="#">⬆</a></h3>
+<blockquote>
+<p>原文标题是“THINGS TO DO”，可直译为“要做的事情”。</p>
+</blockquote>
+<ul>
+<li><p>为了培养一致性和协调性，向你的用户提供友好和舒适的感觉，需要考虑把相同或相似的元素放在一起。</p>
+</li>
+<li><p>为了保持平衡性，需要确保库中每个接口的行为保持一致，或者有着一致的目标。</p>
+</li>
+<li><p>随时留意 API 的相衬性，确保库中的每个接口符合预期的目标，并且没有冗余元素存在。</p>
+</li>
+<li><p>考虑使用（适当范围的）入口方法、链式或流式 API，以及可扩展性，以突出库的重点。</p>
+</li>
+</ul>
+<h2 id="10-18-">10. 扩展阅读 <a href="#">⬆</a></h2>
+<ul>
+<li>Frederick P. Brooks, <a href="http://my.safaribooksonline.com/book/software-engineering-and-development/9780321702081" target="_blank">The Design of Design: Essays from a Computer Scientist</a>, Addison-Wesley Professional, 2010</li>
+<li>William Lidwell, Kritina Holden, and Jill Butler, <a href="http://stuffcreators.com/upod/" target="_blank">Universal Principles of Design</a>, Rockport Publishers, 2009</li>
+<li>“<a href="http://eliperelman.com/blog/2011/12/12/javascript-api-design/" target="_blank">JavaScript API Design</a>”, Eli Perelman, 11 December 2011</li>
+</ul>
+<p>你还见过那些好的（或坏的）API 设计例子？<a href="http://webstandardssherpa.com/discussions/secrets-of-awesome-javascript-api-design/#comment" target="_blank">请告诉我们</a>，或者<a href="http://webstandardssherpa.com/discussions/secrets-of-awesome-javascript-api-design/" target="_blank">看看别人怎么所</a>。</p>
+<p>[0]: #1. API 设计：善恶之争
+[1]: #2. 在 JavaScript 中，API 设计尤为重要
+[2]: #3. 出色 JavaScript API 的秘诀
+[3]: #4. 原则1：一致 &amp; 协调
+[4]: #5. 原则2：平衡
+[5]: #6. 原则3：相衬
+[6]: #7. 原则4：突出重点
+[7]: #8. API 设计：不仅仅适用于库作者
+[8]: #9. 比别人多做一点点
+[9]: #9.1 三省吾身 谓予无愆
+[10]: #9.2 上士闻道 勤而勉之
+[11]: #10. 扩展阅读</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+   
+
+
+  <div class="ds-thread"></div>
+<!-- Duoshuo Comment BEGIN -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"suningwiki"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+
+
+  
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2014/03/06/know-javascript-prototype/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">深入理解javacript之prototype</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+        <aside class="pure-u-1-6">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list">
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/categories/前端心得/">前端心得</a><span class="category-list-count">3</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li>
+	  
+	  </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: NaNpx;">API</a><a href="/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/tags/webApp/" style="font-size: NaNpx;">webApp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">三月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+    <div id="footer-info" class="inner">
+      &copy; 2014 12050231<br>
+      Powered by <a href="http://srykt.com" target="_blank"></a>
+    </div>
+</footer>
+  
+<script type="text/javascript" src="/js/script.js"></script>
+</body>
+</html>

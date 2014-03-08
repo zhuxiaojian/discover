@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<title>看源代码那些事 | 发现前端</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="看源代码那些事">
+<meta name="og:url" content="http://ppanda.com/2014/03/03/view-source/">
+<meta name="og:image">
+<meta name="og:site_name" content="发现前端">
+<meta name="og:description" content="1. 前言
+很多人问我如何看源代码？是不是我在看源代码这方面特别有天赋？
+其实不是的，我也只是个普通人，跟大伙没啥分别，
+只不过我没有别的特别爱好，一有空时，不是写自己的代码就是看别人的代码，
+我在看源代码时比较有耐心，纯粹就是兴趣驱动，或者说是一种好奇心。
+当然，我不会随随便便拿起一个开源项目就看，而是经过一定了解后才决定看它的源代码的，
+一旦决定要看了，我至少要把这个开源项目80%以上的代码看">
+<meta name="twitter:card" content="summary">
+  
+<link rel="alternative" href="/atom.xml" title="发现前端" type="application/atom+xml">
+  
+  
+<link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+    <header id="header">
+  <div class="header-outer outer">
+    <div class="header-title inner">
+      <h1 class="logo-wrap">
+        <a href="/" class="logo">发现前端</a>
+      </h1>
+      
+    </div>
+    <div class="header-inner inner">
+      <nav class="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">about</a>
+        
+        <a class="main-nav-link" href="http://10.19.113.51:8888/">#我发现</a>
+      </nav>
+    </div>
+  </div>
+</header>
+    <div class="pure-g-r">
+      <aside class="pure-u-1-6">
+        <div class="widget-wrap">
+    <h3 class="widget-title">技术站点</h3>
+    <div class="widget">
+      <ul class="category-list category-list-side">
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://tid.tenpay.com/'>财付通设计中心 UID</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cdc.tencent.com/'>腾讯用户研究与体验设计中心 CDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.alloyteam.com/'>腾讯Web前端 Alloy 团队 Blog</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://gdc.qq.com/'>QQ游戏设计中心GDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mxd.tencent.com/'>腾讯移动互联网设计团队MXD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ecd.tencent.com/'>腾讯电商用户设计体验部ECD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://isux.tencent.com/'>腾讯社交用户体验设计部ISUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://djt.qq.com/'>腾讯大讲堂</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.cn/'>阿里巴巴用户体验设计部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.taobao.com/blog/'>淘宝网UED官方博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.com/'>阿里巴巴国际站UED团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ux.etao.com/'>淘宝一淘用户体验中心UX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.searchtb.com/'>淘宝搜索技术博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://alipaymiddleware.com/'>支付宝中间件团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.tmall.com/'>天猫UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.baiduux.com/'>百度泛用户体验部UUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mux.baidu.com/'>百度无线用户体验部MUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.baidu.com/'>百度商业用户体验部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mued.sohu.com/'>搜狐移动用户体验团队MUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.focus.cn/'>搜狐焦点用户体验设计UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://udc.weibo.com/'>新浪微博用户体验设计中心UDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sina.com/'>新浪UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.75team.com/'>奇虎360公司Web前端</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uxc.360.cn/'>360UXC用户体验设计中心</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/'>携程旅行前端开发团队UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://fed.renren.com/'>人人网FED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sogou.com/'>搜狗设计团队UED博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uedc.163.com/'>网易用户体验设计中心UEDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cued.xunlei.com/'>迅雷用户体验设计中心CUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://blog.19ued.com/'>19楼UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.5173.com/'>5173用户体验设计团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.iciba.com/'>爱词霸UED团队 </a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/wp-content/webkitcss/index.html'>Webkit css</a></li>
+  </ul>
+
+    </div>
+  </div>
+      </aside>
+      <section class="pure-u-2-3"><article id="post-view-source" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      看源代码那些事
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2014/03/03/view-source/" class="article-date">
+  <time datetime="2014-03-03T06:52:30.000Z" itemprop="datePublished">2014年3月3日</time>
+</a>
+      
+  <div class="article-category">
+    
+	    <a class="pure-button" style='display:inline;' href="/categories/前端心得/">前端心得</a>
+	  
+  </div>
+
+      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1. 前言</strong></p>
+<p>很多人问我如何看源代码？是不是我在看源代码这方面特别有天赋？</p>
+<p>其实不是的，我也只是个普通人，跟大伙没啥分别，</p>
+<p>只不过我没有别的特别爱好，一有空时，不是写自己的代码就是看别人的代码，</p>
+<p>我在看源代码时比较有耐心，纯粹就是兴趣驱动，或者说是一种好奇心。</p>
+<p>当然，我不会随随便便拿起一个开源项目就看，而是经过一定了解后才决定看它的源代码的，</p>
+<p>一旦决定要看了，我至少要把这个开源项目80%以上的代码看完，并不是那种肤浅的看，</p>
+<p>而是仔细研究每一行代码。</p>
+<a id="more"></a>
+
+<p><strong>2. 我看过这些开源项目</strong></p>
+<p>按时间先后顺序:</p>
+<p>2007: OpenJDK Javac1.7 2008: Erlang编译器 (看得最少的一个，只看了一半源代码) 2009: Tomcat6 Junit4 Ibatis2.3 OSCache2.4 Ehcache1.6 Mongodb-mongo-java-driver1.2 Velocity1.6 2010: MySQL JDBC Driver (mysql-connector-java-5.1.13) PostgreSQL JDBC Driver (postgresql-jdbc-8.4-701) Netty3.2 Tomcat7 2011: Jetty8</p>
+<p><strong>目前主要关注这4个:</strong></p>
+<p>OpenJDK Javac1.7 Netty4.0 Tomcat7 Jetty8
+我现在每隔1到7天就会看这4个开源项目的源代码库中有没有更新,</p>
+<p>我装了TortoiseHg, TortoiseGit, TortoiseSVN,</p>
+<p>因为看Javac1.7的源代码更新用TortoiseHg比较方便，</p>
+<p>而看Netty4.0要用TortoiseGit，最后两者用TortoiseSVN。</p>
+<p><strong>3. 我对看源代码的人进行了分类</strong></p>
+<p>分5种人:</p>
+<p><strong>1) 解决问题型</strong></p>
+<p>这种类型的人通常是在工作学习中碰到了一个很费解或很棘手的问题，</p>
+<p>文档也看了，google也找了，同事、同学也问过了，</p>
+<p>但是问题还是无法解决，于是不得不把源代码下下来，然后一边看一边debug，直到问题解决。</p>
+<p><strong>2) 三分钟热度型</strong></p>
+<p>可能是看到别人也在看或者在论坛上看到某些人说XXX设计得很好，性能也不错，或者看到某些人在论坛上发了些分析源代码的文章，</p>
+<p>再加上自己一开始也兴趣满满，然后也跟风了，看了10来个类的代码，啊，发现太痛苦，方法之间调来调去的，太绕了，头快炸了，</p>
+<p>给自己找个理由，这代码写得太垃圾了，妈的，不看了。</p>
+<p><strong>3) 一知半解型</strong></p>
+<p>网上经常看到有人在写分析源代码的文章，一上来就是一陀陀的源代码，然后告诉你这做了什么，那做了什么，</p>
+<p>就加了点中文注释，有时这中文注释还不如源代码中的英文注释好理解，然后过了一段时间，发现文章不更新了，也没有后续了。</p>
+<p><strong>4) 真才实学型</strong></p>
+<p>像原作者一样思考，能轻松说出此开源项目的核心架构，精确理解80%以上的源代码，能找出bug并能提交相应patch，</p>
+<p><strong>5) 创新型</strong></p>
+<p>对此开源项目的优缺点了然于心，能够提取其精华为我所用，想出更好的方案解决现有问题，超越原作者。</p>
+<p><strong>4. 我看源代码的经验</strong></p>
+<p><strong>仅供参考，不要随意模仿，每个人都应该找到适合自己的方式</strong>，</p>
+<p><strong>唯一重要的是以下3点**</strong>:**</p>
+<p><strong>1) 时间</strong></p>
+<p>最好能有一大段时间集中精力去看，比如你要看Tomcat7，要有3个月的时间每天花3到8小时去不停的看，</p>
+<p>时间拖拉得越久，会看了前面忘了后面。</p>
+<p><strong>2) 兴趣</strong></p>
+<p>看代码不要有任何功利性，你要对它有兴趣，充满好奇心，去理解它做了什么，怎么做的。</p>
+<p><strong>3) 耐心</strong></p>
+<p>这一点说起来容易，真正要做到是极其困难的，比如当你某些类连看了三次时还看不懂，不要先想别人写的代码是否垃圾，</p>
+<p>先想想你在这方面的背景知识是否足够，比如在看Tomcat实现http协议相关的代码时，一边看代码一边看http协议是最有效的方式，</p>
+<p>再比如你想看编译器相关的代码，最起码在看之前，你要对&lt;&lt;编译原理&gt;&gt;这门课中的内容有基本的了解。</p>
+<p>如果背景知识有了还看不懂怎么办，看不懂的代码先放下，有些if分支只有你把整个项目都大致了解了一下后才能理解的，</p>
+<p>要反复的看，看三次仅仅是个入门级别。</p>
+<p><strong>先简单说一下我的经历:</strong></p>
+<p>小学到初中我还算是个好学生，在班里经常拿第一，</p>
+<p>但是从小学6年级到初三这4年比较特殊，遇到了一个很垃圾很垃圾很垃圾的数学老师，</p>
+<p>所以这4年我的数学基本上就是自学的了，我的自学能力从小到现在都是非常的强。</p>
+<p>当然，这不能归功于这位垃圾老师，我自小就很叛逆，不喜欢这禽兽的教学方式，没有此垃圾，也许我的生活会是另一番景色。</p>
+<p>我不像正常人那样上完初中上高中，然后再上大学，</p>
+<p>而是上完初中后就直接到一所师范大学上中专+自考大专，2001年就毕业了。</p>
+<p>中专是学会计统计类的，自考大专是计算机应用，大专一共才12门课，没有英语，数学方面只有高数，而且还是第一册，</p>
+<p>核心专业课方面只有pascal、c、8086汇编语言、FoxPro、模拟电路、数据结构、操作系统、软件工程、计算机接口与技术。</p>
+<p>只要不是硬件类的专业课程我就学得非常好，硬件类课程就只是听老师讲，当时连硬盘长什么样都不知道。</p>
+<p>我2001年毕业时才19岁，然后就出来找工作了，说这些只是想说我从学校得到的教育并不多，</p>
+<p>现在回想起来从学校学的C语言、汇编语言、数据结构、操作系统为我以后的自学提供了一些帮助。</p>
+<p>直到2006年，我辞职了，之前我己经工作了4年，都只是做应用软件项目，</p>
+<p>所以数学基本上没用过，英语也用得少之又少，英语其实比现在的高中生水平还差，</p>
+<p>所以要看英文的技术文章也是看不懂的。</p>
+<p>2006年我本来是要复习考研究生的，我从3月份开始连背了三个月的英语，每天花4到8小时背新概念英语的课文，</p>
+<p>一、二册全部背完，第三册背了前42课，第四册背了前10课，我以为这样的水平足够应付考研英语了，结果拿试卷一做，</p>
+<p>阅读理解至少有2/5的单词认不得，不得不去背考研英语的单词。</p>
+<p>数学基本上忘光了，到网上下初中和高中的新课标课本下来看，</p>
+<p>高数、线性代数、概论全都自学，还买了相关的数学书来看(像几何、离散数学等等)。</p>
+<p>天天做那些垃圾数学题，还要背马哲、毛概，专业课倒是小儿科。</p>
+<p>一直到10月份，各校出来招生简章了，想报10大高校，结果别人不鸟你专科生，你专科生没有报名资格，</p>
+<p>好吧，换二线的可以了吧，结果还是差不多，不是要本科，就是要发表啥论文才能报，</p>
+<p>最后，很不情愿的报了个很平庸的所谓211大学。</p>
+<p>此后越发觉得天天做题背单词背书实在是件极其无聊的事，再加上报考这件���，严重打击积极性，一直想放弃考研但是又一直坚持着，</p>
+<p>直到11月23日，那天去书店看书，翻到一本讲编译器实现的书，</p>
+<p>也就是所谓的&quot;虎书&quot;，当时并不知道编译器是什么，因为我在学校时没学过编译原理，在书店连看了一小时，觉得很有趣，</p>
+<p>就买了回来，接着就把考研的书全丢到一个角落里了。</p>
+<p>接下来你应该懂的，我疯狂的买书，&quot;龙书&quot;，&quot;鲸书&quot;啥的我都买了，只要是有关编译器的，不管是国内还是国外我都买，</p>
+<p>因为我并不是一看就全懂的，也是因为&quot;虎书&quot;刚开始一两章还好理解，后面的我当时就看不懂了，</p>
+<p>我有个习惯，就是实在看不懂的书，我就会换一本，确认一下是我自己的原因还是书本身的问题，</p>
+<p>现在我只会说&quot;虎书&quot;翻译得并不好，&quot;龙书&quot;更好理解，当然一开始就看&quot;龙书&quot;也并不是那么好理解，</p>
+<p>所以我当时甚至连形式语言和自动机相关的书我都买来看了。</p>
+<p>我连看了3个多月，当时觉得看书不过瘾，就想找个实际的编译器来玩，</p>
+<p>我下了GCC和LCC，当时刚好sun公司又把javac开源了。</p>
+<p>因为工作中只用到php和java，c语言已经4年没用过了，加上javac比前两者要小很多，</p>
+<p>所以从2007年二月份开始第一次看javac的源代码，也是第一次看别人的源代码。</p>
+<p>javac的源代码不多，8万行都不到，花了我3个月的时间，平均每天至少花7小时看代码。</p>
+<p>因为我当时只会java1.4，java1.5之后出来的很多东西都不懂，所以也是一边看javac的源代码一边学新语法。</p>
+<p>2007年5月份时我还在JavaEye上发了第一篇有关javac的文章，得了个精华，引起了一点小轰动，</p>
+<p>这里有证据: <a href="http://www.iteye.com/topic/84833" target="_blank"><a href="http://www.iteye.com/topic/84833">http://www.iteye.com/topic/84833</a></a></p>
+<p>内容貌似当年被我删除了，想不起来是什么原因了，zhh2007就是我本人以前的id。</p>
+<p>当时看代码的方法是非常原始的，但是直到现在我还在用这种方法，只不过现在有时会用eclipse来看，</p>
+<p>我是这么做的：</p>
+<p>看原代码用 EditPlus, </p>
+<p>找到第一个入口类: com\sun\tools\javac\Main</p>
+<p>自己再写一个Debug类，按执行流程看到一个方法时，就加入类似下面的代码块:</p>
+<pre><code>    public static int compile(String[] args) {
+        try {//我加上的
+        DEBUG.P(Main.class,&quot;compile(1)&quot;);
+        DEBUG.PA(&quot;args&quot;, args);
+
+        com.sun.tools.javac.main.Main compiler =
+            new com.sun.tools.javac.main.Main(&quot;javac&quot;);
+        return compiler.compile(args);
+
+        }finally{//我加上的
+        DEBUG.P(0,Main.class,&quot;compile(1)&quot;);
+        }
+    }
+</code></pre><p>然后一定要重编译源代码，再运行，保证自己加的代码被执行到了，我会把输出的debug结果重定向到一个文件中，</p>
+<p>然后一边看源代码一边看输出结果，一些变量或表达式自己想看结果也会加DEBUG.P(...)，</p>
+<p>碰到一些代码行数很多的类，我甚至会把每个方法copy出来放到一个新的java文件中，</p>
+<p>然后打开多个EditPlus，每个EditPlus看一个方法，而且是按照方法的调用顺序打开EditPlus看的。</p>
+<p>可能看到这很多人会觉得这种方式好土，我也不能说好不好，从今年开始，因为我的电脑装了Eclipse了，</p>
+<p>所以Jetty8的源代码我是用Eclipse看的，也不再打DEBUG输出，也不再copy方法，而是直接用eclipse的debug跟踪功能，</p>
+<p>但是我现在提出质疑了，Jetty8的代码量只是Tomcat6的1/3，我用Eclipse这种方式来研究源代码并不能节省我的总时间，</p>
+<p>我用最原始的方式研究Tomcat6也只花了3个月，现在研究Jetty8已经用了我两个月的时间，而且看Tomcat6和Jetty8是两个类似的东西，</p>
+<p>按理说先看Tomcat6后看Jetty8应该花的时间更少才对。</p>
+<p>我总结了一下，为什么最初的方式好，那是因为我那样不断折腾源代码的过程中已经间接让我记住了代码的布局，</p>
+<p>我在敲那些重复的DEBUG.P代码时我把局部变量、表达式、字段都输出了一次，这有助于我的记忆。</p>
+<p>而Eclipse的debug功能只是在不停的按F5-F6-F7-F8，打断点，方法调用太深时很难理清前后关系，</p>
+<p>有时看了一星期，连哪个类在哪个目录都不知道，因为debug时，跟到相关的类eclipse会自动打开那个类，不用你从目录中找。</p>
+<p>Eclipse的代码折叠粒度又不能折叠到块级别，不能折叠if、while，一旦方法的行数很多，看起来会很累，分不清这个方法的层次结构，</p>
+<p>而EditPlus在看方法时就看得很舒服，因为他能折叠if、while，看完了一个while我可以把他折叠起来，</p>
+<p>有多个if-else时只要折叠一下就不会超过一屏。</p>
+<p>你能打开20个EditPlus，但是你不能同时打开10个Eclipse，除非你电脑的内存牛X到不行。</p>
+<p>有一点很重要，不管是哪一种方式，一定要把环境搭建好，你自已要能够编译源代码，并且多写些例子去验证源代码中的执行流程，</p>
+<p>我一般不会去看源有代码中的例子或测试用例的，只有想不出时才去看(特别是看编译器时,一些用例你很难想到)。</p>
+<p><strong>我为什么要看这么多源代码？</strong></p>
+<p>除了个人兴趣之外，现在想起来其实还有个很好笑的原因:</p>
+<p>2007下半年和2008一整年，这段时间很多人说Java快死了，Ruby/Rails、Erlang很火，</p>
+<p>我经常上JavaEye，免不了也受影响，所以在2008年时还学习了Ruby/Rails、Erlang，连Erlang的编译器都玩了一下，</p>
+<p>之后发现并不是那样滴，只不过是一些大佬在鼓吹而已，再加上2008年家里出了点事，所以过得很郁闷，</p>
+<p>一有闲情就跟JavaEye的大佬们&quot;打架&quot;，想来也是种乐趣，算是种排解压力的方式。</p>
+<p>当然，与此同时，也会从技术的角度思考Java出了什么问题，所以从2009年开始就专心研究技术了，还把douyu的原型鼓捣出来了。</p>
+<p>2009年研究的那些开源项目其实都是很顺其自然的事，我要做一个http服务器，Tomcat已经做好了，我想知道他怎么做的，</p>
+<p>我就去看，看这些项目就是为了想知道他们做了什么，怎么做的，哪里做得不好，我能不能比他们做得更好。</p>
+<p>现在，看代码已经是我的一种习惯了，从毕业那年到2008年我买了几万块钱的书，以至于我来杭州后都没有把桂林的房子退了，</p>
+<p>因为书多，桂林那房子除了回去能住个几天外，现在是租给书住的了。</p>
+<p>从2009年到现在，两年多时间我没有再买书，都是看源代码学新东西，</p>
+<p>如果是一个全新的领域，最多也就是在网上找点入门资料，然后再看源代码，</p>
+<p>包括下半年我准备研究HotSpot，已经是C/C++的领域了，我没有任何学习压力，只是一个时间问题。</p>
+<p>一个人的自我学习能力非常的重要，Java相关的和Java之外的所有东西我都是自学的，</p>
+<p>我没有特别问过什么人，也没参加过培训，实在不懂的地方就查资料买书看。</p>
+<p>如果看代码看不懂，这几点一定要明白:</p>
+<p>1) 相关背景知识是否具备</p>
+<p>2) 要有耐心，多看几遍</p>
+<p>3) 不要指望别人告诉你答案，别人没跟你说也不要说别人高高在上不理你，因为这不是别人的义务</p>
+<p>4) 经过对比之后再说别人的代码烂</p>
+<p><strong>嘿嘿，最后温馨提示一下:</strong></p>
+<p><strong>不要让我发我看过的代码给你，这个毫无意义，对你没有任何帮助，</strong></p>
+<p><strong>这就好比将我咀嚼过的剩菜给你吃，不但恶心，而且还没有营养。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+   
+
+
+  <div class="ds-thread"></div>
+<!-- Duoshuo Comment BEGIN -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"suningwiki"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+
+
+  
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/03/06/be-a-f2e/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端开发者的基本素养
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/02/28/front-end-grow-up/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Web前端研发工程师编程能力飞升之路</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+        <aside class="pure-u-1-6">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list">
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/categories/前端心得/">前端心得</a><span class="category-list-count">3</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li>
+	  
+	  </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: NaNpx;">API</a><a href="/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/tags/webApp/" style="font-size: NaNpx;">webApp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">三月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+    <div id="footer-info" class="inner">
+      &copy; 2014 12050231<br>
+      Powered by <a href="http://srykt.com" target="_blank"></a>
+    </div>
+</footer>
+  
+<script type="text/javascript" src="/js/script.js"></script>
+</body>
+</html>
