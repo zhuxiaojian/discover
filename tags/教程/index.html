@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   
-<title>Archives | 发现前端</title>
+<title>Tag: 教程 | 发现前端</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
 <meta name="og:title">
-<meta name="og:url" content="http://ppanda.com/discover/archives/">
+<meta name="og:url" content="http://ppanda.com/discover/tags/教程/">
 <meta name="og:image">
 <meta name="og:site_name" content="发现前端">
 <meta name="og:description">
@@ -92,124 +92,6 @@
       </aside>
       <section class="pure-u-2-3">
   
-    <article id="post-you-might-not-need-jquery" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/discover/2014/03/18/you-might-not-need-jquery/">YOU MIGHT NOT NEED JQUERY</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/discover/2014/03/18/you-might-not-need-jquery/" class="article-date">
-  <time datetime="2014-03-18T08:05:58.000Z" itemprop="datePublished">2014年3月18日</time>
-</a>
-      
-  <div class="article-category">
-    
-	    <a class="pure-button" style='display:inline;' href="/discover/categories/JavaScript/">JavaScript</a>
-	  
-  </div>
-
-      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="ajax">AJAX</h2>
-<h4 id="alternatives-">Alternatives:</h4>
-<ul>
-<li><a href="https://github.com/ForbesLindesay/ajax" target="_blank">ajax</a></li>
-<li><a href="https://github.com/then/request" target="_blank">request</a></li>
-<li><a href="https://github.com/ded/Reqwest" target="_blank">reqwest</a></li>
-</ul>
-<h3 id="-json-3-"><a href="#json">JSON</a></h3>
-<h4 id="jquery">jQuery</h4>
-<pre><code>$.getJSON(&#39;/my/url&#39;, function(data) {
-
-});
-</code></pre><h4 id="ie8-">IE8+</h4>
-<pre><code>request = new XMLHttpRequest();
-request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
-
-request.onreadystatechange = function() {
-  if (this.readyState === 4){
-    if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400){
-      // Success!
-      data = JSON.parse(this.responseText);
-    } else {
-      // Error :(
-    }
-  }
-};
-
-request.send();
-request = null;
-</code></pre><h4 id="ie9-">IE9+</h4>
-<pre><code>request = new XMLHttpRequest();
-request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
-
-request.onload = function() {
-  if (request.status &gt;= 200 &amp;&amp; request.status &lt; 400){
-    // Success!
-    data = JSON.parse(request.responseText);
-  } else {
-    // We reached our target server, but it returned an error
-
-  }
-};
-
-request.onerror = function() {
-  // There was a connection error of some sort
-};
-
-request.send();
-</code></pre><h4 id="ie10-">IE10+</h4>
-<pre><code>request = new XMLHttpRequest();
-request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
-
-request.onload = function() {
-  if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400){
-    // Success!
-    data = JSON.parse(this.response);
-  } else {
-    // We reached our target server, but it returned an error
-
-  }
-};
-
-request.onerror = function() {
-  // There was a connection error of some sort
-};
-
-request.send();
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/discover/2014/03/18/you-might-not-need-jquery/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-  
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/jquery/">jquery</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-7-days-nodejs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -271,10 +153,6 @@ request.send();
 
 
   
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/discover/archives/page/2/">2</a><a class="page-number" href="/discover/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/discover/archives/page/5/">5</a><a class="extend next" href="/discover/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 </section>
       

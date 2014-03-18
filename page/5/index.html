@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   
-<title>Archives | 发现前端</title>
+<title>发现前端</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
 <meta name="og:title">
-<meta name="og:url" content="http://ppanda.com/discover/archives/">
+<meta name="og:url" content="http://ppanda.com/discover/page/5/">
 <meta name="og:image">
 <meta name="og:site_name" content="发现前端">
 <meta name="og:description">
@@ -92,7 +92,7 @@
       </aside>
       <section class="pure-u-2-3">
   
-    <article id="post-you-might-not-need-jquery" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2013-12-26-debug-in-webkit" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -100,20 +100,20 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/discover/2014/03/18/you-might-not-need-jquery/">YOU MIGHT NOT NEED JQUERY</a>
+      <a class="article-title" href="/discover/2013/12/26/2013-12-26-debug-in-webkit/">手机端开发注意事项</a>
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/discover/2014/03/18/you-might-not-need-jquery/" class="article-date">
-  <time datetime="2014-03-18T08:05:58.000Z" itemprop="datePublished">2014年3月18日</time>
+      <a href="/discover/2013/12/26/2013-12-26-debug-in-webkit/" class="article-date">
+  <time datetime="2013-12-26T09:12:00.000Z" itemprop="datePublished">2013年12月26日</time>
 </a>
       
   <div class="article-category">
     
-	    <a class="pure-button" style='display:inline;' href="/discover/categories/JavaScript/">JavaScript</a>
+	    <a class="pure-button" style='display:inline;' href="/discover/categories/移动前端/">移动前端</a>
 	  
   </div>
 
@@ -121,77 +121,22 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ajax">AJAX</h2>
-<h4 id="alternatives-">Alternatives:</h4>
-<ul>
-<li><a href="https://github.com/ForbesLindesay/ajax" target="_blank">ajax</a></li>
-<li><a href="https://github.com/then/request" target="_blank">request</a></li>
-<li><a href="https://github.com/ded/Reqwest" target="_blank">reqwest</a></li>
-</ul>
-<h3 id="-json-3-"><a href="#json">JSON</a></h3>
-<h4 id="jquery">jQuery</h4>
-<pre><code>$.getJSON(&#39;/my/url&#39;, function(data) {
-
-});
-</code></pre><h4 id="ie8-">IE8+</h4>
-<pre><code>request = new XMLHttpRequest();
-request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
-
-request.onreadystatechange = function() {
-  if (this.readyState === 4){
-    if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400){
-      // Success!
-      data = JSON.parse(this.responseText);
-    } else {
-      // Error :(
-    }
-  }
-};
-
-request.send();
-request = null;
-</code></pre><h4 id="ie9-">IE9+</h4>
-<pre><code>request = new XMLHttpRequest();
-request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
-
-request.onload = function() {
-  if (request.status &gt;= 200 &amp;&amp; request.status &lt; 400){
-    // Success!
-    data = JSON.parse(request.responseText);
-  } else {
-    // We reached our target server, but it returned an error
-
-  }
-};
-
-request.onerror = function() {
-  // There was a connection error of some sort
-};
-
-request.send();
-</code></pre><h4 id="ie10-">IE10+</h4>
-<pre><code>request = new XMLHttpRequest();
-request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
-
-request.onload = function() {
-  if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400){
-    // Success!
-    data = JSON.parse(this.response);
-  } else {
-    // We reached our target server, but it returned an error
-
-  }
-};
-
-request.onerror = function() {
-  // There was a connection error of some sort
-};
-
-request.send();
-</code></pre>
+        <h1 id="-">手机端相关问题</h1>
+<p>A useful tools or tips list for mobile web application developing</p>
+<p>这个项目收集移动端开发所需要的一些资源与小技巧</p>
+<p>一些非常重要的工具类网站</p>
+<p> <a href="http://html5please.com/" title="html5与css3技术应用评估" target="_blank">html5与css3技术应用评估</a></p>
+<p> <a href="http://browserhacks.com/" title="各种奇妙的hack" target="_blank">各种奇妙的hack</a></p>
+<p> <a href="http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density" title="几乎所有设备的屏幕尺寸与像素密度表" target="_blank">几乎所有设备的屏幕尺寸与像素密度表</a></p>
+<p> <a href="http://screensiz.es/phone" title="移动设备参数表" target="_blank">移动设备参数表</a></p>
+<p> <a href="http://ivomynttinen.com/blog/the-ios-design-cheat-sheet-volume-2/" title="ios端移动设备参数速查" target="_blank">ios端移动设备参数速查</a></p>
+<p> <a href="http://www.quirksmode.org/compatibility.html" title="浏览器兼容表" target="_blank">浏览器兼容表</a></p>
+<p> <a href="https://deviceatlas.com/device-data/devices" title="移动设备查询器" target="_blank">移动设备查询器</a></p>
+<p> <a href="http://51degrees.codeplex.com/" title="移动设备适配库" target="_blank">移动设备适配库</a></p>
+ 
         
           <p class="article-more-link">
-            <a href="/discover/2014/03/18/you-might-not-need-jquery/#more">Read More</a>
+            <a href="/discover/2013/12/26/2013-12-26-debug-in-webkit/#more">Read More</a>
           </p>
         
       
@@ -201,68 +146,7 @@ request.send();
   
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/jquery/">jquery</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-7-days-nodejs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/discover/2014/03/17/7-days-nodejs/">七天学会NodeJS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/discover/2014/03/17/7-days-nodejs/" class="article-date">
-  <time datetime="2014-03-17T14:25:48.000Z" itemprop="datePublished">2014年3月17日</time>
-</a>
-      
-  <div class="article-category">
-    
-	    <a class="pure-button" style='display:inline;' href="/discover/categories/NodeJs/">NodeJs</a>
-	  
-  </div>
-
-      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="nodejs-">NodeJS基础</h2>
-<h3 id="-nodejs">什么是NodeJS</h3>
-<p>JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。</p>
-<p>每一种解析器都是一个运行环境，不但允许JS定义各种数据结构，进行各种计算，还允许JS使用运行环境提供的内置对象和方法做一些事情。例如运行在浏览器中的JS的用途是操作DOM，浏览器就提供了document之类的内置对象。而运行在NodeJS中的JS的用途是操作磁盘文件或搭建HTTP服务器，NodeJS就相应提供了fs、http等内置对象。</p>
-<h3 id="-">有啥用处</h3>
-<p>尽管存在一听说可以直接运行JS文件就觉得很酷的同学，但大多数同学在接触新东西时首先关心的是有啥用处，以及能带来啥价值。</p>
-<p>NodeJS的作者说，他创造NodeJS的目的是为了实现高性能Web服务器，他首先看重的是事件机制和异步IO模型的优越性，而不是JS。但是他需要选择一种编程语言实现他的想法，这种编程语言不能自带IO功能，并且需要能良好支持事件机制。JS没有自带IO功能，天生就用于处理浏览器中的DOM事件，并且拥有一大群程序员，因此就成为了天然的选择。</p>
-<p>如他所愿，NodeJS在服务端活跃起来，出现了大批基于NodeJS的Web服务。而另一方面，NodeJS让前端众如获神器，终于可以让自己的能力覆盖范围跳出浏览器窗口，更大批的前端工具如雨后春笋。</p>
-<p>因此，对于前端而言，虽然不是人人都要拿NodeJS写一个服务器程序，但简单可至使用命令交互模式调试JS代码片段，复杂可至编写工具提升工作效率。</p>
-<p>NodeJS生态圈正欣欣向荣。</p>
-
-        
-          <p class="article-more-link">
-            <a href="/discover/2014/03/17/7-days-nodejs/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-  
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/教程/">教程</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/mobile/">mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/webApp/">webApp</a></li></ul>
 
     </footer>
   </div>
@@ -273,7 +157,7 @@ request.send();
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/discover/archives/page/2/">2</a><a class="page-number" href="/discover/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/discover/archives/page/5/">5</a><a class="extend next" href="/discover/archives/page/2/">Next &raquo;</a>
+      <a class="extend prev" href="/discover/page/4/">&laquo; Prev</a><a class="page-number" href="/discover/">1</a><span class="space">&hellip;</span><a class="page-number" href="/discover/page/3/">3</a><a class="page-number" href="/discover/page/4/">4</a><span class="page-number current">5</span>
     </nav>
   
 </section>
