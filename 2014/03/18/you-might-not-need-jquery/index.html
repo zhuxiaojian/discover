@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<title>YOU MIGHT NOT NEED JQUERY | 发现前端</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="YOU MIGHT NOT NEED JQUERY">
+<meta name="og:url" content="http://ppanda.com/discover/2014/03/18/you-might-not-need-jquery/">
+<meta name="og:image">
+<meta name="og:site_name" content="发现前端">
+<meta name="og:description" content="AJAX
+Alternatives:
+
+ajax
+request
+reqwest
+
+JSON
+jQuery
+$.getJSON(&#39;/my/url&#39;, function(data) {
+
+});
+IE8+
+request = new XMLHttpRequest();
+request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
+
+req">
+<meta name="twitter:card" content="summary">
+  
+<link rel="alternative" href="/atom.xml" title="发现前端" type="application/atom+xml">
+  
+  
+<link rel="icon" href="/discover/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/discover/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+    <header id="header">
+  <div class="header-outer outer">
+    <div class="header-title inner">
+      <h1 class="logo-wrap">
+        <a href="/discover/" class="logo">发现前端</a>
+      </h1>
+      
+    </div>
+    <div class="header-inner inner">
+      <nav class="main-nav">
+        
+          <a class="main-nav-link" href="/discover/">Home</a>
+        
+          <a class="main-nav-link" href="/discover/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/discover/about">about</a>
+        
+        <a class="main-nav-link" href="http://10.19.113.51:8888/">#我发现</a>
+      </nav>
+    </div>
+  </div>
+</header>
+    <div class="pure-g-r">
+      <aside class="pure-u-1-6">
+        <div class="widget-wrap">
+    <h3 class="widget-title">技术站点</h3>
+    <div class="widget">
+      <ul class="category-list category-list-side">
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://tid.tenpay.com/'>财付通设计中心 UID</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cdc.tencent.com/'>腾讯用户研究与体验设计中心 CDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.alloyteam.com/'>腾讯Web前端 Alloy 团队 Blog</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://gdc.qq.com/'>QQ游戏设计中心GDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mxd.tencent.com/'>腾讯移动互联网设计团队MXD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ecd.tencent.com/'>腾讯电商用户设计体验部ECD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://isux.tencent.com/'>腾讯社交用户体验设计部ISUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://djt.qq.com/'>腾讯大讲堂</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.cn/'>阿里巴巴用户体验设计部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.taobao.com/blog/'>淘宝网UED官方博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.com/'>阿里巴巴国际站UED团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ux.etao.com/'>淘宝一淘用户体验中心UX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.searchtb.com/'>淘宝搜索技术博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://alipaymiddleware.com/'>支付宝中间件团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.tmall.com/'>天猫UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.baiduux.com/'>百度泛用户体验部UUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mux.baidu.com/'>百度无线用户体验部MUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.baidu.com/'>百度商业用户体验部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mued.sohu.com/'>搜狐移动用户体验团队MUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.focus.cn/'>搜狐焦点用户体验设计UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://udc.weibo.com/'>新浪微博用户体验设计中心UDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sina.com/'>新浪UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.75team.com/'>奇虎360公司Web前端</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uxc.360.cn/'>360UXC用户体验设计中心</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/'>携程旅行前端开发团队UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://fed.renren.com/'>人人网FED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sogou.com/'>搜狗设计团队UED博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uedc.163.com/'>网易用户体验设计中心UEDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cued.xunlei.com/'>迅雷用户体验设计中心CUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://blog.19ued.com/'>19楼UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.5173.com/'>5173用户体验设计团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.iciba.com/'>爱词霸UED团队 </a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/wp-content/webkitcss/index.html'>Webkit css</a></li>
+  </ul>
+
+    </div>
+  </div>
+      </aside>
+      <section class="pure-u-2-3"><article id="post-you-might-not-need-jquery" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      YOU MIGHT NOT NEED JQUERY
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/discover/2014/03/18/you-might-not-need-jquery/" class="article-date">
+  <time datetime="2014-03-18T08:05:58.000Z" itemprop="datePublished">2014年3月18日</time>
+</a>
+      
+  <div class="article-category">
+    
+	    <a class="pure-button" style='display:inline;' href="/discover/categories/JavaScript/">JavaScript</a>
+	  
+  </div>
+
+      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ajax">AJAX</h2>
+<h4 id="alternatives-">Alternatives:</h4>
+<ul>
+<li><a href="https://github.com/ForbesLindesay/ajax" target="_blank">ajax</a></li>
+<li><a href="https://github.com/then/request" target="_blank">request</a></li>
+<li><a href="https://github.com/ded/Reqwest" target="_blank">reqwest</a></li>
+</ul>
+<h3 id="-json-3-"><a href="#json">JSON</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.getJSON(&#39;/my/url&#39;, function(data) {
+
+});
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>request = new XMLHttpRequest();
+request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
+
+request.onreadystatechange = function() {
+  if (this.readyState === 4){
+    if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400){
+      // Success!
+      data = JSON.parse(this.responseText);
+    } else {
+      // Error :(
+    }
+  }
+};
+
+request.send();
+request = null;
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>request = new XMLHttpRequest();
+request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
+
+request.onload = function() {
+  if (request.status &gt;= 200 &amp;&amp; request.status &lt; 400){
+    // Success!
+    data = JSON.parse(request.responseText);
+  } else {
+    // We reached our target server, but it returned an error
+
+  }
+};
+
+request.onerror = function() {
+  // There was a connection error of some sort
+};
+
+request.send();
+</code></pre><h4 id="ie10-">IE10+</h4>
+<pre><code>request = new XMLHttpRequest();
+request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
+
+request.onload = function() {
+  if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400){
+    // Success!
+    data = JSON.parse(this.response);
+  } else {
+    // We reached our target server, but it returned an error
+
+  }
+};
+
+request.onerror = function() {
+  // There was a connection error of some sort
+};
+
+request.send();
+</code></pre><a id="more"></a>
+
+<h3 id="-post-4-"><a href="#post">Post</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.ajax({
+  type: &#39;POST&#39;,
+  url: &#39;/my/url&#39;,
+  data: data
+});
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>var request = new XMLHttpRequest();
+request.open(&#39;POST&#39;, &#39;/my/url&#39;, true);
+request.setRequestHeader(&#39;Content-Type&#39;, &#39;application/x-www-form-urlencoded; charset=UTF-8&#39;);
+request.send(data);
+</code></pre><h3 id="-request-5-"><a href="#request">Request</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.ajax({
+  type: &#39;GET&#39;,
+  url: &#39;/my/url&#39;,
+  success: function(resp) {
+
+  },
+  error: function() {
+
+  }
+});
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>request = new XMLHttpRequest();
+request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
+
+request.onreadystatechange = function() {
+  if (this.readyState === 4){
+    if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400){
+      // Success!
+      resp = this.responseText;
+    } else {
+      // Error :(
+    }
+  }
+};
+
+request.send();
+request = null;
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>request = new XMLHttpRequest();
+request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
+
+request.onload = function() {
+  if (request.status &gt;= 200 &amp;&amp; request.status &lt; 400){
+    // Success!
+    resp = request.responseText;
+  } else {
+    // We reached our target server, but it returned an error
+
+  }
+};
+
+request.onerror = function() {
+  // There was a connection error of some sort
+};
+
+request.send();
+</code></pre><h4 id="ie10-">IE10+</h4>
+<pre><code>request = new XMLHttpRequest();
+request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
+
+request.onload = function() {
+  if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400){
+    // Success!
+    resp = this.response;
+  } else {
+    // We reached our target server, but it returned an error
+
+  }
+};
+
+request.onerror = function() {
+  // There was a connection error of some sort
+};
+
+request.send();
+</code></pre><h2 id="effects">Effects</h2>
+<h4 id="alternatives-">Alternatives:</h4>
+<ul>
+<li><a href="http://daneden.github.io/animate.css/" target="_blank">animate.css</a></li>
+<li><a href="https://github.com/visionmedia/move.js" target="_blank">move.js</a></li>
+</ul>
+<h3 id="-fade-in-8-"><a href="#fade_in">Fade In</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).fadeIn();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>function fadeIn(el) {
+  var opacity = 0;
+
+  el.style.opacity = 0;
+  el.style.filter = &#39;&#39;;
+
+  var last = +new Date();
+  var tick = function() {
+    opacity += (new Date() - last) / 400;
+    el.style.opacity = opacity;
+    el.style.filter = &#39;alpha(opacity=&#39; + (100 * opacity)|0 + &#39;)&#39;;
+
+    last = +new Date();
+
+    if (opacity &lt; 1) {
+      (window.requestAnimationFrame &amp;&amp; requestAnimationFrame(tick)) || setTimeout(tick, 16);
+    }
+  };
+
+  tick();
+}
+
+fadeIn(el);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>function fadeIn(el) {
+  el.style.opacity = 0;
+
+  var last = +new Date();
+  var tick = function() {
+    el.style.opacity = +el.style.opacity + (new Date() - last) / 400;
+    last = +new Date();
+
+    if (+el.style.opacity &lt; 1) {
+      (window.requestAnimationFrame &amp;&amp; requestAnimationFrame(tick)) || setTimeout(tick, 16)
+    }
+  };
+
+  tick();
+}
+
+fadeIn(el);
+</code></pre><h4 id="ie10-">IE10+</h4>
+<pre><code>el.classList.add(&#39;show&#39;);
+el.classList.remove(&#39;hide&#39;);
+
+.show {
+  transition: opacity 400ms;
+}
+.hide {
+  opacity: 0;
+}
+</code></pre><h3 id="-hide-9-"><a href="#hide">Hide</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).hide();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.style.display = &#39;none&#39;;
+</code></pre><h3 id="-show-10-"><a href="#show">Show</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).show();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.style.display = &#39;&#39;;
+</code></pre><h2 id="elements">Elements</h2>
+<h4 id="alternatives-">Alternatives:</h4>
+<ul>
+<li><a href="https://github.com/ded/bonzo" target="_blank">bonzo</a></li>
+<li><a href="https://github.com/julienw/dollardom" target="_blank">$dom</a></li>
+</ul>
+<h3 id="-add-class-13-"><a href="#add_class">Add Class</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).addClass(className);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>if (el.classList)
+  el.classList.add(className);
+else
+  el.className += &#39; &#39; + className;
+</code></pre><h4 id="ie10-">IE10+</h4>
+<pre><code>el.classList.add(className);
+</code></pre><h3 id="-after-14-"><a href="#after">After</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).after(htmlString);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.insertAdjacentHTML(&#39;afterend&#39;, htmlString);
+</code></pre><h3 id="-append-15-"><a href="#append">Append</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(parent).append(el);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>parent.appendChild(el);
+</code></pre><h3 id="-before-16-"><a href="#before">Before</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).before(htmlString);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.insertAdjacentHTML(&#39;beforebegin&#39;, htmlString);
+</code></pre><h3 id="-children-17-"><a href="#children">Children</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).children();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>var children = [];
+for (var i=el.children.length; i--;){
+  // Skip comment nodes on IE8
+  if (el.children[i].nodeType != 8)
+    children.unshift(el.children[i]);
+}
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>el.children
+</code></pre><h3 id="-clone-18-"><a href="#clone">Clone</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).clone();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.cloneNode(true);
+</code></pre><h3 id="-contains-19-"><a href="#contains">Contains</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.contains(el, child);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el !== child &amp;&amp; el.contains(child);
+</code></pre><h3 id="-contains-selector-20-"><a href="#contains_selector">Contains Selector</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).find(selector).length;
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.querySelector(selector) !== null
+</code></pre><h3 id="-each-21-"><a href="#each">Each</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(selector).each(function(i, el){
+
+});
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>function forEachElement(selector, fn) {
+  var elements = document.querySelectorAll(selector);
+  for (var i = 0; i &lt; elements.length; i++)
+    fn(elements[i], i);
+}
+
+forEachElement(selector, function(el, i){
+
+});
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>var elements = document.querySelectorAll(selector);
+Array.prototype.forEach.call(elements, function(el, i){
+
+});
+</code></pre><h3 id="-empty-22-"><a href="#empty">Empty</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).empty();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>while(el.firstChild)
+  el.removeChild(el.firstChild);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>el.innerHTML = &#39;&#39;;
+</code></pre><h3 id="-filter-23-"><a href="#filter">Filter</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(selector).filter(filterFn);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>function filter(selector, filterFn) {
+  var elements = document.querySelectorAll(selector);
+  var out = [];
+  for (var i = elements.length; i--;) {
+    if (filterFn(elements[i]))
+      out.unshift(elements[i]);
+  }
+  return out;
+}
+
+filter(selector, filterFn);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>Array.prototype.filter.call(document.querySelectorAll(selector), filterFn);
+</code></pre><h3 id="-finding-children-24-"><a href="#finding_children">Finding Children</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).find(selector);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.querySelectorAll(selector);
+</code></pre><h3 id="-finding-elements-25-"><a href="#finding_elements">Finding Elements</a></h3>
+<h4 id="alternatives-">Alternatives:</h4>
+<ul>
+<li><a href="https://github.com/ded/qwery" target="_blank">qwery</a></li>
+<li><a href="http://sizzlejs.com/" target="_blank">sizzle</a></li>
+</ul>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(&#39;.my #awesome selector&#39;);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>document.querySelectorAll(&#39;.my #awesome selector&#39;);
+</code></pre><h3 id="-get-style-28-"><a href="#get_style">Get Style</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).css(ruleName);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>// Varies based on the properties being retrieved, some can be retrieved from el.currentStyle
+// https://github.com/jonathantneal/Polyfills-for-IE8/blob/master/getComputedStyle.js
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>getComputedStyle(el)[ruleName];
+</code></pre><h3 id="-getting-attributes-29-"><a href="#getting_attributes">Getting Attributes</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).attr(&#39;tabindex&#39;);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.getAttribute(&#39;tabindex&#39;);
+</code></pre><h3 id="-getting-html-30-"><a href="#getting_html">Getting Html</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).html();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.innerHTML
+</code></pre><h3 id="-getting-outer-html-31-"><a href="#getting_outer_html">Getting Outer Html</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(&#39;&lt;div&gt;&#39;).append($(el).clone()).html();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.outerHTML
+</code></pre><h3 id="-getting-text-32-"><a href="#getting_text">Getting Text</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).text();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.textContent || el.innerText
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>el.textContent
+</code></pre><h3 id="-has-class-33-"><a href="#has_class">Has Class</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).hasClass(className);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>if (el.classList)
+  el.classList.contains(className);
+else
+  new RegExp(&#39;(^| )&#39; + className + &#39;( |$)&#39;, &#39;gi&#39;).test(el.className);
+</code></pre><h4 id="ie10-">IE10+</h4>
+<pre><code>el.classList.contains(className);
+</code></pre><h3 id="-matches-34-"><a href="#matches">Matches</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).is($(otherEl));
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el === otherEl
+</code></pre><h3 id="-matches-selector-35-"><a href="#matches_selector">Matches Selector</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).is(&#39;.my-class&#39;);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>var matches = function(el, selector) {
+  var _matches = (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector);
+
+  if (_matches) {
+    return _matches.call(el, selector);
+  } else {
+    var nodes = el.parentNode.querySelectorAll(selector);
+    for (var i = nodes.length; i--;) {
+      if (nodes[i] === el)
+        return true;
+    }
+    return false;
+  }
+};
+
+matches(el, &#39;.my-class&#39;);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>var matches = function(el, selector) {
+  return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector).call(el, selector);
+};
+
+matches(el, &#39;.my-class&#39;);
+</code></pre><h3 id="-next-36-"><a href="#next">Next</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).next();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>// nextSibling can include text nodes
+function nextElementSibling(el) {
+  do { el = el.nextSibling; } while ( el &amp;&amp; el.nodeType !== 1 );
+  return el;
+}
+
+el.nextElementSibling || nextElementSibling(el);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>el.nextElementSibling
+</code></pre><h3 id="-offset-37-"><a href="#offset">Offset</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).offset();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>var rect = el.getBoundingClientRect()
+
+{
+  top: rect.top + document.body.scrollTop,
+  left: rect.left + document.body.scrollLeft
+}
+</code></pre><h3 id="-offset-parent-38-"><a href="#offset_parent">Offset Parent</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).offsetParent();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.offsetParent || el
+</code></pre><h3 id="-outer-height-39-"><a href="#outer_height">Outer Height</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).outerHeight();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.offsetHeight
+</code></pre><h3 id="-outer-height-with-margin-40-"><a href="#outer_height_with_margin">Outer Height With Margin</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).outerHeight(true);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>function outerHeight(el){
+  var height = el.offsetHeight;
+  var style = el.currentStyle || getComputedStyle(el);
+
+  height += parseInt(style.marginTop) + parseInt(style.marginBottom);
+  return height;
+}
+
+outerHeight(el);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>function outerHeight(el){
+  var height = el.offsetHeight;
+  var style = getComputedStyle(el);
+
+  height += parseInt(style.marginTop) + parseInt(style.marginBottom);
+  return height;
+}
+
+outerHeight(el);
+</code></pre><h3 id="-outer-width-41-"><a href="#outer_width">Outer Width</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).outerWidth();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.offsetWidth
+</code></pre><h3 id="-outer-width-with-margin-42-"><a href="#outer_width_with_margin">Outer Width With Margin</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).outerWidth(true);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>function outerWidth(el){
+  var height = el.offsetWidth;
+  var style = el.currentStyle || getComputedStyle(el);
+
+  height += parseInt(style.marginLeft) + parseInt(style.marginRight);
+  return height;
+}
+
+outerWidth(el);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>function outerWidth(el){
+  var height = el.offsetWidth;
+  var style = getComputedStyle(el);
+
+  height += parseInt(style.marginLeft) + parseInt(style.marginRight);
+  return height;
+}
+
+outerWidth(el);
+</code></pre><h3 id="-parent-43-"><a href="#parent">Parent</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).parent();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.parentNode
+</code></pre><h3 id="-position-44-"><a href="#position">Position</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).position();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>{left: el.offsetLeft, top: el.offsetTop}
+</code></pre><h3 id="-position-relative-to-viewport-45-"><a href="#position_relative_to_viewport">Position Relative To Viewport</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>var offset = el.offset();
+
+{
+  top: offset.top - document.body.scrollTop,
+  left: offset.left - document.body.scrollLeft
+}
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.getBoundingClientRect()
+</code></pre><h3 id="-prepend-46-"><a href="#prepend">Prepend</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(parent).prepend(el);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>parent.insertBefore(el, parent.firstChild);
+</code></pre><h3 id="-prev-47-"><a href="#prev">Prev</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).prev();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>// prevSibling can include text nodes
+function previousElementSibling(el) {
+  do { el = el.previousSibling; } while ( el &amp;&amp; el.nodeType !== 1 );
+  return el;
+}
+
+el.previousElementSibling || previousElementSibling(el);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>el.previousElementSibling
+</code></pre><h3 id="-remove-48-"><a href="#remove">Remove</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).remove();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.parentNode.removeChild(el);
+</code></pre><h3 id="-remove-class-49-"><a href="#remove_class">Remove Class</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).removeClass(className);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>if (el.classList)
+  el.classList.remove(className);
+else
+  el.className = el.className.replace(new RegExp(&#39;(^|\\b)&#39; + className.split(&#39; &#39;).join(&#39;|&#39;) + &#39;(\\b|$)&#39;, &#39;gi&#39;), &#39; &#39;);
+</code></pre><h4 id="ie10-">IE10+</h4>
+<pre><code>el.classList.remove(className);
+</code></pre><h3 id="-replacing-from-html-50-"><a href="#replacing_from_html">Replacing From Html</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).replaceWith(string);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.outerHTML = string;
+</code></pre><h3 id="-set-style-51-"><a href="#set_style">Set Style</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).css(&#39;border-width&#39;, &#39;20px&#39;);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>// Use a class if possible
+el.style.borderWidth = &#39;20px&#39;;
+</code></pre><h3 id="-setting-attributes-52-"><a href="#setting_attributes">Setting Attributes</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).attr(&#39;tabindex&#39;, 3);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.setAttribute(&#39;tabindex&#39;, 3);
+</code></pre><h3 id="-setting-html-53-"><a href="#setting_html">Setting Html</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).html(string);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>el.innerHTML = string;
+</code></pre><h3 id="-setting-text-54-"><a href="#setting_text">Setting Text</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).text(string);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>if (el.textContent !== undefined)
+  el.textContent = string;
+else
+  el.innerText = string;
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>el.textContent = string;
+</code></pre><h3 id="-siblings-55-"><a href="#siblings">Siblings</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).siblings();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>var siblings = Array.prototype.slice.call(el.parentNode.children);
+
+for (var i = siblings.length; i--;) {
+  if (siblings[i] === el) {
+    siblings.splice(i, 1);
+    break;
+  }
+}
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>Array.prototype.filter.call(el.parentNode.children, function(child){
+  return child !== el;
+});
+</code></pre><h3 id="-toggle-class-56-"><a href="#toggle_class">Toggle Class</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).toggleClass(className);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>if (el.classList) {
+  el.classList.toggle(className);
+} else {
+    var classes = el.className.split(&#39; &#39;);
+    var existingIndex = -1;
+    for (var i = classes.length; i--;) {
+      if (classes[i] === className)
+        existingIndex = i;
+    }
+
+    if (existingIndex &gt;= 0)
+      classes.splice(existingIndex, 1);
+    else
+      classes.push(className);
+
+  el.className = classes.join(&#39; &#39;);
+}
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>if (el.classList) {
+  el.classList.toggle(className);
+} else {
+  var classes = el.className.split(&#39; &#39;);
+  var existingIndex = classes.indexOf(className);
+
+  if (existingIndex &gt;= 0)
+    classes.splice(existingIndex, 1);
+  else
+    classes.push(className);
+
+  el.className = classes.join(&#39; &#39;);
+}
+</code></pre><h4 id="ie10-">IE10+</h4>
+<pre><code>el.classList.toggle(className);
+</code></pre><h2 id="events">Events</h2>
+<h3 id="-off-57-"><a href="#off">Off</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).off(eventName, eventHandler);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>function removeEventListener(el, eventName, handler) {
+  if (el.removeEventListener)
+    el.removeEventListener(eventName, handler);
+  else
+    el.detachEvent(&#39;on&#39; + eventName, handler);
+}
+
+removeEventListener(el, eventName, handler);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>el.removeEventListener(eventName, eventHandler);
+</code></pre><h3 id="-on-58-"><a href="#on">On</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).on(eventName, eventHandler);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>function addEventListener(el, eventName, handler) {
+  if (el.addEventListener) {
+    el.addEventListener(eventName, handler);
+  } else {
+    el.attachEvent(&#39;on&#39; + eventName, handler);
+  }
+}
+
+addEventListener(el, eventName, handler);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>el.addEventListener(eventName, eventHandler);
+</code></pre><h3 id="-ready-59-"><a href="#ready">Ready</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(document).ready(function(){
+
+});
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>function ready(fn) {
+  if (document.addEventListener) {
+    document.addEventListener(&#39;DOMContentLoaded&#39;, fn);
+  } else {
+    document.attachEvent(&#39;onreadystatechange&#39;, function() {
+      if (document.readyState === &#39;interactive&#39;)
+        fn();
+    });
+  }
+}
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>document.addEventListener(&#39;DOMContentLoaded&#39;, function(){
+
+});
+</code></pre><h3 id="-trigger-custom-60-"><a href="#trigger_custom">Trigger Custom</a></h3>
+<h4 id="alternatives-">Alternatives:</h4>
+<ul>
+<li><a href="https://github.com/Wolfy87/EventEmitter" target="_blank">EventEmitter</a></li>
+<li><a href="https://github.com/arextar/Vine" target="_blank">Vine</a></li>
+<li><a href="https://github.com/jeromeetienne/microevent.js" target="_blank">microevent</a></li>
+</ul>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).trigger(&#39;my-event&#39;, {some: &#39;data&#39;});
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>// Custom events are not natively supported, so you have to hijack a random
+// event.
+//
+// Just use jQuery.
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>if (window.CustomEvent) {
+  var event = new CustomEvent(&#39;my-event&#39;, {detail: {some: &#39;data&#39;}});
+} else {
+  var event = document.createEvent(&#39;CustomEvent&#39;);
+  event.initCustomEvent(&#39;my-event&#39;, true, true, {some: &#39;data&#39;});
+}
+
+el.dispatchEvent(event);
+</code></pre><h3 id="-trigger-native-64-"><a href="#trigger_native">Trigger Native</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$(el).trigger(&#39;change&#39;);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>if (document.createEvent) {
+  var event = document.createEvent(&#39;HTMLEvents&#39;);
+  event.initEvent(&#39;change&#39;, true, false);
+  el.dispatchEvent(event);
+} else {
+  el.fireEvent(&#39;onchange&#39;);
+}
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>// For a full list of event types: https://developer.mozilla.org/en-US/docs/Web/API/document.createEvent
+event = document.createEvent(&#39;HTMLEvents&#39;);
+event.initEvent(&#39;change&#39;, true, false);
+el.dispatchEvent(event);
+</code></pre><h2 id="utils">Utils</h2>
+<h3 id="-array-each-65-"><a href="#array_each">Array Each</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.each(array, function(i, item){
+
+});
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>function forEach(array, fn) {
+  for (i = 0; i &lt; array.length; i++)
+    fn(array[i], i);
+}
+
+forEach(array, function(item, i){
+
+});
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>array.forEach(function(item, i){
+
+});
+</code></pre><h3 id="-bind-66-"><a href="#bind">Bind</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.proxy(fn, context);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>fn.apply(context, arguments);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>fn.bind(context);
+</code></pre><h3 id="-deep-extend-67-"><a href="#deep_extend">Deep Extend</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.extend(true, {}, objA, objB);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>var deepExtend = function(out) {
+  out = out || {};
+
+  for (var i = 1; i &lt; arguments.length; i++) {
+    var obj = arguments[i];
+
+    if (!obj)
+      continue;
+
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === &#39;object&#39;)
+          deepExtend(out[key], obj[key]);
+        else
+          out[key] = obj[key];
+      }
+    }
+  }
+
+  return out;
+};
+
+deepExtend({}, objA, objB);
+</code></pre><h3 id="-extend-68-"><a href="#extend">Extend</a></h3>
+<h4 id="alternatives-">Alternatives:</h4>
+<ul>
+<li><a href="http://lodash.com/docs#assign" target="_blank">lo-dash</a></li>
+<li><a href="http://underscorejs.org/#extend" target="_blank">underscore</a></li>
+<li><a href="http://www.2ality.com/2014/01/object-assign.html" target="_blank">ECMA6</a></li>
+</ul>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.extend({}, objA, objB);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>var extend = function(out) {
+  out = out || {};
+
+  for (var i = 1; i &lt; arguments.length; i++) {
+    if (!arguments[i])
+      continue;
+
+    for (var key in arguments[i]) {
+      if (arguments[i].hasOwnProperty(key))
+        out[key] = arguments[i][key];
+    }
+  }
+
+  return out;
+};
+
+extend({}, objA, objB);
+</code></pre><h3 id="-index-of-72-"><a href="#index_of">Index Of</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.inArray(item, array);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>function indexOf(array, item) {
+  for (var i = 0; i &lt; array.length; i++) {
+    if (array[i] === item)
+      return i;
+  }
+  return -1;
+}
+
+indexOf(array, item);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>array.indexOf(item);
+</code></pre><h3 id="-is-array-73-"><a href="#is_array">Is Array</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.isArray(arr);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>isArray = Array.isArray || function(arr) {
+  return Object.prototype.toString.call(arr) == &#39;[object Array]&#39;;
+}
+
+isArray(arr);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>Array.isArray(arr);
+</code></pre><h3 id="-map-74-"><a href="#map">Map</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.map(array, function(value, index){
+
+});
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>function map(arr, fn) {
+  var results = [];
+  for (var i = 0; i &lt; arr.length; i++)
+    results.push(fn(arr[i], i));
+  return results;
+}
+
+map(array, function(value, index){
+
+});
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>array.map(function(value, index){
+
+});
+</code></pre><h3 id="-now-75-"><a href="#now">Now</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.now();
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>new Date().getTime();
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>Date.now();
+</code></pre><h3 id="-parse-html-76-"><a href="#parse_html">Parse Html</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.parseHTML(htmlString);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>var parseHTML = function(str) {
+  var el = document.createElement(&#39;div&#39;);
+  el.innerHTML = str;
+  return el.children;
+};
+
+parseHTML(htmlString);
+</code></pre><h4 id="ie9-">IE9+</h4>
+<pre><code>var parseHTML = function(str) {
+  var tmp = document.implementation.createHTMLDocument();
+  tmp.body.innerHTML = str;
+  return tmp.body.children;
+};
+
+parseHTML(htmlString);
+</code></pre><h3 id="-parse-json-77-"><a href="#parse_json">Parse Json</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.parseJSON(string);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>JSON.parse(string);
+</code></pre><h3 id="-type-78-"><a href="#type">Type</a></h3>
+<h4 id="jquery">jQuery</h4>
+<pre><code>$.type(obj);
+</code></pre><h4 id="ie8-">IE8+</h4>
+<pre><code>Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/, &quot;$1&quot;).toLowerCase();
+</code></pre><h3 id="-trim-79-"><a href="#trim">Trim</a></h3>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+   
+
+
+  <div class="ds-thread"></div>
+<!-- Duoshuo Comment BEGIN -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"suningwiki"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+
+
+  
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/jquery/">jquery</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/discover/2014/03/08/secrets-of-awesome-javascript-api-design/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">如何设计出色的 JavaScript API</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+        <aside class="pure-u-1-6">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list">
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/前端心得/">前端心得</a><span class="category-list-count">3</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li>
+	  
+	  </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/discover/tags/API/" style="font-size: NaNpx;">API</a><a href="/discover/tags/jquery/" style="font-size: NaNpx;">jquery</a><a href="/discover/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/discover/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/discover/tags/webApp/" style="font-size: NaNpx;">webApp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+    <div id="footer-info" class="inner">
+      &copy; 2014 12050231<br>
+      Powered by <a href="http://srykt.com" target="_blank"></a>
+    </div>
+</footer>
+  
+<script type="text/javascript" src="/discover/js/script.js"></script>
+</body>
+</html>
