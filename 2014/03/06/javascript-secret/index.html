@@ -247,7 +247,7 @@ bar: &#39;Here be dragons&#39;
 <p>函数是JavaScript中的一等对象，这意味着可以把函数像其它值一样传递。 一个常见的用法是把<em>匿名函数</em>作为回调函数传递到异步函数中。</p>
 <h3 id="-">函数声明</h3>
 <pre><code>function foo() {}  
-</code></pre><p>上面的方法会在执行前被 <a href="#function.scopes">解析(hoisted)</a>，因此它存在于当前上下文的<em>任意</em>一个地方， 即使在函数定���体的上面被调用也是对的。 </p>
+</code></pre><p>上面的方法会在执行前被 <a href="#function.scopes">解析(hoisted)</a>，因此它存在于当前上下文的<em>任意</em>一个地方， 即使在函数定义体的上面被调用也是对的。 </p>
 <pre><code>foo(); // 正常运行，因为foo在代码运行前已经被创建  
 </code></pre><p>function foo() {}</p>
 <h3 id="-">函数赋值表达式</h3>
@@ -596,7 +596,7 @@ window.foo = function() {
 <pre><code>new Array(count + 1).join(stringToRepeat);  
 </code></pre><p><strong>译者注：</strong>new Array(3).join(&#39;#&#39;) 将会返回 ##</p>
 <h3 id="-">结论</h3>
-<p>应该尽量避免使用数组构造函数创建新数组。推荐使用数组的字面语法。它们更加短小���简洁，因此增加了代码的可读性。</p>
+<p>应该尽量避免使用数组构造函数创建新数组。推荐使用数组的字面语法。它们更加短小和简洁，因此增加了代码的可读性。</p>
 <h3 id="-">类型</h3>
 <h3 id="-">相等与比较</h3>
 <p>JavaScript 有两种方式判断两个值是否相等。</p>
@@ -819,7 +819,7 @@ setTimeout(this.method, 500);
 setTimeout(foo, 1000);  
 </code></pre><p>}<br>foo();<br>这样不仅封装了 setTimeout 回调函数，而且阻止了调用指令的堆积，可以有更多的控制。 foo 函数现在可以控制是否继续执行还是终止执行。</p>
 <h3 id="-">手工清空定时器</h3>
-<p>可以通过将定时时产生的 ID 标识传递给 clearTimeout 或者 clearInterval 函���来清除定时， 至于使用哪个函数取决于调用的时候使用的是 setTimeout 还是 setInterval。</p>
+<p>可以通过将定时时产生的 ID 标识传递给 clearTimeout 或者 clearInterval 函数来清除定时， 至于使用哪个函数取决于调用的时候使用的是 setTimeout 还是 setInterval。</p>
 <pre><code>var id = setTimeout(foo, 1000);  
 </code></pre><p>clearTimeout(id);</p>
 <h3 id="-">清除所有定时器</h3>
@@ -902,7 +902,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
     <div class="widget">
       <ul class="category-list">
 	  
-	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li>
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span></li>
 	  
 	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/前端心得/">前端心得</a><span class="category-list-count">3</span></li>
 	  
@@ -917,7 +917,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/discover/tags/API/" style="font-size: NaNpx;">API</a><a href="/discover/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/discover/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/discover/tags/webApp/" style="font-size: NaNpx;">webApp</a>
+      <a href="/discover/tags/API/" style="font-size: NaNpx;">API</a><a href="/discover/tags/jquery/" style="font-size: NaNpx;">jquery</a><a href="/discover/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/discover/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/discover/tags/webApp/" style="font-size: NaNpx;">webApp</a>
     </div>
   </div>
 
@@ -926,7 +926,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

@@ -92,6 +92,71 @@
       </aside>
       <section class="pure-u-2-3">
   
+    <article id="post-know-javascript-prototype" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/discover/2014/03/06/know-javascript-prototype/">深入理解javacript之prototype</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/discover/2014/03/06/know-javascript-prototype/" class="article-date">
+  <time datetime="2014-03-06T11:49:14.000Z" itemprop="datePublished">2014年3月6日</time>
+</a>
+      
+  <div class="article-category">
+    
+	    <a class="pure-button" style='display:inline;' href="/discover/categories/JavaScript/">JavaScript</a>
+	  
+  </div>
+
+      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对于javascript这样一种前端语言，个人觉得，要真正的理解其oop, 就必须要彻底搞清楚javascript的对象，原型链，作用域，闭包，以及this所引用的对象等概念。这些对弄明白了，应该就可以比较自信的驾驭这种语言了。</p>
+<p>大家都知道，javascript中的继承不是使用的类继承的机制,而是使用的另一种方式 – 原型继承。在原型继承方式中，本质上是javascript语言加入原型链这种机制，从而实现了面向对象的重要特性之一 – 继承。在这篇博文中，基于个人的理解，来说说javascript之原型链。</p>
+<p>首先，我觉得有必要先总结一下以下一些概念:</p>
+<ul>
+<li>Javascript中的对象实例本质上是由一系列的属性组成的，在这些属性中，有一个内部的不可见的特殊属性-<strong>proto</strong>，该属性的值指向该对象实例的原型，一个对象实例只拥有一个唯一的原型。</li>
+<li>函数可以用来作为构造函数来使用。另外只有函数才有prototype属性并且可以访问到，但是对象实例不具有该属性，只有一个内部的不可访问的<strong>proto</strong>属性。</li>
+<li>原型对象本质是也是一个对象实例，并且也拥有自己的属性以及方法。Object.prototype是所有对象的最顶层的原型。</li>
+<li>对象实例的原型，默认的是Object构造函数的一个实例，除非该对象实例是由一个自定义构造函数的实例，并且给改自定义构造函数设置了一个自定义的原型。</li>
+<li>原型链是一条由一系列原型对象组成的自底而上的访问链，主要目的是用来实现对象属性的共享以及继承，然而这个原型链顶端的原型对象的原型是null，也就是说整个原型链结束与此。</li>
+<li>读取一个对象的属性时，如果该对象不具有这个属性，那么就会通过原型链往上查找。首先查找该对象的原型对象是否包含所要读取的属性，假如还是没有查找到，进而会查找原型对象的原型对象，直到原型链的顶端。最终没有查到的话，会返回的值为undefined。</li>
+<li>写一个属性到对象时，即使该对象的原型对象中拥有该属性，系统也会给所操作的对象添加一个独立的属性，并且写入对应的值。换句话说，在这种情况下，对象与它的原型对象都具有了属于自身的相同的属性，但是其值是独立的。改变原型对象中对应属性的值，不会影响到对象中的值，因为当读取该属性时，首先访问到的是对象中的对应属性。</li>
+<li>本质上，javascript语言中，维护着两条原型链，一条是用于链接对象实例的，该条原型链是系统内部的，不可见的。另外一条，就是用于维护构造器之间的关系，可以通过prototype属性访问到。</li>
+</ul>
+<p>上述概念很重要，务必仔细思考。下面将逐步对以上各个概念加以证明
+
+        
+          <p class="article-more-link">
+            <a href="/discover/2014/03/06/know-javascript-prototype/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+  
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/prototype/">prototype</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-javascript-secret" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -159,60 +224,6 @@
 
 
   
-    <article id="post-be-a-f2e" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/discover/2014/03/06/be-a-f2e/">前端开发者的基本素养</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/discover/2014/03/06/be-a-f2e/" class="article-date">
-  <time datetime="2014-03-06T07:04:36.000Z" itemprop="datePublished">2014年3月6日</time>
-</a>
-      
-  <div class="article-category">
-    
-	    <a class="pure-button" style='display:inline;' href="/discover/categories/前端心得/">前端心得</a>
-	  
-  </div>
-
-      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前几天我为一个项目写README文档，我希望其他开发者能够看到这个项目，并从中学到一些东西。突然我意识到，若放在几年前，我写作的过程中随口提到的Node，npm，Homebrew，git，测试还有产品构建，会把我魂都吓没了。</p>
-<p>曾经有段时间，一个前端开工程师基本的工作流程是：编辑文件，本地测试下（尽我们可能做到最好），然后通过FTP上传到服务器。我们评价一个前端工程师的水平，是通过他是否能够兼容IE6，或者取得跨浏览器的像素级的一致。很多社区的成员——包括我在内——缺少传统的编程经验。HTML、CSS和JavaScript——通常指jQuery——是自学的技能。</p>
-<p>这些事情在过去的几年里发生了变化。可能是因为大家开始认真的看待前端开发者的工作，或者是因为浏览器开发商开始臭味相投（趋向一致？原句getting their shit together），又或者是前端开发者自己——同样，包括我在内——开始看到软件开发变得完善的曙光。</p>
-<p>不管怎么说，我们看到前端开发的重点，从繁琐转向了重视工具化。想要成为一名成功的前端开发者，你需要掌握一套新的基础技能，而不满足要求的前端开发者会感觉到落后越来越多，而那些正在分享他们知识的工程师们觉得这些事情是自然而然的。 </p>
-<p>下面提到的一些内容是我希望人们能够熟悉的，除此之外还有一些相关的资源，如果你觉得你需要在成长的道路上加速的话。（感谢Paul Irish，Mike Taylor，Angus Croll，以及Vlad Fillppov的贡献）</p>
-
-        
-          <p class="article-more-link">
-            <a href="/discover/2014/03/06/be-a-f2e/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-  
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" href="/discover/">&laquo; Prev</a><a class="page-number" href="/discover/">1</a><span class="page-number current">2</span><a class="page-number" href="/discover/page/3/">3</a><a class="page-number" href="/discover/page/4/">4</a><a class="extend next" href="/discover/page/3/">Next &raquo;</a>
@@ -228,7 +239,7 @@
     <div class="widget">
       <ul class="category-list">
 	  
-	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li>
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span></li>
 	  
 	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/前端心得/">前端心得</a><span class="category-list-count">3</span></li>
 	  
@@ -243,7 +254,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/discover/tags/API/" style="font-size: NaNpx;">API</a><a href="/discover/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/discover/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/discover/tags/webApp/" style="font-size: NaNpx;">webApp</a>
+      <a href="/discover/tags/API/" style="font-size: NaNpx;">API</a><a href="/discover/tags/jquery/" style="font-size: NaNpx;">jquery</a><a href="/discover/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/discover/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/discover/tags/webApp/" style="font-size: NaNpx;">webApp</a>
     </div>
   </div>
 
@@ -252,7 +263,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
