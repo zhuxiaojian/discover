@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<title>javascript 杂谈之哪种写法你更喜欢？ | 发现前端</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="javascript 杂谈之哪种写法你更喜欢？">
+<meta name="og:url" content="http://ppanda.com/discover/2014/03/19/how-to-write-javascript-which-do-you-like-better/">
+<meta name="og:image" content="http://pic002.cnblogs.com/images/2012/152332/2012043015240070.png">
+<meta name="og:site_name" content="发现前端">
+<meta name="og:description" content="思维导图
+
+介绍
+老是在写js，你平时是怎么写你的js呢？更喜欢哪种方式呢？
+今天就把常见的跟大家唠叨唠叨。——年纪大了，就这一爱好（平时也喜欢说胡话），别闲我烦!
+
+
+
+直接初始化法
+
+
+优点：
+1、userData本身就是对象实例。——上来就实例化一个类出来，也不怕浏览器受不了。
+2、代码紧凑。
+3、编程效率高。
+缺点：
+1、代码的重用性比较差。
+2、不符合面向对象的编程思路。——设计模式这种">
+<meta name="twitter:card" content="summary">
+  
+<link rel="alternative" href="/atom.xml" title="发现前端" type="application/atom+xml">
+  
+  
+<link rel="icon" href="/discover/favicon.ico">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/discover/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+    <header id="header">
+  <div class="header-outer outer">
+    <div class="header-title inner">
+      <h1 class="logo-wrap">
+        <a href="/discover/" class="logo">发现前端</a>
+      </h1>
+      
+    </div>
+    <div class="header-inner inner">
+      <nav class="main-nav">
+        
+          <a class="main-nav-link" href="/discover/">Home</a>
+        
+          <a class="main-nav-link" href="/discover/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/discover/about">about</a>
+        
+        <a class="main-nav-link" title="尚未完全开放" href="#">#我发现</a>
+      </nav>
+    </div>
+  </div>
+</header>
+    <div class="pure-g-r">
+      <aside class="pure-u-1-6">
+        <div class="widget-wrap">
+    <h3 class="widget-title">技术站点</h3>
+    <div class="widget">
+      <ul class="category-list category-list-side">
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://tid.tenpay.com/'>财付通设计中心 UID</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cdc.tencent.com/'>腾讯用户研究与体验设计中心 CDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.alloyteam.com/'>腾讯Web前端 Alloy 团队 Blog</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://gdc.qq.com/'>QQ游戏设计中心GDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mxd.tencent.com/'>腾讯移动互联网设计团队MXD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ecd.tencent.com/'>腾讯电商用户设计体验部ECD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://isux.tencent.com/'>腾讯社交用户体验设计部ISUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://djt.qq.com/'>腾讯大讲堂</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.cn/'>阿里巴巴用户体验设计部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.taobao.com/blog/'>淘宝网UED官方博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.com/'>阿里巴巴国际站UED团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ux.etao.com/'>淘宝一淘用户体验中心UX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.searchtb.com/'>淘宝搜索技术博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://alipaymiddleware.com/'>支付宝中间件团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.tmall.com/'>天猫UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.baiduux.com/'>百度泛用户体验部UUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mux.baidu.com/'>百度无线用户体验部MUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.baidu.com/'>百度商业用户体验部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mued.sohu.com/'>搜狐移动用户体验团队MUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.focus.cn/'>搜狐焦点用户体验设计UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://udc.weibo.com/'>新浪微博用户体验设计中心UDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sina.com/'>新浪UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.75team.com/'>奇虎360公司Web前端</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uxc.360.cn/'>360UXC用户体验设计中心</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/'>携程旅行前端开发团队UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://fed.renren.com/'>人人网FED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sogou.com/'>搜狗设计团队UED博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uedc.163.com/'>网易用户体验设计中心UEDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cued.xunlei.com/'>迅雷用户体验设计中心CUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://blog.19ued.com/'>19楼UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.5173.com/'>5173用户体验设计团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.iciba.com/'>爱词霸UED团队 </a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/wp-content/webkitcss/index.html'>Webkit css</a></li>
+  </ul>
+
+    </div>
+  </div>
+      </aside>
+      <section class="pure-u-2-3"><article id="post-how-to-write-javascript-which-do-you-like-better" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript 杂谈之哪种写法你更喜欢？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/discover/2014/03/19/how-to-write-javascript-which-do-you-like-better/" class="article-date">
+  <time datetime="2014-03-19T03:30:35.000Z" itemprop="datePublished">2014年3月19日</time>
+</a>
+      
+  <div class="article-category">
+    
+	    <a class="pure-button" style='display:inline;' href="/discover/categories/JavaScript/">JavaScript</a>
+	  
+  </div>
+
+      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="-">思维导图</h2>
+<p><img src="http://pic002.cnblogs.com/images/2012/152332/2012043015240070.png" alt=""></p>
+<h2 id="-">介绍</h2>
+<p>老是在写js，你平时是怎么写你的js呢？更喜欢哪种方式呢？</p>
+<p>今天就把常见的跟大家唠叨唠叨。——年纪大了，就这一爱好（平时也喜欢说胡话），别闲我烦!</p>
+<p><img src="http://pic002.cnblogs.com/images/2012/152332/2012043014540770.png" alt=""></p>
+<a id="more"></a>
+
+<h2 id="-">直接初始化法</h2>
+<p><img src="http://pic002.cnblogs.com/images/2012/152332/2012042716594715.png" alt=""></p>
+<p><img src="http://pic002.cnblogs.com/images/2012/152332/2012043014592485.png" alt=""></p>
+<h2 id="-">优点：</h2>
+<p>1、userData本身就是对象实例。——上来就实例化一个类出来，也不怕浏览器受不了。</p>
+<p>2、代码紧凑。</p>
+<p>3、编程效率高。</p>
+<h2 id="-">缺点：</h2>
+<p>1、代码的重用性比较差。</p>
+<p>2、不符合面向对象的编程思路。——设计模式这种玩意，经常是在类上，弄来弄去。这种直接在对象上使用，够呛！</p>
+<h2 id="-">总结：应避免使用该方法创建自定义对象。</h2>
+<p>使用案例： <a href="http://minisite2009.qq.com/othercity/all.htm" target="_blank">QQ迷你弹窗</a></p>
+<h2 id="-">构造函数法</h2>
+<p><img src="http://pic002.cnblogs.com/images/2012/152332/2012042721133341.png" alt=""></p>
+<p><img src="http://pic002.cnblogs.com/images/2012/152332/2012043015025830.png" alt=""></p>
+<p>使用方法：需要使用“new 和 构造函数”创建实例。</p>
+<h2 id="-">优点：</h2>
+<p>只有new的时候，才分配内存。如果不new，浏览器一辈子都不会给你内存资源的。——想要就要，不想要就不理她！</p>
+<p>Object表达式法</p>
+<p>类似于第一种”直接初始化法“。——其实是一种变种。</p>
+<p><img src="http://pic002.cnblogs.com/images/2012/152332/2012042717311890.png" alt=""></p>
+<p><img src="http://pic002.cnblogs.com/images/2012/152332/2012043015083185.png" alt=""></p>
+<p>上面那一坨红色标出来的部分，让人看着眼晕。——这代码让谁看了，估计都要狂吐血！</p>
+<h2 id="-">匿名函数法</h2>
+<p><img src="http://pic002.cnblogs.com/images/2012/152332/2012043013044148.png" alt=""></p>
+<p><img src="http://pic002.cnblogs.com/images/2012/152332/2012043015144773.png" alt=""></p>
+<p>这个是我经常用的，你看这代码，用两字形容，“漂亮”，再给两字，“相当漂亮”</p>
+<p>上面那个是我经常用的，我在项目中写了一堆的扩展，用这玩意，层次感非常强。</p>
+<p>案例：jQuery</p>
+<h2 id="-">总结</h2>
+<p>我在平时写js代码时候，喜欢自己写，不太喜欢使用现在网上的框架。——一是比较熟悉自己的代码（别人问我，我都知道里面都是什么东东），二是自己的框架更适合现有的项目。</p>
+<p>但是平时我也比较关注这些框架，一般是看看这些框架是怎么写的，然后在写自己项目的时候，会放进去一些。</p>
+<p>大家在平时写js代码的时候更喜欢以上哪种方式，或者你们是不是有更好的方式呢？不妨告知一二。</p>
+<p>前两天看了篇不错的<a href="http://www.cnblogs.com/baochuan/archive/2012/04/30/2473771.html" target="_blank">关于javascript写法的文章</a>。在评论里，不少人表示看不懂最后一种方法，作者也没详细说明，于是我顺势解说，算是沾点人气。</p>
+<p><img src="http://pic002.cnblogs.com/images/2012/152332/2012043013044148.png" alt=""></p>
+<p>代码如上图，整体结构模仿jQuery，代码不长，知识点较多，信息量很大，我们分两部分，逐行解释。</p>
+<h1 id="-">第一部分</h1>
+<p>第一部分中，我们把extend相关的方法抽离，剩余代码如下：</p>
+<pre><code>(function () {
+        var yQuery = (function () {
+            var yQuery = function () {
+                return yQuery.fn.init();
+            };
+
+            yQuery.fn = yQuery.prototype = {
+                init: function () {
+                    return this;
+                }
+            };
+            return yQuery;
+        })();
+        window.yQuery = window.$ = yQuery();
+    })();
+</code></pre><h2 id="-1-">知识点1：无引用的匿名函数调用</h2>
+<pre><code>(function() {
+    })();
+</code></pre><p>这种写法作用是声明并执行一个方法，等同于：</p>
+<pre><code>function Test() {
+    }
+    Test();
+</code></pre><h2 id="-2-">知识点2：属性变量无需声明</h2>
+<pre><code>var obj = new Object();
+ obj.name = &quot;abc&quot;;
+</code></pre><p>obj并没有name属性，但无需声明就可以使用，初始值为undefined。上例中yQuery.fn 就没有声明。</p>
+<h2 id="-3-">知识点3：{}二义性，相当于创建一个对象。</h2>
+<pre><code>var obj = new Object();
+var obj = { };
+</code></pre><p>在js中，{}除了可作为复合语句边界以外，还有创建一个空对象的作用，因此上面这两句相同。而在例子中用到的情况如下：</p>
+<pre><code>        {
+            init: function () {
+                return this;
+            }
+        };
+</code></pre><p>这段代码猛一看像方法，实质是一个包含了init方法的对象，而方法中的this指向这个对象本身。</p>
+<h2 id="-4-">知识点4：连等表达式</h2>
+<pre><code>var a = b = 1;
+</code></pre><p>这个比较好理解，相当于对他们分别赋同一个值。在上例中，yQuery.fn就用到了这个写法。</p>
+<h2 id="-5-prototype">知识点5：原型继承prototype</h2>
+<pre><code>yQuery.fn = yQuery.prototype = {
+                init: function () {
+                    return this;
+                }
+            };
+</code></pre><p>例子中，通过连等分别对yQuery.fn和yQuery.prototype赋值给了同一个对象。而fn的作用只是一个别名，只为书写方便，重点是给prototype赋值，为什么要给它赋值？在本例中无法解释。</p>
+<p>在jQuery中，init方法会返回不同对象，而本例中永远返回同一个对象，因此这里prototype没有多大意义。至于jQuery为什么要用prototype，算是题外话了，有兴趣的可点<a href="http://stackoverflow.com/questions/1755080/why-jquery-do-this-jquery-fn-init-prototype-jquery-fn" target="_blank">这里</a>。</p>
+<h2 id="-">第一部分代码含义</h2>
+<p>这段代码第二行yQuery和第三行的yQuery是两个变量，因名字相同，所有很有迷惑性。整段代码意思就是：yQuery.prototype指向了一个包含init方法的对象，prototype有个别名fn,可通过yQuery.fn.init()返回这个对象，最后把这个对象赋值给window.$和window.yQuery属性。</p>
+<h1 id="-">第二部分</h1>
+<p>看完了第一部分，第二部分就相对简单了，代码如下：</p>
+<pre><code>yQuery.extend = yQuery.fn.extend = function () {
+                var options, name, src, copy,
+                    target = arguments[0] || {},
+                    i = 1,
+                    length = arguments.length;
+                if (length === i) {
+                    target = this;
+                    --i;
+                }
+
+                for (; i &lt; length; i++) {
+                    if ((options = arguments[i]) != null) {
+                        for (name in options) {
+                            src = target[name];
+                            copy = options[name];
+
+                            if (src === copy) {
+                                continue;
+                            }
+                            if (copy!==undefined) {
+                                target[name] = copy;
+                            }
+                        }
+                    }
+                }
+                return target;
+            };
+</code></pre><h2 id="-1-arguments-">知识点1：函数中的arguments变量</h2>
+<p>函数内部会自带一个arguments变量，该变量记录传入的参数，从左至右分别是arguments<a href="http://pic002.cnblogs.com/images/2012/152332/2012043015240070.png" target="_blank">0</a>,arguments<a href="http://pic002.cnblogs.com/images/2012/152332/2012043014540770.png" target="_blank">1</a>等，js奇怪的地方在于，你声明了一个无参函数，在调用的时候依然可以传入参数，比如：</p>
+<pre><code>function NoArg() {
+        console.log(arguments[0]);
+        console.log(arguments[1]);
+        console.log(arguments[2]);
+    }
+    NoArg(1, 2, &quot;a&quot;);
+</code></pre><p>该例NoArg调用时，会正常显示传入参数。</p>
+<h2 id="-2-">知识点2：结果类型不确定的逻辑运算</h2>
+<p>js中，所有类型都可以进行逻辑判断（true或false），js会将值转化为布尔值，但并不改变原值。如：</p>
+<pre><code>var str = &quot;a&quot;;
+    if(str) {
+    }
+</code></pre><p>此处的str为true，该特性与逻辑运算符”||”和”&amp;&amp;”结合形成了js一大特点，代码如下：</p>
+<pre><code>var str = &quot;a&quot;;
+var num = 1;
+var x = str || num; //x=&quot;a&quot;
+var y = str &amp;&amp; num; //y=1;
+</code></pre><p>js支持“逻辑短路”，所谓逻辑短路是指：</p>
+<ol>
+<li>在”||” 运算中，第一个条件符合就结束判断。</li>
+<li>在”&amp;&amp;”运算中，第一个条件不符合就结束判断。</li>
+</ol>
+<p>因此,”str || num”的str为true，则结束判断，返回str。”str&amp;&amp;num”的str为true，则继续判断num，num为true，则返回num。在本文案例中，有几个地方用到了这个特性：</p>
+<pre><code>target = arguments[0] || {}
+</code></pre><p>容易看出，如果arguments<a href="http://pic002.cnblogs.com/images/2012/152332/2012043015240070.png" target="_blank">0</a>有值则返回该值，不然就通过{}返回一个空的对象。还有一处在图片中有，我文中没有打出来的代码：</p>
+<pre><code>$.ui = $.ui || { };
+</code></pre><h2 id="-3-">知识点3：数组方式访问对象属性</h2>
+<pre><code>var obj = new Object();
+obj.name = &quot;a&quot;;
+obj[&quot;name&quot;] = &quot;a&quot;;
+</code></pre><p>最后两行代码等效。</p>
+<h2 id="-">第二部分代码含义</h2>
+<p>这部分代码可简单描述为：定义一个方法，将参数1之外的所有参数的属性成员赋值给参数1。我把循环部分修改一下，能更容易看懂，代码如下：</p>
+<pre><code>for (; i &lt; length; i++) {
+        if ((options = arguments[i]) != null) {
+            for (var name in options) {
+                if (options[name] !== undefined) {
+                    target[name] = options[name];
+                }
+            }
+        }
+    }
+</code></pre><h1 id="-">结语</h1>
+<p>js中有不少语法和运算符存在二义性，这导致js代码显的混乱难懂，所以不少人骂js是一个2B的语言，我觉得也不无道理。不过随着js的应用范围越来越广泛，终究避不开它，因此骂归骂，学还是要学的。</p>
+<p>原文来自：<a href="http://www.cnblogs.com/baochuan/archive/2012/04/30/2473771.html#!comments" target="_blank">javascript 杂谈之哪种写法你更喜欢？ - 川山甲 - 博客园</a></p>
+<p><span class="pure-button pure-button-primary" style="float:right;">由让周飞发现</span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+   
+
+
+  <div class="ds-thread"></div>
+<!-- Duoshuo Comment BEGIN -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"suningwiki"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+
+
+  
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/教程/">教程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/discover/2014/03/18/you-might-not-need-jquery/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">YOU MIGHT NOT NEED JQUERY</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+        <aside class="pure-u-1-6">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list">
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">5</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/NodeJs/">NodeJs</a><span class="category-list-count">1</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/前端心得/">前端心得</a><span class="category-list-count">3</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li>
+	  
+	  </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/discover/2014/03/19/how-to-write-javascript-which-do-you-like-better/">javascript 杂谈之哪种写法你更喜欢？</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/03/18/you-might-not-need-jquery/">YOU MIGHT NOT NEED JQUERY</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/03/17/7-days-nodejs/">七天学会NodeJS</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/03/08/secrets-of-awesome-javascript-api-design/">如何设计出色的 JavaScript API</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/03/06/know-javascript-prototype/">深入理解javacript之prototype</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/discover/tags/API/" style="font-size: 10.00px;">API</a><a href="/discover/tags/jquery/" style="font-size: 10.00px;">jquery</a><a href="/discover/tags/mobile/" style="font-size: 10.00px;">mobile</a><a href="/discover/tags/prototype/" style="font-size: 10.00px;">prototype</a><a href="/discover/tags/webApp/" style="font-size: 10.00px;">webApp</a><a href="/discover/tags/教程/" style="font-size: 20.00px;">教程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+    <div id="footer-info" class="inner">
+      &copy; 2014 发现前端<br>
+    </div>
+</footer>
+  
+<script type="text/javascript" src="/discover/js/script.js"></script>
+</body>
+</html>
