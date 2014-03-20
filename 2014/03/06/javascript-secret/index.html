@@ -39,8 +39,6 @@ JavaScript 秘密花园不是用来教你 JavaScript。为了更好的理解这�
         
           <a class="main-nav-link" href="/discover/">Home</a>
         
-          <a class="main-nav-link" href="/discover/archives">Archives</a>
-        
           <a class="main-nav-link" href="/discover/about">about</a>
         
         <a class="main-nav-link" title="尚未完全开放" href="#">#我发现</a>
@@ -344,7 +342,7 @@ setTimeout(function() {
     }, 1000);  
 })(i);  
 </code></pre><p>}<br>外部的匿名函数会立即执行，并把 i 作为它的参数，此时函数内 e 变量就拥有了 i 的一个拷贝。</p>
-<p>当传递给 setTimeout 的匿名函数执行时，它就拥有了对 e 的引用，而这个值是<strong>不会</strong>被循环改变的。</p>
+<p>当传递给 setTimeout 的匿名函���执行时，它就拥有了对 e 的引用，而这个值是<strong>不会</strong>被循环改变的。</p>
 <p>有另一个方法完成同样的工作；那就是从匿名包装器中返回一个函数。这和上面的代码效果一样。</p>
 <pre><code>for(var i = 0; i &lt; 10; i++) {  
 setTimeout((function(e) {  
@@ -596,7 +594,7 @@ window.foo = function() {
 <pre><code>new Array(count + 1).join(stringToRepeat);  
 </code></pre><p><strong>译者注：</strong>new Array(3).join(&#39;#&#39;) 将会返回 ##</p>
 <h3 id="-">结论</h3>
-<p>应该尽量避免使用数组构造函数创建新数组。推荐使用数组的字面语法。它们更加短小和简洁，因此增加了代码的可读性。</p>
+<p>应该尽量避免使用数组构造函数创建新数组。推荐使用数组的字面语法。它们更加短小和简洁，因此���加了代码的可读性。</p>
 <h3 id="-">类型</h3>
 <h3 id="-">相等与比较</h3>
 <p>JavaScript 有两种方式判断两个值是否相等。</p>
@@ -719,7 +717,7 @@ return obj !== undefined &amp;&amp; obj !== null &amp;&amp; clas === type;
 <h3 id="-undefined-">处理 undefined 值的改变</h3>
 <p>由于全局变量 undefined 只是保存了 undefined 类型实际<em>值</em>的副本， 因此对它赋新值<strong>不会</strong>改变类型 undefined 的值。</p>
 <p>然而，为了方便其它变量和 undefined 做比较，我们需要事先获取类型 undefined 的值。</p>
-<p>为了避免可能对 undefined 值的改变，一个常用的技巧是使用一个传递到<a href="#function.scopes">匿名包装器</a>的额外参数。 在调用时，这个参数不会获取任何值。</p>
+<p>为了避免可能对 undefined 值的改变，一个常用的技巧是使用一个传递到<a href="#function.scopes">匿名���装器</a>的额外参数。 在调用时，这个参数不会获取任何值。</p>
 <pre><code>var undefined = 123;  
 </code></pre><p>(function(something, foo, undefined) {<br>    // 局部作用域里的 undefined 变量重新获得了 <code>undefined</code> 值  </p>
 <p>})(&#39;Hello World&#39;, 42);<br>另外一种达到相同目的方法是在函数内使用变量声明。</p>
@@ -819,7 +817,7 @@ setTimeout(this.method, 500);
 setTimeout(foo, 1000);  
 </code></pre><p>}<br>foo();<br>这样不仅封装了 setTimeout 回调函数，而且阻止了调用指令的堆积，可以有更多的控制。 foo 函数现在可以控制是否继续执行还是终止执行。</p>
 <h3 id="-">手工清空定时器</h3>
-<p>可以通过将定时时产生的 ID 标识传递给 clearTimeout 或者 clearInterval 函数来清除定时， 至于使用哪个函数取决于调用的时候使用的是 setTimeout 还是 setInterval。</p>
+<p>可以通过将定时时产生的 ID 标识传递给 clearTimeout 或者 clearInterval 函数来清除定时��� 至于使用哪个函数取决于调用的时候使用的是 setTimeout 还是 setInterval。</p>
 <pre><code>var id = setTimeout(foo, 1000);  
 </code></pre><p>clearTimeout(id);</p>
 <h3 id="-">清除所有定时器</h3>
@@ -903,7 +901,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
     <div class="widget">
       <ul class="category-list">
 	  
-	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">5</span></li>
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span></li>
 	  
 	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/NodeJs/">NodeJs</a><span class="category-list-count">1</span></li>
 	  
@@ -923,10 +921,6 @@ var duoshuoQuery = {short_name:"suningwiki"};
       <ul>
         
           <li>
-            <a href="/discover/2014/03/19/how-to-write-javascript-which-do-you-like-better/">javascript 杂谈之哪种写法你更喜欢？</a>
-          </li>
-        
-          <li>
             <a href="/discover/2014/03/18/you-might-not-need-jquery/">YOU MIGHT NOT NEED JQUERY</a>
           </li>
         
@@ -942,6 +936,10 @@ var duoshuoQuery = {short_name:"suningwiki"};
             <a href="/discover/2014/03/06/know-javascript-prototype/">深入理解javacript之prototype</a>
           </li>
         
+          <li>
+            <a href="/discover/2014/03/06/javascript-secret/">javascript 秘密花园</a>
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -951,7 +949,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/discover/tags/API/" style="font-size: 10.00px;">API</a><a href="/discover/tags/jquery/" style="font-size: 10.00px;">jquery</a><a href="/discover/tags/mobile/" style="font-size: 10.00px;">mobile</a><a href="/discover/tags/prototype/" style="font-size: 10.00px;">prototype</a><a href="/discover/tags/webApp/" style="font-size: 10.00px;">webApp</a><a href="/discover/tags/教程/" style="font-size: 20.00px;">教程</a>
+      <a href="/discover/tags/API/" style="font-size: NaNpx;">API</a><a href="/discover/tags/jquery/" style="font-size: NaNpx;">jquery</a><a href="/discover/tags/mobile/" style="font-size: NaNpx;">mobile</a><a href="/discover/tags/prototype/" style="font-size: NaNpx;">prototype</a><a href="/discover/tags/webApp/" style="font-size: NaNpx;">webApp</a><a href="/discover/tags/教程/" style="font-size: NaNpx;">教程</a>
     </div>
   </div>
 
@@ -960,7 +958,7 @@ var duoshuoQuery = {short_name:"suningwiki"};
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
