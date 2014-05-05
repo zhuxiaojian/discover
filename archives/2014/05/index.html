@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   
-<title>发现前端</title>
+<title>Archives: 2014/5 | 发现前端</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
 <meta name="og:title">
-<meta name="og:url" content="http://ppanda.com/discover/page/2/">
+<meta name="og:url" content="http://ppanda.com/discover/archives/2014/05/">
 <meta name="og:image">
 <meta name="og:site_name" content="发现前端">
 <meta name="og:description">
@@ -90,7 +90,7 @@
       </aside>
       <section class="pure-u-2-3">
   
-    <article id="post-you-might-not-need-jquery" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-thejavascriptrightway" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -98,15 +98,15 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/discover/2014/03/18/you-might-not-need-jquery/">YOU MIGHT NOT NEED JQUERY</a>
+      <a class="article-title" href="/discover/2014/05/05/thejavascriptrightway/">The javascript right way</a>
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/discover/2014/03/18/you-might-not-need-jquery/" class="article-date">
-  <time datetime="2014-03-18T08:05:58.000Z" itemprop="datePublished">2014年3月18日</time>
+      <a href="/discover/2014/05/05/thejavascriptrightway/" class="article-date">
+  <time datetime="2014-05-05T07:48:59.000Z" itemprop="datePublished">2014年5月5日</time>
 </a>
       
   <div class="article-category">
@@ -119,138 +119,39 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ajax">AJAX</h2>
-<h4 id="alternatives-">Alternatives:</h4>
+        <h1 id="hey-you-">Hey, you!</h1>
+<p>This is a JavaScript guide intended to introduce new developers and help experienced ones to the JavaScript&#39;s best practices. </p>
+<p>Despite the name, this guide doesn&#39;t mean exactly &quot;the right way&quot; to do JavaScript. </p>
+<p>We just gather all the stuff from top developers and put here. Since it come from exceptional folks, we could say that it is &quot;the right way&quot;, or the best way to do so. </p>
+<h1 id="-choose-your-path-0-"><a href="#main">Choose your path</a></h1>
 <ul>
-<li><a href="https://github.com/ForbesLindesay/ajax" target="_blank">ajax</a></li>
-<li><a href="https://github.com/then/request" target="_blank">request</a></li>
-<li><a href="https://github.com/ded/Reqwest" target="_blank">reqwest</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#js-code-style">JavaScript Code Style</a></li>
+<li><a href="#the-good-parts">The Good Parts</a></li>
+<li><a href="#patterns">Patterns</a></li>
+<li><a href="#testing-tools">Testing Tools</a></li>
+<li><a href="#frameworks">Frameworks</a></li>
+<li><a href="#game-engines">Game Engines</a></li>
+<li><a href="#news">News</a></li>
+<li><a href="#reading">Reading</a></li>
+<li><a href="#podcasts">Podcasts</a></li>
+<li><a href="#screencasts">Screencasts</a></li>
+<li><a href="#whotofollow">Who to follow</a></li>
+<li><a href="#paas">PaaS Providers</a></li>
+<li><a href="#helpers">Helpers</a></li>
 </ul>
-<h3 id="-json-3-"><a href="#json">JSON</a></h3>
-<h4 id="jquery">jQuery</h4>
-<pre><code>$.getJSON(&#39;/my/url&#39;, function(data) {
-
-});
-</code></pre><h4 id="ie8-">IE8+</h4>
-<pre><code>request = new XMLHttpRequest();
-request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
-
-request.onreadystatechange = function() {
-  if (this.readyState === 4){
-    if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400){
-      // Success!
-      data = JSON.parse(this.responseText);
-    } else {
-      // Error :(
-    }
-  }
-};
-
-request.send();
-request = null;
-</code></pre><h4 id="ie9-">IE9+</h4>
-<pre><code>request = new XMLHttpRequest();
-request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
-
-request.onload = function() {
-  if (request.status &gt;= 200 &amp;&amp; request.status &lt; 400){
-    // Success!
-    data = JSON.parse(request.responseText);
-  } else {
-    // We reached our target server, but it returned an error
-
-  }
-};
-
-request.onerror = function() {
-  // There was a connection error of some sort
-};
-
-request.send();
-</code></pre><h4 id="ie10-">IE10+</h4>
-<pre><code>request = new XMLHttpRequest();
-request.open(&#39;GET&#39;, &#39;/my/url&#39;, true);
-
-request.onload = function() {
-  if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400){
-    // Success!
-    data = JSON.parse(this.response);
-  } else {
-    // We reached our target server, but it returned an error
-
-  }
-};
-
-request.onerror = function() {
-  // There was a connection error of some sort
-};
-
-request.send();
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/discover/2014/03/18/you-might-not-need-jquery/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-  
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/jquery/">jquery</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-7-days-nodejs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/discover/2014/03/17/7-days-nodejs/">七天学会NodeJS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/discover/2014/03/17/7-days-nodejs/" class="article-date">
-  <time datetime="2014-03-17T14:25:48.000Z" itemprop="datePublished">2014年3月17日</time>
-</a>
-      
-  <div class="article-category">
-    
-	    <a class="pure-button" style='display:inline;' href="/discover/categories/NodeJs/">NodeJs</a>
-	  
-  </div>
-
-      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="nodejs-">NodeJS基础</h2>
-<h3 id="-nodejs">什么是NodeJS</h3>
-<p>JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。</p>
-<p>每一种解析器都是一个运行环境，不但允许JS定义各种数据结构，进行各种计算，还允许JS使用运行环境提供的内置对象和方法做一些事情。例如运行在浏览器中的JS的用途是操作DOM，浏览器就提供了document之类的内置对象。而运行在NodeJS中的JS的用途是操作磁盘文件或搭建HTTP服务器，NodeJS就相应提供了fs、http等内置对象。</p>
-<h3 id="-">有啥用处</h3>
-<p>尽管存在一听说可以直接运行JS文件就觉得很酷的同学，但大多数同学在接触新东西时首先关心的是有啥用处，以及能带来啥价值。</p>
-<p>NodeJS的作者说，他创造NodeJS的目的是为了实现高性能Web服务器，他首先看重的是事件机制和异步IO模型的优越性，而不是JS。但是他需要选择一种编程语言实现他的想法，这种编程语言不能自带IO功能，并且需要能良好支持事件机制。JS没有自带IO功能，天生就用于处理浏览器中的DOM事件，并且拥有一大群程序员，因此就成为了天然的选择。</p>
-<p>如他所愿，NodeJS在服务端活跃起来，出现了大批基于NodeJS的Web服务。而另一方面，NodeJS让前端众如获神器，终于可以让自己的能力覆盖范围跳出浏览器窗口，更大批的前端工具如雨后春笋。</p>
-<p>因此，对于前端而言，虽然不是人人都要拿NodeJS写一个服务器程序，但简单可至使用命令交互模式调试JS代码片段，复杂可至编写工具提升工作效率。</p>
-<p>NodeJS生态圈正欣欣向荣。</p>
+<h1 id="-getting-started-1-"><a href="#getting-started">GETTING STARTED</a></h1>
+<h3 id="about">ABOUT</h3>
+<p>Created by Netscape in 1995 as an extension of HTML for Netscape Navigator 2.0, JavaScript had as its main function the manipulation of HTML documents and form validation. Before winning this name so famous nowadays, JavaScript was called Mocha, after LiveScript and finally, when it was released by Sun Microsystems, was baptized with the name by which he is known today. Because of the similar names, people confuses JavaScript with Java. Although both have the lexical structure of programming, they are not the same language. Different from C, C# and Java, JavaScript is an interpreted language. It means that it needs an &quot;interpreter&quot;. In case of JavaScript, the interpreter is the browser. </p>
+<h3 id="current-version">CURRENT VERSION</h3>
+<p>The JavaScript standard is ECMAScript. As of 2012, all modern browsers fully support ECMAScript 5.1. Older browsers support at least ECMAScript 3. A 6th major revision of the standard is being worked on. </p>
+<p>A good reference to versions, references and news about JavaScript, you can find at <a href="https://developer.mozilla.org/en-US/docs/JavaScript" target="_blank">Mozilla Developer Network</a>. </p>
+<h3 id="the-dom">THE DOM</h3>
+<p>The Document Object Model (DOM) is an API for HTML and XML documents. It provides a structural representation of the document, enabling you to modify its content and visual presentation by using a scri pting language such as JavaScript. See more at <a href="https://developer.mozilla.org/en-US/docs/DOM" target="_blank">Mozilla Developer Network - DOM</a>. </p>
 
         
           <p class="article-more-link">
-            <a href="/discover/2014/03/17/7-days-nodejs/#more">Read More</a>
+            <a href="/discover/2014/05/05/thejavascriptrightway/#more">Read More</a>
           </p>
         
       
@@ -269,10 +170,6 @@ request.send();
 
 
   
-  
-    <nav id="page-nav">
-      <a class="extend prev" href="/discover/">&laquo; Prev</a><a class="page-number" href="/discover/">1</a><span class="page-number current">2</span><a class="page-number" href="/discover/page/3/">3</a><a class="page-number" href="/discover/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/discover/page/6/">6</a><a class="extend next" href="/discover/page/3/">Next &raquo;</a>
-    </nav>
   
 </section>
       
