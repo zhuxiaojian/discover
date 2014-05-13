@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<title>webapp开发实践 | 发现前端</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="webapp开发实践">
+<meta name="og:url" content="http://ppanda.com/discover/2014/05/13/exp/">
+<meta name="og:image" content="http://bcs.duapp.com/mbuweb/1.png">
+<meta name="og:site_name" content="发现前端">
+<meta name="og:description" content="前端自动化开发工具
+为什么要用自动化开发工具
+在前端的开发中上线前可能会做的事情：
+
+文件目录调整
+HTML注释、换行等操作
+CSS压缩合并
+JS、CSS语法检测
+JS代码压缩
+图片压缩
+
+上面列举了一些常用的操作，这些操作是重复而枯燥的，如果是人工来一项一项做，会浪费大量时间。所以需要有一个高效的工具来帮我们做这些事情，Grunt应运而生。
+Grunt是什么
+Grunt是一个基于任务的Javas">
+<meta name="twitter:card" content="summary">
+  
+<link rel="alternative" href="/atom.xml" title="发现前端" type="application/atom+xml">
+  
+  
+<link rel="icon" href="/discover/favicon.ico">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/discover/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+    <header id="header">
+  <div class="header-outer outer">
+    <div class="header-title inner">
+      <h1 class="logo-wrap">
+        <a href="/discover/" class="logo">发现前端</a>
+      </h1>
+      
+    </div>
+    <div class="header-inner inner">
+      <nav class="main-nav">
+        
+          <a class="main-nav-link" href="/discover/">Home</a>
+        
+          <a class="main-nav-link" href="/discover/about">about</a>
+        
+        <a class="main-nav-link" title="尚未完全开放" href="#">#我发现</a>
+      </nav>
+    </div>
+  </div>
+</header>
+    <div class="pure-g-r">
+      <aside class="pure-u-1-6">
+        <div class="widget-wrap">
+    <h3 class="widget-title">技术站点</h3>
+    <div class="widget">
+      <ul class="category-list category-list-side">
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://tid.tenpay.com/'>财付通设计中心 UID</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cdc.tencent.com/'>腾讯用户研究与体验设计中心 CDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.alloyteam.com/'>腾讯Web前端 Alloy 团队 Blog</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://gdc.qq.com/'>QQ游戏设计中心GDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mxd.tencent.com/'>腾讯移动互联网设计团队MXD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ecd.tencent.com/'>腾讯电商用户设计体验部ECD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://isux.tencent.com/'>腾讯社交用户体验设计部ISUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://djt.qq.com/'>腾讯大讲堂</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.cn/'>阿里巴巴用户体验设计部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.taobao.com/blog/'>淘宝网UED官方博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.com/'>阿里巴巴国际站UED团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ux.etao.com/'>淘宝一淘用户体验中心UX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.searchtb.com/'>淘宝搜索技术博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://alipaymiddleware.com/'>支付宝中间件团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.tmall.com/'>天猫UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.baiduux.com/'>百度泛用户体验部UUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mux.baidu.com/'>百度无线用户体验部MUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.baidu.com/'>百度商业用户体验部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mued.sohu.com/'>搜狐移动用户体验团队MUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.focus.cn/'>搜狐焦点用户体验设计UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://udc.weibo.com/'>新浪微博用户体验设计中心UDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sina.com/'>新浪UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.75team.com/'>奇虎360公司Web前端</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uxc.360.cn/'>360UXC用户体验设计中心</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/'>携程旅行前端开发团队UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://fed.renren.com/'>人人网FED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sogou.com/'>搜狗设计团队UED博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uedc.163.com/'>网易用户体验设计中心UEDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cued.xunlei.com/'>迅雷用户体验设计中心CUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://blog.19ued.com/'>19楼UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.5173.com/'>5173用户体验设计团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.iciba.com/'>爱词霸UED团队 </a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/wp-content/webkitcss/index.html'>Webkit css</a></li>
+  </ul>
+
+    </div>
+  </div>
+      </aside>
+      <section class="pure-u-2-3"><article id="post-exp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webapp开发实践
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/discover/2014/05/13/exp/" class="article-date">
+  <time datetime="2014-05-13T07:22:16.000Z" itemprop="datePublished">2014年5月13日</time>
+</a>
+      
+  <div class="article-category">
+    
+	    <a class="pure-button" style='display:inline;' href="/discover/categories/前端心得/">前端心得</a>
+	  
+  </div>
+
+      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="-">前端自动化开发工具</h2>
+<h3 id="-">为什么要用自动化开发工具</h3>
+<p>在前端的开发中上线前可能会做的事情：</p>
+<ul>
+<li>文件目录调整</li>
+<li>HTML注释、换行等操作</li>
+<li>CSS压缩合并</li>
+<li>JS、CSS语法检测</li>
+<li>JS代码压缩</li>
+<li>图片压缩</li>
+</ul>
+<p>上面列举了一些常用的操作，这些操作是重复而枯燥的，如果是人工来一项一项做，会浪费大量时间。所以需要有一个高效的工具来帮我们做这些事情，Grunt应运而生。</p>
+<h3 id="grunt-">Grunt是什么</h3>
+<p>Grunt是一个基于任务的Javascript工程命令行构建工具</p>
+<h3 id="-grunt">如何使用Grunt</h3>
+<ul>
+<li>[安装nodejs][0]</li>
+<li>安装gruntjs</li>
+<li>假如之前安装过的话，先卸载 npm uninstall –g –grunt</li>
+<li>安装grunt命令行工具， 命令：npm install-g grunt-cli</li>
+<li>在工程目录下安装Grunt Module(如何安装看第三步)</li>
+<li>安装Grunt Module</li>
+</ul>
+<ol>
+<li>在项目根目录下创建package.json文件</li>
+</ol>
+<p><a href="http://bcs.duapp.com/mbuweb/1.png" target="_blank"><img src="http://bcs.duapp.com/mbuweb/1.png" alt="1"></a>  </p>
+<ol>
+<li>在项目根目录执行以下命令行自动安装package包文件：npm install  </li>
+<li>增加依赖的模块，可以在根目录下执行命令行<br>Npm install –save-dev //–save-dev 是把信息保存到package.json  </li>
+<li>[常用的模块][1]  </li>
+<li>为了方便，将依赖的包都写入到package.json中，执行第2操作即可安装  </li>
+</ol>
+<ul>
+<li>在项目的根目录创建Gruntfile.js文件，在此文件中注册要执行的任务，如下图代码示例<br><a href="http://bcs.duapp.com/mbuweb/2.png" target="_blank"><img src="http://bcs.duapp.com/mbuweb/2.png" alt="2"></a>代码中最后一行注册的任务为’default’也就是grunt的默认任务, 里面包括了’uglify’ ‘cssmin’ ‘devtools’三个子任务。</li>
+</ul>
+<p>在项目根目录执行命令 grunt就会执行default里面的任务， 或者 grunt[task name]执行其中一个单独的任务。</p>
+<a id="more"></a>
+
+<h2 id="webapp-">WebAPP开发框架</h2>
+<p>AngularJS</p>
+<p>AngularJS是一款来自Google的前端JS框架，它的核心特性有：MVC、双向数据绑定、指令和语义化标签、模块化工具、依赖注入、HTML模板，以及对常用工具的封装，例如$http、$cookies、$location等。AngularJS框架的体积非常小，但是设计理念和功能却非常强大，值得前端开发者深入学习。还有类似的框架如Knockout.js</p>
+<p>Sencha Touch</p>
+<p>优点</p>
+<ul>
+<li>用户体验最接近Native App， 具有整体的UI组件、布局解决方案；</li>
+<li>统一的编程代码结构和要求，良好组织的代码易于维护；</li>
+<li>继承ExtJS 4的应用程序MVC架构；</li>
+<li>完善的API文档，示例；活跃的社区，网上有大量的文档书籍帮助学习；</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>兼容性差，仅支持webkit内核的浏览器；</li>
+<li>框架比较重量级，学习成本比较高；</li>
+<li>商业化使用有版权问题；</li>
+</ul>
+<p>jQuery Mobile</p>
+<p>优点</p>
+<ul>
+<li>跨浏览器兼容性最好，几乎兼容所有的平台和浏览器；</li>
+<li>入门简单，语法简洁，编码灵活，一些简单的应用直接用HTML既可实现，无需Javascript；</li>
+<li>开源插件与第三方扩展网上资源丰富；</li>
+<li>完善的API文档，示例；活跃的社区，网上有大量的文档书籍帮助学习；</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>jQuery Mobile对代码没有特定的要求，后期维护难度较大；</li>
+</ul>
+<p>phoneGap<br>一个开源的开发框架，使用HTML、CSS和JavaScript来构建跨平台的移动应用程序。它使开发者能够利用iPhone、Android、 Palm、Symbian、BlackBerry、Windows Phone和Bada等智能手机的核心功能，包括地理定位、加速器、联系人、声音和振动等。除了在本地编译应用之外，还可以使用PhoneGap提供的云 端Build工具进行应用编译。也就是说，只需要将用HTML5写好的应用上传到PhoneGap的云端服务器，PhoneGap Build即可将其编译成适合不同平台的应用。</p>
+<h2 id="-">前端开发工具库</h2>
+<ul>
+<li>轻量级工具库zepto</li>
+</ul>
+<p>为什么不是jQuery？因为jQuery的目标是兼容所有的主流浏览器，这就意味着会有大量的代码对移动端的浏览器是无用或低效的，zepto是针对移动端的浏览器编写的，因此体积较小、效率会高一些，zepto的api完全效仿了jQuery，所以学习成本非常低。</p>
+<p>下载zepto</p>
+<p>下载还要单独讲？没错，一般的插件我们直接从官网下载就可以用了，但是最新的zepto源码其实是由17个模块组成的，官网默认提供的只有5个模块（zepto,event,ajax,form,ie），还有12个模块是没有打包的（detect,fx,fx_methods,assets,data,deferred,callbacks,selector,touch,gesture,stack,ios3）如下图github上的截图。</p>
+<p><a href="http://bcs.duapp.com/mbuweb/3.png" target="_blank"><img src="http://bcs.duapp.com/mbuweb/3.png" alt="3"></a><br>在使用zepto的时候我们可能希望添加一些模块或者去掉一些默认的模块来控制文件的大小，这时候我们就要下载github上的源码，并编译出自己需要的文件。步骤：</p>
+<ol>
+<li>安装nodejs环境</li>
+<li>运行下面的命令<br><a href="http://bcs.duapp.com/mbuweb/4.png" target="_blank"><img src="http://bcs.duapp.com/mbuweb/4.png" alt="4"></a><br>编译出来的文件就在dist目录下</li>
+</ol>
+<ul>
+<li>单页面路由routie</li>
+</ul>
+<p>我们在开发webapp的时候，为了提高体验，经常会做成单页面的应用，这就需要由路由对整个应用进行控制。</p>
+<p>Routie是一个非常小的单纯的javascript hash 路由库，gzip后大小为800bytes,并且功能很强大，用法很简单。官网地址：[<a href="http://projects.jga.me/routie/][2" target="_blank">http://projects.jga.me/routie/][2</a>]</p>
+<ul>
+<li>Requirejs/seajs&amp;commonJS/AMD/CMD</li>
+</ul>
+<p>JS模块化开发一直都有开发者在探索和研究，当nodejs出现后，模块化变的更加重要和有必要。</p>
+<p>nodejs 环境的模块化加载，开发者已经利用commonJS机制来解决，commonJS是服务器端模块的规范，根据commonJS一个单独的文件就是一个模块。加载模块使用require方法，该方法取一个文件并执行，返回文件内部的exports对象。</p>
+<p>CommonJS规范加载是同步的，只有加载完成才可以继续后面的操作。</p>
+<p>AMD规范则是异步加载模块，允许指定回调函数，因为nodejs主要用于服务器端编程，模块文件一般都存在本地硬盘上，所以加载会很快，CommonJs比较适用。但是在浏览器环境，要从服务器端加载模块，这时候就有必要采用异步的方式，因此浏览器一般都采用AMD规范。</p>
+<p>AMD和CMD区别：AMD是RequireJS在推广过程中对模块定义的规范化产出，CMD是SeaJS在推广过程中对模块定义的规范化产出，目的都是为了javascript的模块化开发。</p>
+<p>对于依赖的模块AMD是提前执行，CMD是延迟执行。RequireJS从2.0开始也改成可以延迟执行（写法不同，处理方式不同），CMD是依赖就近。</p>
+<h2 id="-">性能相关</h2>
+<h3 id="-">动画</h3>
+<p>手机端因为硬件的偏弱，相对于PC会面对更多的性能问题， 所以动画的性能要求很高，目前对提升移动端动画主要方法有几点：</p>
+<ul>
+<li><p>尽可能的利用硬件加速，所使用3D变形来开启GPU加速。</p>
+<p>  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);</p>
+</li>
+</ul>
+<p>如动画过程有闪烁（通常发生在动画开始的时候），可以尝试下面的Hack：</p>
+<pre><code>-webkit-backface-visibility: hidden;
+-moz-backface-visibility: hidden;
+-ms-backface-visibility: hidden;
+backface-visibility: hidden;
+-webkit-perspective: 1000;
+-moz-perspective: 1000;
+-ms-perspective: 1000;
+perspective: 1000;
+</code></pre><h3 id="-">布局</h3>
+<ul>
+<li>尽可能少的使用 box-shadows与gradients<br>box-shadows与gradients往往都是页面的性能杀手，尤其是在一个元素同时都使用了它们。</li>
+<li><p>尽可能的让动画元素不在文档流中，以减少重排</p>
+<p>  Position:fixed 
+  position:absolute</p>
+</li>
+</ul>
+<h2 id="-">缓存相关</h2>
+<h3 id="-">为什么用缓存</h3>
+<p>页面的缓存可以减少网络带宽消耗，减轻服务器的压力，减少网络的延迟，加快页面展示速度</p>
+<h3 id="-">常用的缓存</h3>
+<ol>
+<li>浏览器http缓存</li>
+<li>Cookie</li>
+<li>Webstorage (localstorage/sessionstorage)</li>
+<li>Manifest</li>
+<li>Local Database</li>
+</ol>
+<h3 id="localstorage-">Localstorage的使用</h3>
+<p>Localstorage是html5新增的特性，早前的Cookies主要的问题是太小，大概只能存4K，并且IE6只支持每个域名20个cookies, IE有专门的userData，基本是被flash来用的，大小是cookies的25倍左右，localstorage是html5统一的，新的浏览器都支持这一特性，大概每个站点可以存下5M的数据，内容只能存字符串，支持情况：</p>
+<ul>
+<li>PC端： IE8+, FF3.0+, Opera10.5+, Chrome 4.0+, safari 4.0+</li>
+<li>Mobile端： iPhone 2.0+, Android 2.0+</li>
+</ul>
+<p>在网上看到有时候在使用过程中iPhone/iPad上面会在设置setItem()的时候出现诡异的QUOTA_EXCEEDED_ERR错误，一般在设置setItem之前，先removeItem就好了。</p>
+<p>当然localstorage用来存什么东西并没有严格的规定，根据个人需求来合理使用，在这里介绍一个用来优化性能而使用localstorage储存代码的实例。这大大提高了页面的加载性能（除首次加载）；<br>需要注意的一点是因为采用是异步加载js文件，所有要注意代码的执行顺序，具体情况具体处理。</p>
+<h3 id="manifest-">Manifest的使用</h3>
+<p>H5新增的离线存储功能给离线应用带来了福音，但是在使用中会遇到一些意想不到的问题，经测试，更新了文件后，改变manifest版本号，发现手机没有更新到最新的代码，经调研，manifest文件是每次都去请求的，问题出在浏览器的默认缓存会把manifest文件缓存，所以在请求manifest的时候，浏览器会优先监测浏览器本身的缓存，如果发现manifest还未过期就会从缓存中拉取而不是从服务器端请求，这样就导致了无法更新到最新的代码，解决办法是服务器端在返回的时候禁用浏览器缓存。</p>
+<p>另外就是已经上线的程序希望去掉manifest缓存，需要将manifest文件从服务器端删除，并且关键的一点是服务器端一定要返回404,否则将无法删除，另外一个是没有办法的办法，换文件路径。</p>
+<h2 id="-">页面调试</h2>
+<h3 id="-">常用的调试方法</h3>
+<p>开发时候的调试基本是在chrome的控制台Emulation完成</p>
+<p>现有的一些手机端调试方案：</p>
+<ol>
+<li>Remote debugging with Opera Dragonfly 需要wifi网络，下载最新的桌面版的opera,下载手机端的opera,通过桌面版的opera进行远程调试。</li>
+<li>Using Firebug on mobile Firebug lite可以用在任何能运行js的浏览器上， 在页面中引入firebug-lite.js即可 [<a href="https://getfirebug.com/firebug-lite.js][3" target="_blank">https://getfirebug.com/firebug-lite.js][3</a>]</li>
+<li>Remote Javascript debugging with JS console [<a href="http://jsconsole.com/][4" target="_blank">http://jsconsole.com/][4</a>]</li>
+</ol>
+<p>Remote debugging with weinre 需要下载weinre jar包 开启服务</p>
+<h3 id="weinre-">Weinre的使用</h3>
+<p>安装步骤：</p>
+<ol>
+<li>安装npm</li>
+<li>npm install weinre –g</li>
+<li>会在目录C:\Users\Administrator\AppData\Roaming\npm\node_modules下看到weinre，这便是它的主目录了。注： 每次cd一个文件夹，逐目录cd下去才能到达目标文件夹。</li>
+<li>cmd中进入该主目录，运行weinre –httpPort 8080 –boundHost -all-</li>
+<li>在要调试的页面加上</li>
+<li>手机浏览器上打开 http:// yourIp:8080/client/</li>
+</ol>
+<h3 id="android-sdk">Android SDK</h3>
+<p>[下载][5]</p>
+<ol>
+<li>打开目录，找到tools下的ddms.bat，运行。
+<a href="http://bcs.duapp.com/mbuweb/5.png" target="_blank"><img src="http://bcs.duapp.com/mbuweb/5.png" alt="5"></a></li>
+</ol>
+<h2 id="-">兼容性问题归纳</h2>
+<h3 id="android2-3-overflow-">Android2.3的overflow问题</h3>
+<p>在android2.3及以下系统版本的浏览器不支持overflow：scroll / auto，即在页面元素里面的内容如果超过了父元素或祖先元素的高度是无法滚动的，可以通过css3的transform来实现滚动，代表作：iscroll。</p>
+<h3 id="android2-3-">Android2.3的聚焦问题</h3>
+<p>Android2.3会出现点击聚焦的情况，出现黄色的边框，通过对相应的元素设置css –webkit-tap-highlight-color: rgba(0,0,0,0)解决，另外一些高版本的系统也可能会出现有黄色边框的情况，这时候试着用outline：none来解决。</p>
+<h3 id="android2-3-position-fixed-input-bug">Android2.3 position:fixed及input中文输入bug</h3>
+<p>在android2.3系统中，如果页面中有position为fixed的元素，input外层的元素定位为relative或者自身的定位为relative，就会产生一种奇怪的现象，在input中输入数字或者字母都很正常，当切换输入法为中文后，发现无法输入，当把position设置为absolute后一切正常，所有当遇到这种情况时就只能改变布局了。</p>
+<h3 id="android2-3-border-radius-">Android2.3 border-radius问题</h3>
+<p>不支持百分比，可用一个比较大的值 如： 9999px。</p>
+<h3 id="android2-3-">Android2.3 动画问题</h3>
+<pre><code>@-webkit-keyframes wave1{
+0% { opacity: 0; }
+8.33% { opacity: 1; }
+99% {opacity: 1;}
+100% {}
+}
+</code></pre><p>100%要留一帧空出来。在100%之前写一个最后值 99%那里写。2.3系统的动画才会动。</p>
+<h3 id="android2-3-">Android2.3渐变问题</h3>
+<p>渐变这样写2.3才兼容：</p>
+<pre><code>background:-webkit-gradient(linear, 0 0, 0 100%, color-stop(1%,rgba(111,191,7,0)), color-stop(74%,rgba(111,191,7,0)), color-stop(75%,rgba(111,191,7,0.9)), color-stop(100%,rgba(111,191,7,0.9)));
+</code></pre><p>Linear是指渐变方式，0 0指从哪个方向开始。0 0 到 0 100% 说明是从上到下渐变。 后面的color-stop 可以指定百分比和颜色值。</p>
+<h3 id="android4-0-touch-bug">Android4.0及低版本系统touch事件bug</h3>
+<p>在android4.0系统中，存在部分子版本的系统有touch事件的bug，表现为touchstart是正常的，touchmove只有在touchstart触发的时候触发一次，touchend不会被触发，android2.3会触发startmove一次，当touch结束后会执行剩余的move和end。在zepto库中此问题也没有得到解决。</p>
+<h3 id="android4-x-placeholder-">Android4.X placeholder问题</h3>
+<p>placeholder 文字字体会偏上。 但是placeholder只能设置他的color。如：</p>
+<pre><code>input: :-webkit-input-placeholder{
+color:red;
+}
+</code></pre><p>行高不能设置。这时候把line-height设成normal 就能上下居中了。</p>
+<h3 id="-position-fixed-">各个系统对position:fixed的支持情况</h3>
+<p>手机Safari – iOS5及以后版本都支持. iOS4及以下版本不支持，会当做static处理.</p>
+<p>Android</p>
+<ul>
+<li>Android 2.1 及以下版本不支持.</li>
+<li>Android 2.2 滚动过程中不保持fixed的位置，滚动完成后回到fixed的位置.</li>
+<li>Android 2.3 支持fixed, 但是要求页面禁止缩放.</li>
+<li>Android 3和4支持fixed.</li>
+</ul>
+<h3 id="touchstart-click-tap-">Touchstart, click, tap事件分析</h3>
+<p>在移动端我们会经常用到touch事件，touchstart事件很灵敏，所有如果要绑定类似于pc端的click事件，用touchstart会经常的误操作，例如滚动页面的时候被误点，所有市面上有很多手势库，封装出了tap等方面，而在移动端click事件也是可以触发的，click事件会在点击300ms左右出发（原因是浏览器希望判断是否是双击），原始的解释参见google这篇<a href="Creating Fast Buttons for Mobile Web Applications">Creating Fast Buttons for Mobile Web Applications</a>，个人经过实验，页面元素的点击可以考虑用click，和tap效果无明显差别，所以在没有手势库的情况下可以考虑用click来处理用户的点击行为。</p>
+<h3 id="-webkit-">禁用webkit浏览器默认样式</h3>
+<p>webkit上的input,button,及select的默认样式可以通过 –webkit-appearance:none禁用，然后自定义。</p>
+<h3 id="placeholder-bug">Placeholder自适应bug</h3>
+<p>一个placeholder自适应bug，页面中使用标签并且有属性placeholder，在页面横屏再转回竖屏时，会导致页面无法自适应，无论是android还是ios都会中招。</p>
+<p>解决方法是，在外层容器中加overflow:hidden</p>
+<h3 id="-url-">无刷新改变当前页面url的问题整理</h3>
+<p>Android 2.3系统存在的问题：</p>
+<ol>
+<li>无刷新改变当前页面url。不支持onpopstate方法，可用onhashchange方法代替。</li>
+<li>虽然支持history的pushState方法和window.onpopstate方法。但是按回退键，即发生history.back()的时候，不会触发window.onpopstate方法。只会触发hashchange事件。</li>
+</ol>
+<p>浏览器对popstate事件的整体支持情况：</p>
+<ol>
+<li>history的pushState可操作浏览器历史，并且改变当前页面的URL。添加对应的url到历史记录里。但是用pushState方法会产生历史记录，可用replaceState方法代替，不会产生额外的历史记录。</li>
+<li>hashchange 和popstate事件 触发的时候，hash已经改变了，无法阻止默认行为。即e.preventDefault()不起作用。</li>
+<li>pushState()方法永远不会触发hashchange事件</li>
+<li>popstate方法的触发条件：</li>
+</ol>
+<ul>
+<li>页面前进、后退时触发。  </li>
+<li>Hashchange时触发  </li>
+</ul>
+<ol>
+<li>如何跳转  </li>
+</ol>
+<ul>
+<li>如果history堆栈里有pushState过，那么就回跳到pushState所定的hash页面。如window.history.pushState(‘object’, document.title, “#explorer”);的#explorer页面  </li>
+<li>没有pushState过，就按照history的记录进行回退和前进。</li>
+</ul>
+<h3 id="iscroll-">Iscroll插件问题</h3>
+<p>Iscroll插件被很多webapp应用中来实现列表滚动，设置translate属性可以使滚动更加顺滑，但是在iscroll4.0中开启了translate属性后会导致滚动无法手动停止，在问答社区中有人说iscroll5会解决这个问题，等iscroll5正式发布后可以尝试一下。Iscroll在ios上表现很出色，但是在一些android手机，尤其是低端机，性能不是很好，所以使用也要慎重。</p>
+<h2 id="-">资源分享（来自网络）</h2>
+<p>推荐一个PPT可以让你全面了解HTML5：[<a href="http://slides.html5rocks.com/][6" target="_blank">http://slides.html5rocks.com/][6</a>]</p>
+<p>HTML部分包括大家已经熟知的HTML4.01 Standard [<a href="http://www.w3.org/TR/html401/][7]还有就是即将成为Standard的" target="_blank">http://www.w3.org/TR/html401/][7]还有就是即将成为Standard的</a> HTML 5 Candidate Recommendation [<a href="http://www.w3.org/TR/html5/][8" target="_blank">http://www.w3.org/TR/html5/][8</a>]</p>
+<p>HTML5除此之外，还引入了很多新的标签和属性，比如：WebApp开发方向的progress、无障碍浏览ARIA 、做SEO优化Microdata等等。</p>
+<p><a href="http://www.w3.org/standards/techs/html#w3c_all" target="_blank">W3C HTML标准列表</a></p>
+<p>CSS部分也是同样的，大家已经熟知的<a href="http://jquery.com/" target="_blank">CSS2 Standard</a></p>
+<p>W3C最新的是CSS Level3 标准，由于CSS3包含的内容非常多，文档都是分开的，暂时没办法给出所有的标准地址，先贴一部分常用的标准吧：</p>
+<p><a href="http://quojs.tapquo.com/" target="_blank">W3C CSS标准列表</a></p>
+<p><a href="http://the-echoplex.net/flexyboxes/" target="_blank">CSS Selector CSS选取器</a></p>
+<p><a href="http://www.w3.org/TR/2013/WD-css3-transitions-20131119/" target="_blank">Transition 动画过渡效果</a></p>
+<p><a href="http://www.w3.org/TR/2013/WD-css3-animations-20130219/" target="_blank">Animation 页面动画</a></p>
+<p>JS部分对于HTML5来说主要体现在 Web API 方面，所有 API 都是 BOM对象，下面我也列出一些常见的标准地址：</p>
+<p><a href="http://www.w3.org/standards/techs/js#w3c_all" target="_blank">W3C JavaScript API标准列表</a></p>
+<p><a href="http://www.w3.org/TR/touch-events/" target="_blank">Touch Events 触摸手势事件</a></p>
+<p><a href="http://www.w3.org/TR/geolocation-API/" target="_blank">Geolocation 地理位置</a></p>
+<p><a href="http://www.w3.org/TR/webstorage/" target="_blank">Web Storage Web存储</a></p>
+<p>通过上面的内容，大概已经了解HTML5是个什么东西了，下面就来说说HTML5开发APP可以使用的一些资源。其实HTML5开发与以往的Web并没有本质的区别，主要差别体现在HTML5的一些新特性并没有被老旧类库很好的支持，这样就需要一些更现代的类库来使用HTML5做开发。</p>
+<h3 id="js-">JS库/框架</h3>
+<p>轻量级库包括</p>
+<p><a href="http://zeptojs.com/" target="_blank">Zepto.js</a> 这个一个在移动端很好用的轻量级库，非常小巧，但是功能也很简单；</p>
+<p><a href="http://jquery.com/" target="_blank">jQuery 2.0</a>这里说的是2.0以后的版本，仅支持一些高级浏览器，使用很多HTML5的特性，虽然在移动端开发体积相对zepto较大了些，但是作为一个基础库来说确实令人爱不释手；</p>
+<h3 id="app-">App框架（下面的框架不仅仅只能用来移动端开发）</h3>
+<p><a href="http://jquerymobile.com/" target="_blank">jQuery Mobile</a>和jQuery是一样的编程思想，使用起来非常方便，包含浏览历史管理、视图导航渲染、UI组件等功能；</p>
+<p><a href="https://github.com/01org/appframework/" target="_blank">App Framework</a>与jQuery Mobile非常相似的一个框架，实际我也没有使用过，看过了API，基本与jQuery Mobile类似；</p>
+<p><a href="http://www.sencha.com/products/touch/" target="_blank">Sencha Touch</a>Sencha的产品，是完全web组件化的思路，用来做企业应用开发非常的棒，但是，也有很多缺点，比如体积、复杂、性能等等；</p>
+<h3 id="mvc-">MVC框架</h3>
+<p><a href="http://backbonejs.org/" target="_blank">Backbone</a>MVC框架推荐Backbone，并不是因为Backbone有多好，但对于移动端开发来说，Backbone的体积是相对小巧的，并且功能也十分简单，很容易上手，AngularJS体积较大，相对要复杂一些；</p>
+<h3 id="ui-">UI框架</h3>
+<p><a href="http://getbootstrap.com/" target="_blank">Bootsrap 3</a>，用来构建HTML/CSS的；</p>
+<p><a href="http://purecss.io/" target="_blank">Pure CSS</a>与Bootstrap一样的东东；</p>
+<p>工具库（说到工具，实在是太多了，我没办法一一列出来，视乎到这的时候才离题主的问题近了一些）</p>
+<p><a href="https://github.com/cubiq/iscroll" target="_blank">iScroll</a> 模拟区域滚动，在移动端开发中使用</p>
+<p><a href="https://github.com/borismus/pointer.js" target="_blank">pointer.js</a> 触摸手势工具，用来兼容Pointer Event Model与Touch Event Model；</p>
+<p><a href="http://deeptissuejs.com/" target="_blank">Deeptissue.js</a>触摸手势工具，扩展各种手势事件</p>
+<p><a href="http://quojs.tapquo.com/" target="_blank">QUO.js</a>同上</p>
+<p><a href="https://github.com/EightMedia/hammer.js/" target="_blank">hammer.js</a> 也是手势工具，但这是一个jQuery plugin；</p>
+<p><a href="http://fgnass.github.io/spin.js/" target="_blank">spin.js</a>加载中动画小工具</p>
+<p><a href="http://lea.verou.me/css3patterns/" target="_blank">css3patterns</a>使用css3绘制背景</p>
+<p><a href="http://philbit.com/svgpatterns/" target="_blank">svgpatterns</a>使用svg绘制背景</p>
+<p><a href="http://jschr.github.io/textillate/" target="_blank">textillate.js</a>各种文字动画效果</p>
+<p><a href="http://h5bp.github.io/Effeckt.css/dist/" target="_blank">Effeckt.css</a>各种CSS3的动画效果</p>
+<p><a href="http://www.jplayer.org/" target="_blank">JPlayer</a>音视频播放工具</p>
+<h3 id="css3-">CSS3代码生成工具</h3>
+<p><a href="http://ie.microsoft.com/testdrive/Graphics/hands-on-css3/see-also.htm" target="_blank"><a href="http://ie.microsoft.com/testdrive/Graphics/hands-on-css3/see-also.htm">http://ie.microsoft.com/testdrive/Graphics/hands-on-css3/see-also.htm</a></a> IE官方提供的一个工具，非常好用，功能很多；</p>
+<p><a href="http://cubic-bezier.com" target="_blank">贝塞尔曲线</a></p>
+<p><a href="http://the-echoplex.net/flexyboxes/" target="_blank">flexbox布局</a></p>
+<p><a href="http://cssarrowplease.com/" target="_blank">css3箭头</a></p>
+<p><a href="http://heartcode.robertpataki.com/canvasloader/" target="_blank">canvas loading</a></p>
+<p>[transform变形] (<a href="http://www.css88.com/tool/css3Preview/Transform.html" target="_blank">http://www.css88.com/tool/css3Preview/Transform.html</a>)</p>
+<p><a href="http://www.responsivewebcss.com/" target="_blank">响应式布局</a></p>
+<p><a href="http://nmsdvid.com/snippets/" target="_blank">@media工具</a></p>
+<p><a href="http://css3ps.com/" target="_blank">PhotoShop CSS3 plugin</a></p>
+<p>最后分享两个不错的移动端开发资源</p>
+<p><a href="https://github.com/exfork/mobileTech" target="_blank"><a href="https://github.com/exfork/mobileTech">https://github.com/exfork/mobileTech</a></a></p>
+<p><a href="https://github.com/exfork/Mars" target="_blank"><a href="https://github.com/exfork/Mars">https://github.com/exfork/Mars</a></a></p>
+<p>原文链接：<a href="http://mweb.baidu.com/p/webapp%e5%bc%80%e5%8f%91%e5%ae%9e%e8%b7%b5.html" target="_blank">webapp开发实践 – MWEB</a></p>
+<p><img width="100" title="由朱小贱发现" src="https://avatars0.githubusercontent.com/u/4251360?s=100" /></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+   
+
+
+  <div class="ds-thread"></div>
+<!-- Duoshuo Comment BEGIN -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"suningwiki"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+
+
+  
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/教程/">教程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/discover/2014/05/05/thejavascriptrightway/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">The javascript right way</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+        <aside class="pure-u-1-6">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list">
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">5</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/NodeJs/">NodeJs</a><span class="category-list-count">1</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/前端心得/">前端心得</a><span class="category-list-count">5</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li>
+	  
+	  </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/discover/2014/05/13/exp/">webapp开发实践</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/05/05/thejavascriptrightway/">The javascript right way</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/04/03/f2e-pic/">一揽子前端有关图片</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/03/18/you-might-not-need-jquery/">YOU MIGHT NOT NEED JQUERY</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/03/17/7-days-nodejs/">七天学会NodeJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/discover/tags/API/" style="font-size: 10.00px;">API</a><a href="/discover/tags/jquery/" style="font-size: 10.00px;">jquery</a><a href="/discover/tags/mobile/" style="font-size: 10.00px;">mobile</a><a href="/discover/tags/prototype/" style="font-size: 10.00px;">prototype</a><a href="/discover/tags/webApp/" style="font-size: 10.00px;">webApp</a><a href="/discover/tags/教程/" style="font-size: 20.00px;">教程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/05">五月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/04">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+    <div id="footer-info" class="inner">
+      &copy; 2014 发现前端<br>
+    </div>
+</footer>
+  
+<script type="text/javascript" src="/discover/js/script.js"></script>
+</body>
+</html>
