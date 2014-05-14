@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<title>前端工程之模块化 | 发现前端</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="前端工程之模块化">
+<meta name="og:url" content="http://ppanda.com/discover/2014/05/14/fe-moudle/">
+<meta name="og:image" content="http://fex.baidu.com/img/fis/image2-1.png">
+<meta name="og:site_name" content="发现前端">
+<meta name="og:description" content="模块化是一种处理复杂系统分解成为更好的可管理模块的方式，它可以把系统代码划分为一系列职责单一，高度解耦且可替换的模块，系统中某一部分的变化将如何影响其它部分就会变得显而易见，系统的可维护性更加简单易得。
+前端开发领域(JavaScript、CSS、Template)并没有为开发者们提供以一种简洁、有条理地的方式来管理模块的方法。CommonJS(致力于设计、规划并标准化 JavaScript AP">
+<meta name="twitter:card" content="summary">
+  
+<link rel="alternative" href="/atom.xml" title="发现前端" type="application/atom+xml">
+  
+  
+<link rel="icon" href="/discover/favicon.ico">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/discover/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+    <header id="header">
+  <div class="header-outer outer">
+    <div class="header-title inner">
+      <h1 class="logo-wrap">
+        <a href="/discover/" class="logo">发现前端</a>
+      </h1>
+      
+    </div>
+    <div class="header-inner inner">
+      <nav class="main-nav">
+        
+          <a class="main-nav-link" href="/discover/">Home</a>
+        
+          <a class="main-nav-link" href="/discover/about">about</a>
+        
+        <a class="main-nav-link" title="尚未完全开放" href="#">#我发现</a>
+      </nav>
+    </div>
+  </div>
+</header>
+    <div class="pure-g-r">
+      <aside class="pure-u-1-6">
+        <div class="widget-wrap">
+    <h3 class="widget-title">技术站点</h3>
+    <div class="widget">
+      <ul class="category-list category-list-side">
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://tid.tenpay.com/'>财付通设计中心 UID</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cdc.tencent.com/'>腾讯用户研究与体验设计中心 CDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.alloyteam.com/'>腾讯Web前端 Alloy 团队 Blog</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://gdc.qq.com/'>QQ游戏设计中心GDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mxd.tencent.com/'>腾讯移动互联网设计团队MXD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ecd.tencent.com/'>腾讯电商用户设计体验部ECD</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://isux.tencent.com/'>腾讯社交用户体验设计部ISUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://djt.qq.com/'>腾讯大讲堂</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.cn/'>阿里巴巴用户体验设计部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.taobao.com/blog/'>淘宝网UED官方博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.aliued.com/'>阿里巴巴国际站UED团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ux.etao.com/'>淘宝一淘用户体验中心UX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.searchtb.com/'>淘宝搜索技术博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://alipaymiddleware.com/'>支付宝中间件团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.tmall.com/'>天猫UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.baiduux.com/'>百度泛用户体验部UUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mux.baidu.com/'>百度无线用户体验部MUX</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.baidu.com/'>百度商业用户体验部UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://mued.sohu.com/'>搜狐移动用户体验团队MUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.focus.cn/'>搜狐焦点用户体验设计UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://udc.weibo.com/'>新浪微博用户体验设计中心UDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sina.com/'>新浪UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://www.75team.com/'>奇虎360公司Web前端</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uxc.360.cn/'>360UXC用户体验设计中心</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/'>携程旅行前端开发团队UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://fed.renren.com/'>人人网FED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.sogou.com/'>搜狗设计团队UED博客</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://uedc.163.com/'>网易用户体验设计中心UEDC</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://cued.xunlei.com/'>迅雷用户体验设计中心CUED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://blog.19ued.com/'>19楼UED</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.5173.com/'>5173用户体验设计团队</a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.iciba.com/'>爱词霸UED团队 </a></li>
+    <li class="category-list-item"><a target="_blank" class="category-list-link" href='http://ued.ctrip.com/blog/wp-content/webkitcss/index.html'>Webkit css</a></li>
+  </ul>
+
+    </div>
+  </div>
+      </aside>
+      <section class="pure-u-2-3"><article id="post-fe-moudle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端工程之模块化
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/discover/2014/05/14/fe-moudle/" class="article-date">
+  <time datetime="2014-05-14T12:07:15.000Z" itemprop="datePublished">2014年5月14日</time>
+</a>
+      
+  <div class="article-category">
+    
+	    <a class="pure-button" style='display:inline;' href="/discover/categories/前端架构/">前端架构</a>
+	  
+  </div>
+
+      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>模块化是一种处理复杂系统分解成为更好的可管理模块的方式，它可以把系统代码划分为一系列职责单一，高度解耦且可替换的模块，系统中某一部分的变化将如何影响其它部分就会变得显而易见，系统的可维护性更加简单易得。</p>
+<p>前端开发领域(JavaScript、CSS、Template)并没有为开发者们提供以一种简洁、有条理地的方式来管理模块的方法。CommonJS(致力于设计、规划并标准化 JavaScript API)的诞生开启了“ JavaScript 模块化的时代”。CommonJS 的模块提案为在服务器端的 JavaScript 模块化做出了很大的贡献，但是在浏览器下的 JavaScript 模块应用很有限。随之而来又诞生了其它前端领域的模块化方案，像 requireJS、SeaJS 等，然而这些模块化方案并不是十分适用 ，并没有从根本上解决模块化的问题。</p>
+<h2 id="-javascript-">前端模块化并不等于 JavaScript 模块化</h2>
+<p>前端开发相对其他语言来说比较特殊，因为我们实现一个页面功能总是需要 JavaScript、CSS 和 Template 三种语言相互组织才行，如果一个功能仅仅只有 JavaScript 实现了模块化，CSS 和 Template 还是处于原始状态，那我们调用这个功能的时候并不能完全通过模块化的方式，那么这样的模块化方案并不是完整的，所以我们真正需要的是一种可以将 JavaScript、CSS 和 Template 同时都考虑进去的模块化方案，而非仅仅 JavaScript 模块化方案。</p>
+<h2 id="javascript-">JavaScript 模块化并不等于异步模块化</h2>
+<p>主流的 JavaScript 模块化方案都使用“异步模块定义”的方式，这种方式给开发带来了极大的不便，所有的同步代码都需要修改为异步的方式，我们是否可以在前端开发中使用“ CommonJS ”的方式，开发者可以使用自然、容易理解的模块定义和调用方式，不需要关注模块是否异步，不需要改变开发者的开发行为。</p>
+<h2 id="-">前端模块化带来的性能问题</h2>
+<p>很多主流的模块化解决方案通过 JavaScript 运行时来支持“匿名闭包”、“依赖分析”和“模块加载”等功能，例如“依赖分析”需要在 JavaScript 运行时通过正则匹配到模块的依赖关系，然后顺着依赖链（也就是顺着模块声明的依赖层层进入，直到没有依赖为止）把所有需要加载的模块按顺序一一加载完毕，当模块很多、依赖关系复杂的情况下会严重影响页面性能。</p>
+<h2 id="-">模块化为打包部署带来的极大不便</h2>
+<p>传统的模块化方案更多的考虑是如何将代码进行拆分，但是当我们部署上线的时候需要将静态资源进行合并（打包），这个时候会发现困难重重，每个文件里只能有一个模块，因为模块使用的是“匿名定义”，经过一番研究，我们会发现一些解决方案，无论是“ combo 插件”还是“ flush 插件”，都需要我们修改模块化调用的代码，这无疑是雪上加霜，开发者不仅仅需要在本地开发关注模块化的拆分，在调用的时候还需要关注在一个请求里面加载哪些模块比较合适，模块化的初衷是为了提高开发效率、降低维护成本，但我们发现这样的模块化方案实际上并没有降低维护成本，某种程度上来说使得整个项目更加复杂了。</p>
+<h2 id="-">一体化的前端模块化实践方案</h2>
+<p>写到这里，其实我们的“前端工程之块化”才正式开始，本文面向对前端模块化开发有所实践或有所研究的同学，接下来我们所介绍的前端模块化解决方案， 有别于 JavaScript 模块化方案或 CSS 模块化方案，它是一种可以综合处理前端各种资源的模块化方案；它可以极大提升开发者的开发体验，并为性能优化提供良好的支持。下面让我们来进一步来了解什么是“一体化”的模块化实践方案。</p>
+<a id="more"></a>
+
+<p>首先我们来看一下一个 web 项目是如何通过“一体化”的模块化方案来划分目录结构：</p>
+<p><img src="http://fex.baidu.com/img/fis/image2-1.png" alt="image1"></p>
+<ul>
+<li>站点(site)：一般指能独立提供服务，具有单独二级域名的产品线。如旅游产品线或者特大站点的子站点（lv.baidu.com）。</li>
+<li>子系统(module)：具有较清晰业务逻辑关系的功能业务集合，一般也叫系统子模块，多个子系统构成一个站点。子系统(module)包括两类： common 子系统， 为其他业务子系统提供规范、资源复用的通用模块；业务子系统:，根据业务、URI 等将站点进行划分的子系统站点。</li>
+<li>页面(page): 具有独立 URL 的输出内容，多个页面一般可组成子系统。</li>
+<li>模块(widget)：能独立提供功能且能够复用的模块化代码，根据复用的方式不同分为 Template 模块、JS 模块、CSS 模块三种类型。</li>
+<li>静态资源(static)：非模块化资源目录，包括模板页面引用的静态资源和其他静态资源（favicon,crossdomain.xml 等）。</li>
+</ul>
+<p>前端模块(widget)，是能独立提供功能且能够复用的模块化代码，根据复用的方式不同分为 Template 模块、JS 模块、CSS 模块三种类型，CSS 组件，一般来说，CSS 模块是最简单的模块，它只涉及 CSS 代码与 HTML 代码； JS 模块，稍为复杂，涉及 JS 代码，CSS 代码和 HTML 代码。一般，JS 组件可以封装 CSS 组件的代码； Template 模块，涉及代码最多，可以综合处理 HTML、JavaScript、CSS 等各种模块化资源，一般情况，Template 会将 JS 资源封装成私有 JS 模块、CSS 资源封装成自己的私有 CSS 模块。下面我们来一一介绍这几种模块的模块化方案。</p>
+<h2 id="-">模板模块</h2>
+<p>我们可以将任何一段可复用的模板代码放到一个 smarty 文件中，这样就可以定义一个模板模块。在 widget 目录下的 smarty 模板(本文仅以 Smarty 模板为例)即为模板模块，例如 common 子系统的 widget/nav/ 目录</p>
+<pre><code>├── nav.css
+├── nav.js
+└── nav.tpl
+</code></pre><p>下 nav.tpl 内容如下：</p>
+<pre><code>&lt;nav id=&quot;nav&quot; class=&quot;navigation&quot; role=&quot;navigation&quot;&gt;
+    &lt;ul&gt;
+        &lt;%foreach $data as $doc%&gt;
+        &lt;li class=&quot;active&quot;&gt;
+            &lt;a href=&quot;#section-{$doc@index}&quot;&gt;
+                &lt;i class=&quot;icon-{$doc.icon} icon-white&quot;&gt;&lt;/i&gt;&lt;span&gt;{$doc.title}&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;%/foreach%&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre><p>然后，我们只需要一行代码就可以调用这个包含 smarty、JS、CSS 资源的模板模块，</p>
+<pre><code>// 调用模块的路径为 子系统名称:模板在 widget 目录下的路劲
+{widget name=&quot;common:widget/nav/nav.tpl&quot; }
+</code></pre><p>这个模板模块(nav)目录下有与模板同名的 JS、CSS 文件，在模板被执行渲染时这些资源会被自动加载。如上所示，定义 template 模块的时候，只需要将 template 所依赖的 JS 模块、CSS 模块存放在同一目录(默认 JavaScript 模块、CSS 模块与 Template 模块同名)下即可，调用者调用 Template 模块只需要写一行代码即可，不需要关注所调用的 template 模块所依赖的静态资源，模板模块会帮助我们自动处理依赖关系以及资源加载。</p>
+<h2 id="javascript-">JavaScript 模块</h2>
+<p>上面我们介绍了一个模板模块是如何定义、调用以及处理依赖的，接下来我们来介绍一下模板模块所依赖的 JavaScript 模块是如何来处理模块交互的。我们可以将任何一段可复用的 JavaScript 代码放到一个 JS 文件中，这样就可以定义为一个 JavaScript 类型的模块，我们无须关心“ define ”闭包的问题，我们可以获得“ CommonJS ”一样的开发体验，下面是 nav.js 中的源码.</p>
+<pre><code>// common/widget/nav/nav.js
+var $ = require(&#39;common:widget/jquery/jquery.js&#39;);
+
+exports.init = function() {
+    ...
+};
+</code></pre><p>我们可以通过 require、require.async 的方式在任何一个地方(包括 html、JavaScript 模块内部)来调用我们需要的 JavaScript 类型模块，require 提供的是一种类似于后端语言的同步调用方式，调用的时候默认所需要的模块都已经加载完成，解决方案会负责完成静态资源的加载。require.async 提供的是一种异步加载方式，主要用来满足“按需加载”的场景，在 require.async 被执行的时候才去加载所需要的模块，当模块加载回来会执行相应的回调函数，语法如下：</p>
+<pre><code>// 模块名: 文件所在 widget 中路径
+require.async([&quot;common:widget/menu/menu.js&quot;], function( menu ) {
+    menu.init();
+});
+</code></pre><p>一般 require 用于处理页面首屏所需要的模块，require.async 用于处理首屏外的按需模块。</p>
+<h2 id="css-">CSS 模块</h2>
+<p>在模板模块中以及 JS 模块中对应同名的 CSS 模块会自动与模板模块、JS 模块添加依赖关系，进行加载管理，用户不需要显示进行调用加载。那么如何在一个 CSS 模块中声明对另一个 CSS 模块的依赖关系呢，我们可以通过在注释中的@require 字段标记的依赖关系，这些分析处理对 html 的 style 标签内容同样有效，</p>
+<pre><code>/**
+ * demo.css
+ * @require reset.css
+ */
+</code></pre><h2 id="-">非模块化资源</h2>
+<p>在实际开发过程中可能存在一些不适合做模块化的静态资源，那么我们依然可以通过声明依赖关系来托管给静态资源管理系统来统一管理和加载，</p>
+<pre><code>{require name=&quot;home:static/index/index.css&quot; }
+</code></pre><p>如果通过如上语法可以在页面声明对一个非模块化资源的依赖，在页面运行时可以自动加载相关资源。</p>
+<h2 id="-">项目实例</h2>
+<p>下面我们来看一下在一个实际项目中，如果在通过页面来调用各种类型的 widget，首先是目录结构：</p>
+<pre><code>├── common
+│   ├── fis-conf.js
+│   ├── page
+│   ├── plugin
+│   ├── static
+│   └── widget
+└── photo
+    ├── fis-conf.js
+    ├── output
+    ├── page
+    ├── static
+    ├── test
+    └── widget
+</code></pre><p>我们有两个子系统，一个 common 子系统(用作通用)，一个业务子系统，page 目录用来存放页面，widget 目录用来存放各种类型的模块，static 用于存放非模块化的静态资源，首先我们来看一下 photo/page/index.tpl 页面的源码，</p>
+<pre><code>{extends file=&quot;common/page/layout/layout.tpl&quot;}
+{block name=&quot;main&quot;}
+    {require name=&quot;photo:static/index/index.css&quot;}
+    {require name=&quot;photo:static/index/index.js&quot;}
+    &lt;h3&gt;demo 1&lt;/h3&gt;
+    &lt;button id=&quot;btn&quot;&gt;Button&lt;/button&gt;
+    {script type=&quot;text/javascript&quot;}
+        // 同步调用 jquery
+        var $ = require(&#39;common:widget/jquery/jquery.js&#39;);
+
+        $(&#39;#btn&#39;).click(function() {
+            // 异步调用 respClick 模块
+            require.async([&#39;/widget/ui/respClick/respClick.js&#39;], function() {
+                respClick.hello();
+            });
+        });
+    {/script}
+
+    // 调用 renderBox 模块
+    {widget name=&quot;photo:widget/renderBox/renderBox.tpl&quot;}
+{/block}
+</code></pre><p>第一处代码是对非模块化资源的调用方式；第二处是用 require 的方式调用一个 JavaScript 模块；第三处是通过 require.async 通过异步的方式来调用一个 JavaScript 模块;最后一处是通过 widget 语法来调用一个模板模块。 respclick 模块的源码如下：</p>
+<pre><code>exports.hello = function() {
+    alert(&#39;hello world&#39;);
+};
+</code></pre><p>renderBox 模板模块的目录结构如下：</p>
+<pre><code>└── widget
+    └── renderBox
+        ├── renderBox.css
+        ├── renderBox.js
+        ├── renderBox.tpl
+        └── shell.jpeg
+</code></pre><p>虽然 renderBox 下面包括 renderBox.js、renderBox.js、renderBox.tpl 等多种模块，我们再调用的时候只需要一行代码就可以了，并不需要关注内部的依赖，以及各种模块的初始化问题。</p>
+<h2 id="-">模块化基础架构</h2>
+<h3 id="-">总体架构</h3>
+<p>为了实现一种自然、便捷、高性能、一体化的模块化方案，我们需要解决以下一些问题，</p>
+<ul>
+<li>模块静态资源管理，一般模块总会包含 JavaScript、CSS 等其他静态资源，需要记录与管理这些静态资源</li>
+<li>模块依赖关系处理，模块间存在各种依赖关系，在加载模块的时候需要处理好这些依赖关系</li>
+<li>模块加载，在模块初始化之前需要将模块的静态资源以及所依赖的模块加载并准备好</li>
+<li>模块沙箱(模块闭包)，在 JavaScript 模块中我们需要自动对模块添加闭包用于解决作用域问题</li>
+</ul>
+<p><strong> 使用编译工具来管理模块 </strong></p>
+<p>我们可以通过编译工具(自动化工具) 对模块进行编译处理，包括对静态资源进行预处理(对 JavaScript 模块添加闭包、对 CSS 进行 LESS 预处理等)、记录每个静态资源的部署路径以及依赖关系并生成资源表(resource map)。我们可以通过编译工具来托管所有的静态资源，这样可以帮我们解决模块静态资源管理、模块依赖关系、模块沙箱问题。</p>
+<p><strong> 使用静态资源加载框架来加载模块 </strong></p>
+<p>那么如何解决模块加载问题，我们可以通过静态资源加载框架来解决，主要包含前端模块加载框架，用于 JavaScript 模块化支持，控制资源的异步加载。后端模块化框架，用于解决 JavaScript 同步加载、CSS 和模板等模块资源的加载，静态资源加载框架可以用于对页面进行持续的自适应的前端性能优化，自动对页面的不同情况投递不同的资源加载方案，帮助开发者管理静态资源，抹平本地开发到部署上线的性能沟壑。 编译工具和静态资源加载框架的流程图如下：</p>
+<p><img src="http://fex.baidu.com/img/fis/image2-2.png" alt="image2"></p>
+<h3 id="-">编译工具</h3>
+<p>自动化工具会扫描目录下的模块进行编译处理并输出产出文件：</p>
+<p><strong>静态资源</strong>，经过编译处理过的 JavaScript、CSS、Image 等文件，部署在 CDN 服务器自动添加闭包，我们希望工程师在开发 JavaScript 模块的时候不需要关心” define ”闭包的事情，所以采用工具自动帮工程师添加闭包支持，例如如上定义的 nav.js 模块在经过自动化工具处理后变成如下，</p>
+<pre><code>define(&#39;common:widget/nav/nav.js&#39;, function( require, exports, module ) {
+    // common/widget/nav/nav.js
+    var $ = require(&#39;common:widget/jquery/jquery.js&#39;);
+
+    exports.init = function() {
+        ...
+    };
+});
+</code></pre><p><strong>模板文件</strong>，经过编译处理过的 smarty 文件，自动部署在模板服务器</p>
+<p><strong>资源表</strong>，记录每个静态资源的部署路径以及依赖关系，用于静态资源加载框架 静态资源加载框架(SR Management System)会加载 source maps 拿到页面所需要的所有模块以及静态资源的 url，然后组织资源输出最终页面。</p>
+<h3 id="-">静态资源加载框架</h3>
+<p>下面我们会详细讲解如何加载模块，如下所示，</p>
+<p><img src="http://fex.baidu.com/img/fis/image2-3.png" alt="image3"></p>
+<p>在流程开始前我们需要准备两个数据结构：</p>
+<ul>
+<li>uris = []，数组，顺序存放要输出资源的 uri</li>
+<li>has = {}，hash 表，存放已收集的静态资源，防止重复加载</li>
+</ul>
+<p>加载资源表(resource map):</p>
+<pre><code>{
+    &quot;res&quot;: {
+        &quot;A/A.tpl&quot;: {
+            &quot;uri&quot;: &quot;/templates/A.tpl&quot;,
+            &quot;deps&quot;: [&quot;A/A.css&quot;]
+        },
+        &quot;A/A.css&quot;: {
+            &quot;uri&quot;: &quot;/static/css/A_7defa41.css&quot;
+        },
+        &quot;B/B.tpl&quot;: {
+            &quot;uri&quot;: &quot;/templates/B.tpl&quot;,
+            &quot;deps&quot;: [&quot;B/B.css&quot;]
+        },
+        &quot;B/B.css&quot;: {
+            &quot;uri&quot;: &quot;/static/css/B_33c5143.css&quot;
+        },
+        &quot;C/C.tpl&quot;: {
+            &quot;uri&quot;: &quot;/templates/C.tpl&quot;,
+            &quot;deps&quot;: [&quot;C/C.css&quot;]
+        },
+        &quot;C/C.css&quot;: {
+            &quot;uri&quot;: &quot;/static/css/C_6a59c31.css&quot;
+        }
+    }
+}
+</code></pre><p>执行 {widget name=&quot;A&quot;}</p>
+<ul>
+<li>在表中查找 id 为 A/A.tpl 的资源，取得它的资源路径 /template/A.tpl，记为 tpl_path,加载并渲染 tpl_path 所指向的模板文件，即 /template/A.tpl，并输出它的 html 内容</li>
+<li>查看 A/A.tpl 资源的 deps 属性，发现它依赖资源 A/A.css,在表中查找 id 为 A/A.css 的资源，取得它的资源路径为 /static/css/A7defa41.css_，存入 uris 数组 中，并在 has 表 里标记已加载 A/A.css 资源，我们得到：</li>
+</ul>
+<hr>
+<pre><code>urls = [
+    &#39;/static/css/A_7defa41.css&#39;
+];
+
+has = {
+    &quot;A/A.css&quot;: true
+}
+</code></pre><p>依次执行 {widget name=&quot;B&quot;}、{widget name=&quot;c&quot;},步骤与上述步骤 3 相同，得到,</p>
+<pre><code>urls = [
+    &#39;/static/css/A_7defa41.css&#39;,
+    &#39;/static/css/B_33c5143.css&#39;,
+    &#39;/static/css/C_6a59c31.css&#39;
+];
+
+has = {
+    &quot;A/A.css&quot;: true,
+    &quot;B/B.css&quot;: true,
+    &quot;C/C.css&quot;: true
+}
+</code></pre><p>在要输出的 html 前面，我们读取 uris 数组的数据，生成静态资源外链，我们得到最终的 html 结果：</p>
+<pre><code>&lt;html&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/A_7defa41.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/B_33c5143.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/C_6a59c31.css&quot;&gt;
+    &lt;div&gt;html of A&lt;/div&gt;
+    &lt;div&gt;html of B&lt;/div&gt;
+    &lt;div&gt;html of C&lt;/div&gt;
+&lt;/html&gt;
+</code></pre><p>上面讲的是对模板和 CSS 资源的加载，用于描述静态资源加载的流程，下面我们再来详细讲解下对于 JavaScript 模块的处理，要想在前端实现类似“ commonJS ”一样的模块化开发体验需要前端模块化框架和后端模块化框架一起作用来实现，</p>
+<p><strong>前端模块化框架</strong>，原理上大家可以选择使用 requireJS 或 SeaJS 来作为模块化支持，但是我们并不建议这么做，我们建议大家使用一个 mininal AMD API，例如 requireJS 的 almond 版本或者其他的精简版本，requireJS 完整版有 2000 余行，而精简版模块化框架只需要 100 行代码左右就可以实现，只需要实现以下功能：</p>
+<ul>
+<li>模块定义，只需要实现如下接口 define (id, factory)，因为 define 闭包是工具生成，所以我们不需要考虑匿名闭包的实现，同时也不需要考虑“依赖前置”的支持，我们只需要支持一种最简单直接的模块化定义即可</li>
+<li>模块同步调用，require (id)，静态资源管理系统会保证所需的模块都已预先加载，因此 require 可以立即返回该模块</li>
+<li>模块异步调用，考虑到有些模块无需再启动时载入，因此我们需要提供一个可以在运行时加载模块的接口 require.async (names, callback)，names 可以是一个 id，或者是数组形式的 id 列表。当所有都加载都完成时，callback 被调用，names 对应的模块实例将依次传入。</li>
+<li>模块自执行，即 AMD 规范的提前执行，之所选择这样做的原因是考虑到 Template 模块的特殊性，一般 Template 模块都会依赖 JavaScript 模块来做初始化工作，选择模块自执行的方式我们就不需要显式的在 Template 页面上书写 require 依赖，静态资源系统会自动加载 Template 模块的依赖，当模块并行加载结束后会一次自执行。大家可能会认为如果页面存在一些用不到的模块那都自执行岂不会浪费资源，这里大家可以不用担心，静态资源系统投放到前端的模块都是页面初始化所需要的，不存在浪费资源的情况。</li>
+<li>Resource map 前端支持，主要用于为异步模块调用提供 uri 支持，resourceMap 为静态资源管理系统自动生成，无需人工调用，用于查询一个异步模块的真正 url，用于自动处理异步模块的 CDN、资源打包合并、强缓存问题，格式如下</li>
+</ul>
+<hr>
+<pre><code>require.resourceMap({
+    &quot;res&quot;: {
+        &quot;common:widget/sidebar/sidebar.async.js&quot;: {
+            &quot;url&quot;: &quot;/static/common/widget/sidebar/sidebar.async_449e169.js&quot;
+        }
+    }
+});
+</code></pre><ul>
+<li>处理循环引用，参照 nodeJS 处理循环引用的方式，在造成循环依赖的 require 之前把需要的东西 exports 出去，例如</li>
+</ul>
+<hr>
+<pre><code>// a.js
+console.log(&#39;a string&#39;);
+exports.done = false;
+var b = require(&#39;./b.js&#39;);
+console.log(&#39;in a, b.done = &#39; + b.done);
+exorts.done = true;
+console.log(&#39;b done&#39;);
+
+// b.js
+console.log(&#39;b starting&#39;);
+exports.done = false;
+
+var a = require(&#39;./a.js&#39;);
+console.log(&#39;in b, a.done = &#39; + a.done);
+exports.done = true;
+console.log(&#39;b done&#39;);
+
+// main.js
+console.log(&#39;main starting&#39;);
+var a = require(&#39;./a.js&#39;);
+var b = require(&#39;./b.js&#39;);
+console.log(&#39;in main. a.done = &#39; + a.done + &#39;, b.done = &#39; + b.done);
+</code></pre><p>如果在加载 a 的过程中，有其他的代码（假设为 b）require a.js 的话，那么 b 可以从 cache 中直接取到 a 的 module，从而不会引起重复加载的死循环。但带来的代价就是在 load 过程中，b 看到的是不完整的 a。</p>
+<p>后端模块加载框架，主要用于处理模块的依赖并生成模块静态资源外链，下面我们将以实例讲解静态资源管理系统是如何对 JavaScript 模块进行加载的，如下我们有一个 sidebar 模块，目录下有如下资源</p>
+<p>├── sidebar.async.js
+├── sidebar.css
+├── sidebar.js
+└── sidebar.tpl
+sidebar.tpl 中的内容如下，</p>
+<pre><code>&lt;a id=&quot;btn-navbar&quot; class=&quot;btn-navbar&quot;&gt;
+    &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+&lt;/a&gt;
+
+{script}
+    $(&#39;a.btn-navbar&#39;).click(function() {
+        require.async(&#39;./sidebar.async.js&#39;, function( sidebar ) {
+            sidebar.run();
+        });
+    });
+{/script}
+</code></pre><p>对项目编译后，自动化工具会分析模块的依赖关系，并生成 map.json，如下</p>
+<pre><code>&quot;common:widget/sidebar/sidebar.tpl&quot;: {
+    &quot;uri&quot;: &quot;common/widget/sidebsr/sidebar.tpl&quot;,
+    &quot;type&quot;: &quot;tpl&quot;,
+    &quot;extras&quot;: {
+        &quot;async&quot;: [
+            &quot;common:widget/sidebar/sidebar.async.js&quot;
+        ]
+    },
+    &quot;deps&quot;: [
+        &quot;common:widget/sidebar/sidebar.js&quot;,
+        &quot;common:widget/sidebar/sidebar.css&quot;
+    ]
+}
+</code></pre><p>在 sidebar 模块被调用后，静态资源管理系统通过查询 map.json 可以得知，当前 sidebar 模块同步依赖 sidebar.js、sidebar.css，异步依赖 sdebar.async.js，在要输出的 html 前面，我们读取 uris 数组的数据，生成静态资源外链，我们得到最终的 html</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    require.resourceMap({
+        &quot;res&quot;: {
+            &quot;common:widget/sidebar/sidebar.async.js&quot;: {
+                &quot;url&quot;: &quot;/satic/common/widget/sidebar/sidebar.async_449e169.js&quot;
+            }
+        }
+    });
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/static/common/widget/sidebar/sidebar_$12cd4.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>如上可见，后端模块化框架将同步模块的 script url 统一生成到页面底部，将 css url 统一生成在 head 中，对于异步模块(require.async)注册 resourceMap 代码，框架会通过{script}标签收集到页面所有 script，统一管理并按顺序输出 script 到相应位置。</p>
+<p>自适应的性能优化</p>
+<p>现在，当我们想对模块进行打包，该如何处理呢，我们首先使用一个 pack 配置项(下面是 fis 的打包配置项)，对网站的静态资源进行打包，配置文件大致为,</p>
+<pre><code>fis.config.merge({
+    pack: {
+        &#39;pkg/aio.css&#39;: &#39;**.css&#39;
+    }
+});
+</code></pre><p>我们编译项目看一下产出的 map.json（resource map），有何变化，</p>
+<pre><code>{
+    &quot;res&quot;: {
+        &quot;A/A.tpl&quot;: {
+            &quot;uri&quot;: &quot;/template/A.tpl&quot;,
+            &quot;deps&quot;: [&quot;A/A.css&quot;]
+        },
+        &quot;A/A.css&quot;: {
+            &quot;uri&quot;: &quot;/static/csss/A_7defa41.css&quot;,
+            &quot;pkg&quot;: &quot;p0&quot;
+        },
+        &quot;B/B.tpl&quot;: {
+            &quot;uri&quot;: &quot;/template/B.tpl&quot;,
+            &quot;deps&quot;: [&quot;B/B.css&quot;]
+        },
+        &quot;B/B.css&quot;: {
+            &quot;uri&quot;: &quot;/static/csss/B_33c5143.css&quot;,
+            &quot;pkg&quot;: &quot;p0&quot;
+        },
+        &quot;C/C.tpl&quot;: {
+            &quot;uri&quot;: &quot;/template/C.tpl&quot;,
+            &quot;deps&quot;: [&quot;C/C.css&quot;]
+        },
+        &quot;C/C.css&quot;: {
+            &quot;uri&quot;: &quot;/static/csss/C_ba59c31.css&quot;,
+            &quot;pkg&quot;: &quot;p0&quot;
+        },
+    },
+    &quot;pkg&quot;: {
+        &quot;p0&quot;: {
+            &quot;uri&quot;: &quot;/static/pkg/aio_0cb4a19.css&quot;,
+            &quot;has&quot;: [&quot;A/A.css&quot;, &quot;B/B.css&quot;, &quot;C/C.css&quot;]
+        }
+    }
+}
+</code></pre><p>大家注意到了么，表里多了一张 pkg 表，所有被打包的资源会有一个 pkg 属性 指向该表中的资源，而这个资源，正是我们配置的打包策略。这样静态资源管理系统在表中查找 id 为 A/A.css 的资源，我们发现该资源有 pkg 属性，表明它被备份在了一个打包文件中。</p>
+<p>我们使用它的 pkg 属性值 p0 作为 key，在 pkg 表里读取信息，取的这个包的资源路径为 /static/pkg/aio0cb4a19.css_ 存入 uris 数组 中将 p0 包的 has 属性所声明的资源加入到 has 表，在要输出的 html 前面，我们读取 uris 数组 的数据，生成静态资源外链，我们得到最终的 html 结果：</p>
+<pre><code>&lt;html&gt;
+    &lt;link href=&quot;/static/pkg/aio_0cb4a19.css&quot;&gt;
+    &lt;div&gt;html of A&lt;/div&gt;
+    &lt;div&gt;html of B&lt;/div&gt;
+    &lt;div&gt;html of C&lt;/div&gt;
+&lt;/html&gt;
+</code></pre><p>静态资源管理系统可以十分灵活的适应各种性能优化场景，我们还可以统计 {widget} 插件的调用情况，然后自动生成最优的打包配置，让网站可以自适应优化,这样工程师不用关心资源在哪，怎么来的，怎么没的，所有资源定位的事情，都交给静态资源管理系统就好了。静态资源路径都带 md5 戳，这个值只跟内容有关，静态资源服务器从此可以放心开启强缓存了！还能实现静态资源的分级发布，轻松回滚！我们还可以继续研究，比如根据国际化、皮肤，终端等信息约定一种资源路径规范，当后端适配到特定地区、特定机型的访问时，静态资源管理系统帮你送达不同的资源给不同的用户。说到这里，大家应该比较清楚整个“一体化”的模块化解决方案了，有人可能会问，这样做岂不是增加了后端性能开销？对于这个问题，我们实践过的经验是，这非常值得！其实这个后端开销很少，算法非常简单直白，但他所换来的前端工程化水平提高非常大！</p>
+<h3 id="-">总结</h3>
+<p>本文是 fis 前端工程系列文章中的一部分，其实在前端开发工程管理领域还有很多细节值得探索和挖掘，提升前端团队生产力水平并不是一句空话，它需要我们能对前端开发及代码运行有更深刻的认识，对性能优化原则有更细致的分析与研究。fis 团队一直致力于从架构而非经验的角度实现性能优化原则，解决前端工程师开发、调试、部署中遇到的工程问题，提供组件化框架，提高代码复用率，提供开发工具集，提升工程师的开发效率。在前端工业化开发的所有环节均有可节省的人力成本，这些成本非常可观，相信现在很多大型互联网公司也都有了这样的共识。</p>
+<p>本文只是将这个领域中很小的一部分知识的展开讨论，抛砖引玉，希望能为业界相关领域的工作者提供一些不一样的思路。欢迎关注fis项目，对本文有任何意见或建议都可以在fis开源项目中进行反馈和讨论。</p>
+<p>原文链接：<a href="http://fex.baidu.com/blog/2014/03/fis-module/" target="_blank">前端工程之模块化 FEX 做最专业的前端</a></p>
+<p><img width="100" title="由朱小贱发现" src="https://avatars0.githubusercontent.com/u/4251360?s=100" /></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+   
+
+
+  <div class="ds-thread"></div>
+<!-- Duoshuo Comment BEGIN -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"suningwiki"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+
+
+  
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/discover/2014/05/13/exp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">webapp开发实践</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+        <aside class="pure-u-1-6">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list">
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/JavaScript/">JavaScript</a><span class="category-list-count">5</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/NodeJs/">NodeJs</a><span class="category-list-count">1</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/前端心得/">前端心得</a><span class="category-list-count">5</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/前端架构/">前端架构</a><span class="category-list-count">1</span></li>
+	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li>
+	  
+	  </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/discover/2014/05/14/fe-moudle/">前端工程之模块化</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/05/13/exp/">webapp开发实践</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/05/05/thejavascriptrightway/">The javascript right way</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/04/03/f2e-pic/">一揽子前端有关图片</a>
+          </li>
+        
+          <li>
+            <a href="/discover/2014/03/18/you-might-not-need-jquery/">YOU MIGHT NOT NEED JQUERY</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/discover/tags/API/" style="font-size: 10.00px;">API</a><a href="/discover/tags/jquery/" style="font-size: 10.00px;">jquery</a><a href="/discover/tags/mobile/" style="font-size: 10.00px;">mobile</a><a href="/discover/tags/prototype/" style="font-size: 10.00px;">prototype</a><a href="/discover/tags/webApp/" style="font-size: 10.00px;">webApp</a><a href="/discover/tags/教程/" style="font-size: 20.00px;">教程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/05">五月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/04">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+    <div id="footer-info" class="inner">
+      &copy; 2014 发现前端<br>
+    </div>
+</footer>
+  
+<script type="text/javascript" src="/discover/js/script.js"></script>
+</body>
+</html>

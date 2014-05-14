@@ -90,6 +90,67 @@
       </aside>
       <section class="pure-u-2-3">
   
+    <article id="post-fe-moudle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/discover/2014/05/14/fe-moudle/">前端工程之模块化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/discover/2014/05/14/fe-moudle/" class="article-date">
+  <time datetime="2014-05-14T12:07:15.000Z" itemprop="datePublished">2014年5月14日</time>
+</a>
+      
+  <div class="article-category">
+    
+	    <a class="pure-button" style='display:inline;' href="/discover/categories/前端架构/">前端架构</a>
+	  
+  </div>
+
+      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>模块化是一种处理复杂系统分解成为更好的可管理模块的方式，它可以把系统代码划分为一系列职责单一，高度解耦且可替换的模块，系统中某一部分的变化将如何影响其它部分就会变得显而易见，系统的可维护性更加简单易得。</p>
+<p>前端开发领域(JavaScript、CSS、Template)并没有为开发者们提供以一种简洁、有条理地的方式来管理模块的方法。CommonJS(致力于设计、规划并标准化 JavaScript API)的诞生开启了“ JavaScript 模块化的时代”。CommonJS 的模块提案为在服务器端的 JavaScript 模块化做出了很大的贡献，但是在浏览器下的 JavaScript 模块应用很有限。随之而来又诞生了其它前端领域的模块化方案，像 requireJS、SeaJS 等，然而这些模块化方案并不是十分适用 ，并没有从根本上解决模块化的问题。</p>
+<h2 id="-javascript-">前端模块化并不等于 JavaScript 模块化</h2>
+<p>前端开发相对其他语言来说比较特殊，因为我们实现一个页面功能总是需要 JavaScript、CSS 和 Template 三种语言相互组织才行，如果一个功能仅仅只有 JavaScript 实现了模块化，CSS 和 Template 还是处于原始状态，那我们调用这个功能的时候并不能完全通过模块化的方式，那么这样的模块化方案并不是完整的，所以我们真正需要的是一种可以将 JavaScript、CSS 和 Template 同时都考虑进去的模块化方案，而非仅仅 JavaScript 模块化方案。</p>
+<h2 id="javascript-">JavaScript 模块化并不等于异步模块化</h2>
+<p>主流的 JavaScript 模块化方案都使用“异步模块定义”的方式，这种方式给开发带来了极大的不便，所有的同步代码都需要修改为异步的方式，我们是否可以在前端开发中使用“ CommonJS ”的方式，开发者可以使用自然、容易理解的模块定义和调用方式，不需要关注模块是否异步，不需要改变开发者的开发行为。</p>
+<h2 id="-">前端模块化带来的性能问题</h2>
+<p>很多主流的模块化解决方案通过 JavaScript 运行时来支持“匿名闭包”、“依赖分析”和“模块加载”等功能，例如“依赖分析”需要在 JavaScript 运行时通过正则匹配到模块的依赖关系，然后顺着依赖链（也就是顺着模块声明的依赖层层进入，直到没有依赖为止）把所有需要加载的模块按顺序一一加载完毕，当模块很多、依赖关系复杂的情况下会严重影响页面性能。</p>
+<h2 id="-">模块化为打包部署带来的极大不便</h2>
+<p>传统的模块化方案更多的考虑是如何将代码进行拆分，但是当我们部署上线的时候需要将静态资源进行合并（打包），这个时候会发现困难重重，每个文件里只能有一个模块，因为模块使用的是“匿名定义”，经过一番研究，我们会发现一些解决方案，无论是“ combo 插件”还是“ flush 插件”，都需要我们修改模块化调用的代码，这无疑是雪上加霜，开发者不仅仅需要在本地开发关注模块化的拆分，在调用的时候还需要关注在一个请求里面加载哪些模块比较合适，模块化的初衷是为了提高开发效率、降低维护成本，但我们发现这样的模块化方案实际上并没有降低维护成本，某种程度上来说使得整个项目更加复杂了。</p>
+<h2 id="-">一体化的前端模块化实践方案</h2>
+<p>写到这里，其实我们的“前端工程之块化”才正式开始，本文面向对前端模块化开发有所实践或有所研究的同学，接下来我们所介绍的前端模块化解决方案， 有别于 JavaScript 模块化方案或 CSS 模块化方案，它是一种可以综合处理前端各种资源的模块化方案；它可以极大提升开发者的开发体验，并为性能优化提供良好的支持。下面让我们来进一步来了解什么是“一体化”的模块化实践方案。</p>
+
+        
+          <p class="article-more-link">
+            <a href="/discover/2014/05/14/fe-moudle/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+  
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-exp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -178,86 +239,6 @@
 
 
   
-    <article id="post-thejavascriptrightway" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/discover/2014/05/05/thejavascriptrightway/">The javascript right way</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/discover/2014/05/05/thejavascriptrightway/" class="article-date">
-  <time datetime="2014-05-05T07:48:59.000Z" itemprop="datePublished">2014年5月5日</time>
-</a>
-      
-  <div class="article-category">
-    
-	    <a class="pure-button" style='display:inline;' href="/discover/categories/JavaScript/">JavaScript</a>
-	  
-  </div>
-
-      <span class="article-category-link ds-thread-count" data-thread-key="undefined" data-count-type="comments"></span>
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="hey-you-">Hey, you!</h1>
-<p>This is a JavaScript guide intended to introduce new developers and help experienced ones to the JavaScript&#39;s best practices. </p>
-<p>Despite the name, this guide doesn&#39;t mean exactly &quot;the right way&quot; to do JavaScript. </p>
-<p>We just gather all the stuff from top developers and put here. Since it come from exceptional folks, we could say that it is &quot;the right way&quot;, or the best way to do so. </p>
-<h1 id="-choose-your-path-0-"><a href="#main">Choose your path</a></h1>
-<ul>
-<li><a href="#getting-started">Getting Started</a></li>
-<li><a href="#js-code-style">JavaScript Code Style</a></li>
-<li><a href="#the-good-parts">The Good Parts</a></li>
-<li><a href="#patterns">Patterns</a></li>
-<li><a href="#testing-tools">Testing Tools</a></li>
-<li><a href="#frameworks">Frameworks</a></li>
-<li><a href="#game-engines">Game Engines</a></li>
-<li><a href="#news">News</a></li>
-<li><a href="#reading">Reading</a></li>
-<li><a href="#podcasts">Podcasts</a></li>
-<li><a href="#screencasts">Screencasts</a></li>
-<li><a href="#whotofollow">Who to follow</a></li>
-<li><a href="#paas">PaaS Providers</a></li>
-<li><a href="#helpers">Helpers</a></li>
-</ul>
-<h1 id="-getting-started-1-"><a href="#getting-started">GETTING STARTED</a></h1>
-<h3 id="about">ABOUT</h3>
-<p>Created by Netscape in 1995 as an extension of HTML for Netscape Navigator 2.0, JavaScript had as its main function the manipulation of HTML documents and form validation. Before winning this name so famous nowadays, JavaScript was called Mocha, after LiveScript and finally, when it was released by Sun Microsystems, was baptized with the name by which he is known today. Because of the similar names, people confuses JavaScript with Java. Although both have the lexical structure of programming, they are not the same language. Different from C, C# and Java, JavaScript is an interpreted language. It means that it needs an &quot;interpreter&quot;. In case of JavaScript, the interpreter is the browser. </p>
-<h3 id="current-version">CURRENT VERSION</h3>
-<p>The JavaScript standard is ECMAScript. As of 2012, all modern browsers fully support ECMAScript 5.1. Older browsers support at least ECMAScript 3. A 6th major revision of the standard is being worked on. </p>
-<p>A good reference to versions, references and news about JavaScript, you can find at <a href="https://developer.mozilla.org/en-US/docs/JavaScript" target="_blank">Mozilla Developer Network</a>. </p>
-<h3 id="the-dom">THE DOM</h3>
-<p>The Document Object Model (DOM) is an API for HTML and XML documents. It provides a structural representation of the document, enabling you to modify its content and visual presentation by using a scri pting language such as JavaScript. See more at <a href="https://developer.mozilla.org/en-US/docs/DOM" target="_blank">Mozilla Developer Network - DOM</a>. </p>
-
-        
-          <p class="article-more-link">
-            <a href="/discover/2014/05/05/thejavascriptrightway/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-  
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/discover/tags/教程/">教程</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/discover/archives/2014/page/2/">2</a><a class="page-number" href="/discover/archives/2014/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/discover/archives/2014/page/6/">6</a><a class="extend next" href="/discover/archives/2014/page/2/">Next &raquo;</a>
@@ -279,6 +260,8 @@
 	  
 	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/前端心得/">前端心得</a><span class="category-list-count">5</span></li>
 	  
+	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/前端架构/">前端架构</a><span class="category-list-count">1</span></li>
+	  
 	    <li class="category-list-item"><a class="category-list-link" href="/discover/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li>
 	  
 	  </ul>
@@ -291,6 +274,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/discover/2014/05/14/fe-moudle/">前端工程之模块化</a>
+          </li>
         
           <li>
             <a href="/discover/2014/05/13/exp/">webapp开发实践</a>
@@ -306,10 +293,6 @@
         
           <li>
             <a href="/discover/2014/03/18/you-might-not-need-jquery/">YOU MIGHT NOT NEED JQUERY</a>
-          </li>
-        
-          <li>
-            <a href="/discover/2014/03/17/7-days-nodejs/">七天学会NodeJS</a>
           </li>
         
       </ul>
@@ -330,7 +313,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/05">五月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/04">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/05">五月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/04">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/03">三月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/discover/archives/2013/12">十二月 2013</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
